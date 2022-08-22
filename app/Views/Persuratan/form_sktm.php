@@ -9,10 +9,13 @@
 
     <div class="card shadow mb-4">
         <div class="card-body">
-            <h5 class="font-weight-bold text-primary">Pemohon</h5>
+            <h5 class="font-weight-bold text-primary">Surat Keterangan Tidak Mampu</h5>
+            <hr>
+
+            <!-- Cari Pemohon -->
             <form action="" method="POST">
                 <div class="m-2 row">
-                    <label for="" class="col-sm-3 col-form-label"> NIK </label>
+                    <label for="" class="col-sm-3 col-form-label"> NIK Pemohon </label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="keyword" required>
                     </div>
@@ -24,7 +27,7 @@
                 </div>
             </form>
 
-            <table class="px-2 table">
+            <!-- <table class="px-2 table">
                 <tbody>
                     <tr>
                         <td>Nama</td>
@@ -57,9 +60,9 @@
                         <td class="isian">  </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
             
-            <h5 class="font-weight-bold text-primary">Surat</h5>
+            <!-- Form Surat -->
             <div class="m-2 row">
                 <label for="" class="col-sm-3 col-form-label"> Nomor Surat </label>
                 <div class="col-sm-6">
@@ -67,13 +70,13 @@
                 </div>
             </div>
             <div class="m-2 row">
-                <label for="" class="col-sm-3 col-form-label"> No. Surat Keterangan RT/RW </label>
+                <label for="" class="col-sm-3 col-form-label"> Nomor Surat RT/RW </label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" name="" required>
                 </div>
             </div>
             <div class="m-2 row">
-                <label for="" class="col-sm-3 col-form-label"> Tanggal Surat Keterangan RT/RW </label>
+                <label for="" class="col-sm-3 col-form-label"> Tanggal Surat RT/RW </label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" name="" required>
                 </div>
