@@ -3,6 +3,11 @@
 
 <div class="container-fluid">
 
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Tambah Data Penduduk</h1>
+    </div>
+
     <?php if (!empty(session()->getFlashdata('error'))) : ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <h4 class="mb-3">Periksa kembali entrian form</h4>
@@ -15,13 +20,17 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tambah Penduduk</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data Penduduk</h6>
         </div>
         <form class="user" action="<?= base_url('kependudukan/save'); ?>" method="POST">
             <?= csrf_field(); ?>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" class="form-label"> No Kartu Keluarga </label>
+                            <input type="text" class="form-control" name="kk" value="<?= old('kk'); ?>">
+                        </div>
                         <div class="form-group">
                             <label for="" class="form-label"> NIK </label>
                             <input type="text" class="form-control" name="nik" value="<?= old('nik'); ?>">
@@ -85,7 +94,9 @@
                                 <label class="form-check-label" for=""> AB </label>
                             </div>
                         </div>
+                        
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="form-label"> Pendidikan </label>
@@ -116,11 +127,29 @@
                             <label for="" class="form-label"> Kewarganegaraan </label>
                             <input type="text" class="form-control" name="status" value="<?= old('status'); ?>">
                         </div>
+                        <div class="form-group">
+                            <label for="" class="form-label"> Alamat </label>
+                            <textarea class="form-control" name="alamat" cols="3" rows="3"><?= old('alamat'); ?></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label"> RT </label>
+                                    <input type="text" class="form-control" name="rt" value="<?= old('rt'); ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label"> RW </label>
+                                    <input type="text" class="form-control" name="rw" value="<?= old('rw'); ?>">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <hr>
                 <div class="m-2 form-group text-right">
-                    <button type="submit" class="btn btn-success"> <i class="fas fa-save"></i> Simpan </button>
+                    <button type="submit" class="btn btn-success"> Simpan </button>
                 </div>
         </form>
     </div>

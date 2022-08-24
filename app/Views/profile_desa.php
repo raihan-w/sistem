@@ -2,7 +2,12 @@
 <?= $this->section('PageContent'); ?>
 
 <div class="container-fluid">
-    <!-- Profile -->
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Detail Data Penduduk</h1>
+    </div>
+
     <?php if (!empty(session()->getFlashdata('message'))) : ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo session()->getFlashdata('message'); ?>
@@ -11,6 +16,8 @@
             </button>
         </div>
     <?php endif; ?>
+
+    <!-- Profile -->
     <div class="card shadow mb-4">
         <div class="card-body mx-3">
             <form class="user" action="<?= base_url('konfigurasi/update'); ?>" method="POST" enctype="multipart/form-data">
@@ -78,7 +85,7 @@
                 </div>
                 <hr>
                 <div class="form-group text-right">
-                    <button type="submit" class="btn btn-success"> <i class="fas fa-save text-white-50"></i> Simpan </button>
+                    <button type="submit" class="btn btn-success"> Simpan </button>
                 </div>
             </form>
         </div>

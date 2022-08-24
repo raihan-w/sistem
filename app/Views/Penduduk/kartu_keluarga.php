@@ -18,7 +18,7 @@
     <?php endif; ?>
 
     <div class="card shadow mb-4">
-        <div class="card-body m-2">
+        <div class="card-body">
             <div class="d-flex flex-row align-item-center justify-content-between">
                 <h4 class="m-0 font-weight-bold">No. Kartu Keluarga : <?= $info['nkk']; ?></h4>
                 <div class="dropdown no-arrow">
@@ -26,9 +26,8 @@
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-header">Pengaturan:</div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#importModal">Edit</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
@@ -78,6 +77,46 @@
         </div>
     </div>
 
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Form Ubah Kartu Keluarga</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form class="user" action="" method="POST">
+                <?= csrf_field(); ?>
+                <div class="modal-body flex-column border-top-0">
+                    <div class="form-group">
+                        <label class="form-label" for="">Alamat</label>
+                        <textarea class="form-control" name="alamat" cols="3" rows="3"><?= $row['alamat']; ?></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="" class="form-label"> RT </label>
+                                <input type="text" class="form-control" name="rt" value="<?= $row['rt']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="" class="form-label"> RW </label>
+                                <input type="text" class="form-control" name="rw" value="<?= $row['rw']; ?>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"> Simpan </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <?= $this->endSection(); ?>

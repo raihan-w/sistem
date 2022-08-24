@@ -6,11 +6,20 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Data Penduduk</h1>
-        <a href="" class="btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editModal">
+        <a href="" class="btn btn-sm btn-secondary shadow-sm" data-toggle="modal" data-target="#editModal">
             <i class="fas fa-edit fa-sm text-white-50"></i>
-            <span class="text">Edit Data</span>
+            <span class="text">Edit</span>
         </a>
     </div>
+
+        <?php if (!empty(session()->getFlashdata('message'))) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo session()->getFlashdata('message'); ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
 
     <div class="card shadow mb-4">
         <div class="card-body m-2">
@@ -69,19 +78,23 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data Penduduk</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Form Ubah Data Penduduk</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="user" action="<?= base_url('kependudukan/update'); ?>" method="POST">
+            <form class="user" action="<?= base_url('kependudukan/update')?>" method="POST">
                 <?= csrf_field(); ?>
                 <div class="modal-body flex-column border-top-0">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="" class="form-label"> No. Kartu Keluarga </label>
+                                <input type="text" class="form-control" name="kk" value="<?= $penduduk['kk']; ?>">
+                            </div>
+                            <div class="form-group">
                                 <label for="" class="form-label"> NIK </label>
-                                <input type="text" class="form-control" name="nik" value="<?= $penduduk['nik']; ?>">
+                                <input type="text" class="form-control" name="nik" value="<?= $penduduk['nik']; ?>" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="" class="form-label"> Nama Lengkap </label>
@@ -176,7 +189,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success"> <i class="fas fa-save text-white-50"></i> Simpan </button>
+                        <button type="submit" class="btn btn-success"> Simpan </button>
                     </div>
             </form>
         </div>

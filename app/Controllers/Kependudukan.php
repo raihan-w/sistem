@@ -48,6 +48,7 @@ class Kependudukan extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
+
         $data = array(
             'nik'           => $this->request->getPost('nik'),
             'kk'            => $this->request->getPost('kk'),
@@ -63,8 +64,9 @@ class Kependudukan extends BaseController
             'hub_keluarga'  => $this->request->getPost('hub_keluarga'),
             'status'        => $this->request->getPost('status'),
         );
-        $this->penduduk->saveData($data);
-        return redirect()->to('/penduduk');
+
+        $this->penduduk->insert($data);
+        return redirect()->to('/penduduk')->with('message', 'Data added successfully');
     }
 
     public function delete($id)
@@ -83,7 +85,7 @@ class Kependudukan extends BaseController
 
     public function update()
     {
-        $nik = $this->request->getPost('nik');
+        $id = $this->request->getPost('nik');
         $data = array(
             'kk'            => $this->request->getPost('kk'),
             'nama'          => $this->request->getPost('nama'),
@@ -98,8 +100,9 @@ class Kependudukan extends BaseController
             'hub_keluarga'  => $this->request->getPost('hub_keluarga'),
             'status'        => $this->request->getPost('status'),
         );
-        $this->penduduk->updateData($data, $nik);
-        return redirect()->back();
+
+        $this->penduduk->update($id, $data);
+        return redirect()->back()->with('message', 'Data updated successfully');
     }
 
     public function keluarga()
@@ -138,8 +141,8 @@ class Kependudukan extends BaseController
                 if ($key == 0) {
                     continue;
                 }
-                
-                $nik = $this->ModelPenduduk->cekData($key['1']);
+
+                $nik = $this->ModelPenduduk->checkData($key['1']);
                 if ($key['1'] == $nik['nik']) {
                     continue;
                 }

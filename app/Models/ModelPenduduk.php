@@ -8,20 +8,9 @@ class ModelPenduduk extends Model
 {
     protected $table = 'penduduk';
     protected $primaryKey = 'nik';
+    protected $allowedFields = ['nik', 'kk', 'nama', 'tpt_lahir', 'tgl_lahir', 'jenkel', 'pernikahan', 'pendidikan', 'agama', 'goldar', 'pekerjaan', 'hub_keluarga', 'status'];
 
-    public function saveData($data)
-    {
-        $query = $this->db->table($this->table)->insert($data);
-        return $query;
-    }
-
-    public function updateData($data, $id)
-    {
-        $query = $this->db->table($this->table)->update($data, array('nik' => $id));
-        return $query;
-    }
-
-    public function cekData($id)
+    public function checkData($id)
     {
         return $this->db->table($this->table)->where('nik', $id)->get()->getRowArray();
     }
