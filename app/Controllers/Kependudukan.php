@@ -38,10 +38,16 @@ class Kependudukan extends BaseController
                     'is_unique' => '{field} sudah terdaftar'
                 ]
             ],
+            'kk'   => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Form "{field}" harus diisi',
+                ]
+            ],
             'nama'   => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Form {field} harus diisi'
+                    'required' => 'Form "{field}" harus diisi'
                 ]
             ],
         ])) {
@@ -49,7 +55,7 @@ class Kependudukan extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $data = array(
+        $penduduk = array(
             'nik'           => $this->request->getPost('nik'),
             'kk'            => $this->request->getPost('kk'),
             'nama'          => $this->request->getPost('nama'),
@@ -65,7 +71,20 @@ class Kependudukan extends BaseController
             'status'        => $this->request->getPost('status'),
         );
 
-        $this->penduduk->insert($data);
+        $keluarga = array(
+            'nkk'            => $this->request->getPost('kk'),
+            'alamat'         => $this->request->getPost('alamat'),
+            'rt'             => $this->request->getPost('rt'),
+            'rw'             => $this->request->getPost('rw'),
+        );
+
+        $id = $this->request->getPost('kk');
+        $nkk = $this->keluarga->checkKeluarga($id);
+        if ($id != $nkk['nkk']) {
+            $this->keluarga->insert($keluarga);
+        }
+
+        $this->penduduk->insert($penduduk);
         return redirect()->to('/penduduk')->with('message', 'Data added successfully');
     }
 
@@ -83,9 +102,8 @@ class Kependudukan extends BaseController
         return view('Penduduk/detail', $data);
     }
 
-    public function update()
+    public function update($id)
     {
-        $id = $this->request->getPost('nik');
         $data = array(
             'kk'            => $this->request->getPost('kk'),
             'nama'          => $this->request->getPost('nama'),
@@ -142,7 +160,7 @@ class Kependudukan extends BaseController
                     continue;
                 }
 
-                $nik = $this->ModelPenduduk->checkData($key['1']);
+                $nik = $this->ModelPenduduk->checkPenduduk($key['1']);
                 if ($key['1'] == $nik['nik']) {
                     continue;
                 }

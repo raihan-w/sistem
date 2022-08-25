@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Tambah Data Penduduk</h1>
+        <h1 class="h3 mb-0 text-gray-800">Tambah Penduduk</h1>
     </div>
 
     <?php if (!empty(session()->getFlashdata('error'))) : ?>
@@ -94,10 +94,11 @@
                                 <label class="form-check-label" for=""> AB </label>
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <div class="col-md-6">
+                        <!-- Join Table -->
                         <div class="form-group">
                             <label for="" class="form-label"> Pendidikan </label>
                             <select name="pendidikan" class="form-control form-select">
@@ -110,6 +111,7 @@
                             <label for="" class="form-label"> Pekerjaan </label>
                             <input type="text" name="pekerjaan" class="form-control" value="<?= old('pekerjaan'); ?>">
                         </div>
+                        <!-- Type Enum -->
                         <div class="form-group">
                             <label for="" class="form-label"> Status Perkawinan </label>
                             <select name="pernikahan" class="form-control form-select">

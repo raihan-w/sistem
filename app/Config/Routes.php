@@ -39,7 +39,8 @@ $routes->get('konfigurasi/profile', 'konfigurasi::profile');
 $routes->get('penduduk', 'Kependudukan::penduduk');
 $routes->delete('penduduk/(:num)', 'Kependudukan::delete/$1');
 $routes->get('penduduk/tambah', 'Kependudukan::create');
-$routes->get('penduduk/detail/(:any)', 'Kependudukan::detail/$1');
+$routes->get('penduduk/detail/(:segment)', 'Kependudukan::detail/$1');
+$routes->get('penduduk/update/(:segment)', 'Kependudukan::update/$1');
 $routes->get('penduduk/import', 'Kependudukan::import');
 
 $routes->get('keluarga', 'Kependudukan::keluarga');

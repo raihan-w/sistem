@@ -10,7 +10,7 @@ class ModelPenduduk extends Model
     protected $primaryKey = 'nik';
     protected $allowedFields = ['nik', 'kk', 'nama', 'tpt_lahir', 'tgl_lahir', 'jenkel', 'pernikahan', 'pendidikan', 'agama', 'goldar', 'pekerjaan', 'hub_keluarga', 'status'];
 
-    public function checkData($id)
+    public function checkPenduduk($id)
     {
         return $this->db->table($this->table)->where('nik', $id)->get()->getRowArray();
     }

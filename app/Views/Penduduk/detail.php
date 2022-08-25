@@ -33,6 +33,10 @@
             <table class="table table-sm table-borderless">
                 <tbody>
                     <tr>
+                        <th> No. Kartu Keluarga </th>
+                        <td> : <?= $penduduk['kk']; ?> </td>
+                    </tr>
+                    <tr>
                         <th> Tempat/Tanggal Lahir </th>
                         <td> : <?= $penduduk['tpt_lahir']; ?>, <?= $penduduk['tgl_lahir']; ?> </td>
                     </tr>
@@ -83,7 +87,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="user" action="<?= base_url('kependudukan/update')?>" method="POST">
+            <form class="user" action="<?= base_url('kependudukan/update/' . $penduduk['nik'])?>" method="POST">
                 <?= csrf_field(); ?>
                 <div class="modal-body flex-column border-top-0">
                     <div class="row">

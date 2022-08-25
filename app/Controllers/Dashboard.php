@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\DesaModel;
-
 class Dashboard extends BaseController
 {
 
