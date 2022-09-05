@@ -19,7 +19,12 @@ class Persuratan extends BaseController
 
         $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');        
         $data['pemohon'] = $this->penduduk->where('nik', $keyword)->first();
-        return view('Persuratan/form_bedanama', $data);
+        return view('Persuratan/form_beda_nama', $data);
+    }
+
+    public function cetak_beda_nama()
+    {
+        # code...
     }
 
     public function form_bidikmisi()
