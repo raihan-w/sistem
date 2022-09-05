@@ -17,7 +17,7 @@
                 <div class="m-2 row">
                     <label for="" class="col-sm-3 col-form-label"> NIK </label>
                     <div class="col-sm-6">
-                        <?php   $request = \Config\Services::request(); ?>
+                        <?php $request = \Config\Services::request(); ?>
                         <input type="text" class="form-control" name="keyword" value="<?= $request->getVar('keyword'); ?>" required>
                     </div>
                     <div class="col-sm-3">
@@ -27,36 +27,6 @@
                     </div>
                 </div>
             </form>
-
-            <!-- <table class="px-2 table">
-                <tbody>
-                    <tr>
-                        <td>Nama</td>
-                        <td> : </td>
-                        <td class="isian"> <?= $pemohon['nama']; ?> </td>
-                    </tr>
-                    <tr>
-                        <td>Tempat/Tanggal Lahir</td>
-                        <td> : </td>
-                        <td class="isian"> <?= $pemohon['tpt_lahir']; ?> , <?= $pemohon['tgl_lahir']; ?> </td>
-                    </tr>
-                    <tr>
-                        <td>Jenis Kelamin</td>
-                        <td> : </td>
-                        <td class="isian"> <?= $pemohon['jenkel']; ?> </td>
-                    </tr>
-                    <tr>
-                        <td>Pekerjaan</td>
-                        <td> : </td>
-                        <td class="isian"> <?= $pemohon['pekerjaan']; ?> </td>
-                    </tr>
-                    <tr>
-                        <td>Alamat</td>
-                        <td> : </td>
-                        <td class="isian"> <?= $pemohon['alamat']; ?> </td>
-                    </tr>
-                </tbody>
-            </table> -->
 
             <!-- Form Surat -->
             <div class="m-2 row">
@@ -71,11 +41,48 @@
                     <textarea name="keterangan" class="form-control" cols="3" rows="4"></textarea>
                 </div>
             </div>
-            <div class="form-group px-4 text-right">
+            <hr>
+            <div class="form-group px-5 text-right">
                 <button type="submit" class="btn btn-success"> <i class="fas fa-print text-white-50"></i> Cetak</button>
             </div>
         </div>
     </div>
+
+    <?php if ($pemohon != null) : ?>
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <table class="px-2 table">
+                    <tbody>
+                        <tr>
+                            <td>Nama</td>
+                            <td> : </td>
+                            <td class="isian"> <?= $pemohon['nama']; ?> </td>
+                        </tr>
+                        <tr>
+                            <td>Tempat/Tanggal Lahir</td>
+                            <td> : </td>
+                            <td class="isian"> <?= $pemohon['tpt_lahir']; ?> , <?= $pemohon['tgl_lahir']; ?> </td>
+                        </tr>
+                        <tr>
+                            <td>Jenis Kelamin</td>
+                            <td> : </td>
+                            <td class="isian"> <?= $pemohon['jenkel']; ?> </td>
+                        </tr>
+                        <tr>
+                            <td>Pekerjaan</td>
+                            <td> : </td>
+                            <td class="isian"> <?= $pemohon['pekerjaan']; ?> </td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td> : </td>
+                            <td class="isian"> <?= $pemohon['alamat']; ?> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <?php endif; ?>
 
 </div>
 

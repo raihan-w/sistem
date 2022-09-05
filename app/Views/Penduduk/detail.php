@@ -12,7 +12,7 @@
         </a>
     </div>
 
-        <?php if (!empty(session()->getFlashdata('message'))) : ?>
+    <?php if (!empty(session()->getFlashdata('message'))) : ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo session()->getFlashdata('message'); ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -82,12 +82,12 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Form Ubah Data Penduduk</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Form Edit Penduduk </h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="user" action="<?= base_url('kependudukan/update/' . $penduduk['nik'])?>" method="POST">
+            <form class="user" action="<?= base_url('kependudukan/update/' . $penduduk['nik']) ?>" method="POST">
                 <?= csrf_field(); ?>
                 <div class="modal-body flex-column border-top-0">
                     <div class="row">

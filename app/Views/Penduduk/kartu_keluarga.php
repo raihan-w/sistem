@@ -20,7 +20,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="d-flex flex-row align-item-center justify-content-between">
-                <h4 class="m-0 font-weight-bold">No. Kartu Keluarga : <?= $info['nkk']; ?></h4>
+                <h4 class="m-0 font-weight-bold">No. Kartu Keluarga : <?= $kartu['nkk']; ?></h4>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -28,8 +28,16 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Pengaturan:</div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#importModal">Edit</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <?php if ($list == null) : ?>
+                            <div class="dropdown-divider"></div>
+                            <form action="/kartu/<?= $kartu['nkk']; ?>" method="POST" class="dropdown-item">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class=" btn-del " onclick="return confirm('Are you sure?')">
+                                    Hapus
+                                </button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -38,15 +46,14 @@
                 <tbody>
                     <tr>
                         <th> Alamat </th>
-                        <td> : <?= $info['alamat']; ?> </td>
+                        <td> : <?= $kartu['alamat']; ?> </td>
                     </tr>
                     <tr>
                         <th> RT/RW </th>
-                        <td> : <?= $info['rt']; ?> / <?= $info['rw']; ?> </td>
+                        <td> : <?= $kartu['rt']; ?> / <?= $kartu['rw']; ?> </td>
                     </tr>
                 </tbody>
             </table>
-
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -89,24 +96,24 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="user" action="" method="POST">
+            <form class="user" action="<?= base_url('kependudukan/update_kk/' . $kartu['nkk']); ?>" method="POST">
                 <?= csrf_field(); ?>
                 <div class="modal-body flex-column border-top-0">
                     <div class="form-group">
                         <label class="form-label" for="">Alamat</label>
-                        <textarea class="form-control" name="alamat" cols="3" rows="3"><?= $row['alamat']; ?></textarea>
+                        <textarea class="form-control" name="alamat" cols="3" rows="3"><?= $kartu['alamat']; ?></textarea>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="" class="form-label"> RT </label>
-                                <input type="text" class="form-control" name="rt" value="<?= $row['rt']; ?>">
+                                <input type="text" class="form-control" name="rt" value="<?= $kartu['rt']; ?>">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="" class="form-label"> RW </label>
-                                <input type="text" class="form-control" name="rw" value="<?= $row['rw']; ?>">
+                                <input type="text" class="form-control" name="rw" value="<?= $kartu['rw']; ?>">
                             </div>
                         </div>
                     </div>

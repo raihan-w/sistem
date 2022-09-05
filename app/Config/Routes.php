@@ -44,6 +44,9 @@ $routes->get('penduduk/update/(:segment)', 'Kependudukan::update/$1');
 $routes->get('penduduk/import', 'Kependudukan::import');
 
 $routes->get('keluarga', 'Kependudukan::keluarga');
+$routes->get('/kartu/(:segment)', 'Kependudukan::kartu/$1');
+$routes->get('keluarga/update/(:segment)', 'Kependudukan::update_kk/$1');
+$routes->delete('kartu/(:num)', 'Kependudukan::delete_kk/$1');
 
 
 

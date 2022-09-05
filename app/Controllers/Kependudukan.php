@@ -97,8 +97,10 @@ class Kependudukan extends BaseController
     public function detail($id)
     {
         $this->penduduk->join('pendidikan', 'pendidikan.id = penduduk.pendidikan');
-        $data['penduduk'] = $this->penduduk->find($id);
-        $data['pendidikan'] = $this->pendidikan->findAll();
+        $data = [
+            'penduduk'      => $this->penduduk->find($id),
+            'pendidikan'    => $this->pendidikan->findAll(),
+        ];
         return view('Penduduk/detail', $data);
     }
 
@@ -126,7 +128,7 @@ class Kependudukan extends BaseController
     public function keluarga()
     {
         $this->keluarga->select('nkk, alamat, rt, rw, count(kk) as jml');
-        $this->keluarga->join('penduduk', 'penduduk.kk = keluarga.nkk', 'left');
+        $this->keluarga->join('penduduk', 'penduduk.kk = keluarga.nkk', 'right');
         $this->keluarga->groupBy('nkk');
         $data['keluarga'] = $this->keluarga->findAll();
         return view('Penduduk/kepala_keluarga', $data);
@@ -136,9 +138,28 @@ class Kependudukan extends BaseController
     {
         $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');
         $this->penduduk->where('kk', $id);
-        $data['info'] = $this->keluarga->find($id);
-        $data['list'] = $this->penduduk->findAll();
+        $data = [
+            'list'  => $this->penduduk->findAll(),
+            'kartu' => $this->keluarga->find($id),
+        ];
         return view('Penduduk/kartu_keluarga', $data);
+    }
+
+    public function update_kk($id)
+    {
+        $data = [
+            'alamat'    => $this->request->getPost('alamat'),
+            'rt'        => $this->request->getPost('rt'),
+            'rw'        => $this->request->getPost('rw'),
+        ];
+        $this->keluarga->update($id, $data);
+        return redirect()->back()->with('message', 'Data updated successfully');
+    }
+
+    public function delete_kk($id)
+    {
+        $this->keluarga->delete($id);
+        return redirect()->back()->to('keluarga')->with('message', 'Data deleted successfully');
     }
 
     public function import()

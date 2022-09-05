@@ -44,8 +44,8 @@
                     <input type="text" class="form-control" name="" required>
                 </div>
             </div>
-
-            <div class="form-group px-4 text-right">
+            <hr>
+            <div class="form-group px-5 text-right">
                 <button type="submit" class="btn btn-success"> <i class="fas fa-print text-white-50"></i> Cetak</button>
             </div>
         </div>

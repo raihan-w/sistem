@@ -1,3 +1,15 @@
+.btn-del {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #ee0000;
+    padding: 0;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+}
+
 .logo {
     max-width: 15rem;
     height: auto;
