@@ -2,29 +2,37 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Beda_Nama;
 use App\Models\ModelPenduduk;
-use Dompdf\Dompdf;
+
 
 class Persuratan extends BaseController
 {
-    protected $penduduk;
+    protected $penduduk, $bedanama;
     public function __construct()
     {
         $this->penduduk = new ModelPenduduk();
+        $this->bedanama = new Model_Beda_Nama();
     }
 
     public function form_bedanama()
     {
         $keyword = $this->request->getVar('keyword');
 
-        $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');        
+        $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');
         $data['pemohon'] = $this->penduduk->where('nik', $keyword)->first();
         return view('Persuratan/form_beda_nama', $data);
     }
 
-    public function cetak_beda_nama()
+    public function save_beda_nama()
     {
-        # code...
+        $data = array(
+            'no_surat'       => $this->request->getPost('no_surat'),
+            'isi_surat'      => $this->request->getPost('isi_surat'),
+        );
+
+        $this->bedanama->insert($data);
+        return redirect()->to('Persuratan/beda_nama');
     }
 
     public function form_bidikmisi()
@@ -61,5 +69,4 @@ class Persuratan extends BaseController
     {
         return view('Persuratan/form_pengantar');
     }
-
 }

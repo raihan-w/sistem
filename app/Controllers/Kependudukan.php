@@ -78,12 +78,7 @@ class Kependudukan extends BaseController
             'rw'             => $this->request->getPost('rw'),
         );
 
-        $id = $this->request->getPost('kk');
-        $nkk = $this->keluarga->checkKeluarga($id);
-        if ($id != $nkk['nkk']) {
-            $this->keluarga->insert($keluarga);
-        }
-
+        $this->keluarga->ignore(true)->insert($keluarga);
         $this->penduduk->insert($penduduk);
         return redirect()->to('/penduduk')->with('message', 'Data added successfully');
     }

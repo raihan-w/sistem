@@ -90,95 +90,16 @@
     background-color: #dde0e3;
 }
 
-.tab1 {
-    display: inline-block;
-    margin-left: 40px;
-}
-
-.tab2 {
-    display: inline-block;
-    margin-left: 60px;
-}
-
-.pappersize1 {
-    position: relative;
-    width: 595px;
-    height: 842px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #FFFFFF;
-    font-family: 'Times New Roman', Times, serif;
-    color: #000;
-}
-
-.surat {
-    width: 100%;
-}
-
-.kop-surat {
-    margin-bottom: 10px;
-    border-bottom: double #000;
-    text-align: center;
-}
-
-.kop-logo {
-    width: 80px;
-}
-
-.kd {
-    font-size: 10pt;
-    text-transform: capitalize;
-}
-
-.perihal {
-    margin-bottom: 0;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: underline;
-}
-
-.isi-surat {
-    font-size: 11.5pt;
-    margin: 0 auto; 
-    width: 95%;
-}
-
-.isian {
-    width: 75%;
-}
-
-.tglPengesahan {
-    text-align: right;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    padding-right: 4rem;
-}
-
-.pengesahan1 {
-    width: 55%;
-    margin-left: 250px;
-    text-transform: capitalize;
-    text-align: center;
-}
-
-.pengesahan2 {
-    text-transform: capitalize;
-    text-align: center;
-}
-
-.ttd {
-    margin-top: 2.5rem;
-    margin-bottom: 0;
-    font-weight: 700;
-    text-decoration: underline;
-}
-
 .pappersize {
     background: #FFFFFF;
     font-family: 'Times New Roman', Times, serif;
     font-size: 12pt;
     color: #000;
     padding: 1cm;
+}
+
+.surat {
+    width: 100%;
 }
 
 .header-srt {
@@ -195,6 +116,7 @@
 .id-srt {
     margin: 0;
     text-transform: uppercase;
+    text-align: center;
     font-weight: 700;
     width: 80%;
 }
@@ -202,6 +124,7 @@
 .add-srt {
     margin: 16px 0px 0px 0px;
     text-transform: capitalize;
+    text-align: center;
     font-style: italic;
     width: 80%;
 }
