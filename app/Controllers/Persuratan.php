@@ -24,7 +24,7 @@ class Persuratan extends BaseController
         return view('Persuratan/form_beda_nama', $data);
     }
 
-    public function save_beda_nama()
+    public function beda_nama()
     {
         $data = array(
             'no_surat'       => $this->request->getPost('no_surat'),

@@ -29,7 +29,7 @@
             </form>
 
             <!-- Form Surat -->
-            <form action="<?= base_url('persuratan/save_beda_nama'); ?>" class="user" method="POST">
+            <form action="<?= base_url('persuratan/beda_nama'); ?>" class="user" method="POST">
                 <?= csrf_field(); ?>
 
                 <div class="form-group m-2 row">

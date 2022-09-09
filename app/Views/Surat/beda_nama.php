@@ -11,18 +11,17 @@
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-
     <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet" type="text/css" media="all">
 
     <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
-    <!-- <style>
+
+    <style>
         .pappersize {
             background: #FFFFFF;
             font-family: 'Times New Roman', Times, serif;
             font-size: 12pt;
             color: #000;
-            padding: 0.5cm;
         }
 
         .surat {
@@ -43,6 +42,7 @@
         .id-srt {
             margin: 0;
             text-transform: uppercase;
+            text-align: center;
             font-weight: 700;
             width: 80%;
         }
@@ -115,7 +115,7 @@
             text-transform: uppercase;
             text-decoration: underline;
         }
-    </style> -->
+    </style>
 </head>
 
 <body>
@@ -129,9 +129,9 @@
                             <img class="logo-srt" src="<?= base_url('img/logo.png'); ?>">
                         </td>
                         <td>
-                            <h5 class="id-srt">pemerintah kabupaten klaten</h5>
-                            <h5 class="id-srt">kecamatan prambanan</h5>
-                            <h4 class="id-srt">desa geneng</h4>
+                            <h4 class="id-srt">pemerintah kabupaten klaten</h4>
+                            <h4 class="id-srt">kecamatan prambanan</h4>
+                            <h3 class="id-srt">desa geneng</h3>
                             <p class="add-srt">Alamat. Jln.Jogja-Solo Km 21 Ds.Geneng Kode Pos 57454</p>
                         </td>
                     </tr>
@@ -149,7 +149,7 @@
             <table class="opp-srt surat" border="1">
                 <tr>
                     <td>
-                        <h5 class="name-srt">surat keterangan</h5>
+                        <h4 class="name-srt">surat keterangan</h4>
                     </td>
                 </tr>
                 <tr>
