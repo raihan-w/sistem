@@ -7,9 +7,9 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Penduduk</h1>
         <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-sm btn-warning shadow-sm" data-toggle="modal" data-target="#importModal">
+            <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#importModal">
                 <i class="fas fa-file-import fa-sm text-white-50"></i>
-                <span class="text">Import Excel</span>
+                <span class="text">Import</span>
             </a>
             <a href="<?= base_url('penduduk/tambah'); ?>" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i>
@@ -44,8 +44,7 @@
                             <th>NIK</th>
                             <th>No.KK</th>
                             <th>Nama</th>
-                            <th>Tempat Lahir</th>
-                            <th>Tanggal Lahir</th>
+                            <th>Tempat/Tgl Lahir</th>
                             <th>Jenis Kelamin</th>
                             <th>Action</th>
                         </tr>
@@ -56,8 +55,7 @@
                                 <td> <?= $row['nik']; ?> </td>
                                 <td> <?= $row['kk']; ?> </td>
                                 <td> <?= $row['nama']; ?> </td>
-                                <td> <?= $row['tpt_lahir']; ?> </td>
-                                <td> <?= $row['tgl_lahir']; ?> </td>
+                                <td> <?= $row['tpt_lahir']; ?>, <?= $row['tgl_lahir']; ?></td>
                                 <td> <?= $row['jenkel']; ?> </td>
                                 <td>
                                     <a href="<?= base_url('kependudukan/detail/' . $row['nik']); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-info"></i></a>

@@ -49,8 +49,7 @@ $routes->get('keluarga/update/(:segment)', 'Kependudukan::update_kk/$1');
 $routes->delete('kartu/(:num)', 'Kependudukan::delete_kk/$1');
 
 $routes->get('persuratan/beda-nama', 'Persuratan::form_bedanama');
-
-
+$routes->post('persuratan/beda-nama', 'Persuratan::form_bedanama');
 
 
 /*

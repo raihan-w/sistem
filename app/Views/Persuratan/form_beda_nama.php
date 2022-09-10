@@ -7,6 +7,16 @@
         <h1 class="h3 mb-0 text-gray-800">Form Surat Beda Nama</h1>
     </div>
 
+    <?php if (!empty(session()->getFlashdata('error'))) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="mb-3">Periksa kembali entrian form</h4>
+            <?php echo session()->getFlashdata('error') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif ?>
+
     <div class="card shadow mb-4">
         <div class="card-body">
             <h5 class="font-weight-bold text-primary">Surat Keterangan Beda Nama</h5>
@@ -15,7 +25,7 @@
             <!-- Cari Pemohon -->
             <form action="" method="POST">
                 <div class="m-2 row">
-                    <label for="" class="col-sm-3 col-form-label"> NIK </label>
+                    <label for="" class="col-sm-3 col-form-label"> NIK Pemohon</label>
                     <div class="col-sm-6">
                         <?php $request = \Config\Services::request(); ?>
                         <input type="text" class="form-control" name="keyword" value="<?= $request->getVar('keyword'); ?>" required>
@@ -27,30 +37,38 @@
                     </div>
                 </div>
             </form>
-
+            <br>
             <!-- Form Surat -->
-            <form action="<?= base_url('persuratan/beda_nama'); ?>" class="user" method="POST">
+            <form action="<?= base_url('persuratan/beda_nama'); ?>" method="POST" class="user" <?php if (empty(session()->getFlashdata('error'))) { echo "target = '_blank'"; } ?>>
                 <?= csrf_field(); ?>
 
                 <div class="form-group m-2 row">
                     <label for="" class="col-sm-3 col-form-label"> Nomor Surat </label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="no_surat" required>
+                        <input type="text" class="form-control" name="no_surat">
                     </div>
                 </div>
 
                 <div class="form-group m-2 row">
                     <label for="" class="col-sm-3 col-form-label"> Keterangan </label>
                     <div class="col-sm-6">
-                        <textarea name="isi_surat" class="form-control" cols="3" rows="4" required></textarea>
+                        <textarea name="isi_surat" class="form-control" cols="3" rows="4"></textarea>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="nik_pemohon" value="<?= $pemohon['nik']; ?>">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="nama_pemohon" value="<?= $pemohon['nama']; ?>">
                 </div>
 
                 <hr>
                 <div class="form-group px-3 mb-1 row">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-6">
-                        <button type="submit" class="btn btn-success" onclick="window.open('<?php echo site_url('cetak/print_beda_nama') ?>','blank')">
+                        <button type="submit" class="btn btn-success">
                             <i class="fas fa-print "></i> Cetak
                         </button>
                     </div>
@@ -71,7 +89,7 @@
                             <td class="isian"> <?= $pemohon['nama']; ?> </td>
                         </tr>
                         <tr>
-                            <td>Tempat/Tanggal Lahir</td>
+                            <td>Tempat/Tgl Lahir</td>
                             <td> : </td>
                             <td class="isian"> <?= $pemohon['tpt_lahir']; ?> , <?= $pemohon['tgl_lahir']; ?> </td>
                         </tr>

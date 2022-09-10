@@ -2,17 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Models\Model_Beda_Nama;
+use App\Models\Model_Bedanama;
 use App\Models\ModelPenduduk;
-
+use Dompdf\Dompdf;
 
 class Persuratan extends BaseController
 {
-    protected $penduduk, $bedanama;
+    protected $dompdf, $penduduk, $bedanama;
     public function __construct()
     {
+        $this->dompdf = new Dompdf();
         $this->penduduk = new ModelPenduduk();
-        $this->bedanama = new Model_Beda_Nama();
+        $this->bedanama = new Model_Bedanama();
     }
 
     public function form_bedanama()
@@ -26,13 +27,52 @@ class Persuratan extends BaseController
 
     public function beda_nama()
     {
+        if (!$this->validate([
+            'no_surat'   => [
+                'rules' => 'required|is_unique[penduduk.nik]',
+                'errors' => [
+                    'required' => 'Form "Nomor Surat" harus diisi',
+                    'is_unique' => '{field} sudah terdaftar'
+                ]
+            ],
+            'isi_surat'   => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Form "Keterangan" harus diisi',
+                ]
+            ],
+            'nik_pemohon'   => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data Pemohon harus diisi'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
+        }
+
         $data = array(
             'no_surat'       => $this->request->getPost('no_surat'),
             'isi_surat'      => $this->request->getPost('isi_surat'),
+            'nik_pemohon'    => $this->request->getPost('nik_pemohon'),
+            'nama_pemohon'   => $this->request->getPost('nama_pemohon')
         );
 
         $this->bedanama->insert($data);
-        return redirect()->to('Persuratan/beda_nama');
+        return redirect()->to('Persuratan/print_beda_nama');
+    }
+
+    public function print_beda_nama()
+    {
+        $html = view('Surat/beda_nama');
+
+        $this->dompdf->loadHtml($html);
+        $this->dompdf->setPaper('A4', 'potrait');
+        $this->dompdf->render();
+        $this->dompdf->stream('Surat Keterangan Beda Nama.pdf', array(
+            "Attachment" => false
+        ));
     }
 
     public function form_bidikmisi()
