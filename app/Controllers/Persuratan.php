@@ -3,16 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\Model_Bedanama;
-use App\Models\ModelPenduduk;
+use App\Models\Model_Penduduk;
+use App\Models\Model_Surat;
 use Dompdf\Dompdf;
 
 class Persuratan extends BaseController
 {
-    protected $dompdf, $penduduk, $bedanama;
+    protected $dompdf, $penduduk, $bedanama, $surat;
     public function __construct()
     {
         $this->dompdf = new Dompdf();
-        $this->penduduk = new ModelPenduduk();
+        $this->penduduk = new Model_Penduduk();
+        $this->surat = new Model_Surat();
         $this->bedanama = new Model_Bedanama();
     }
 
@@ -29,10 +31,10 @@ class Persuratan extends BaseController
     {
         if (!$this->validate([
             'no_surat'   => [
-                'rules' => 'required|is_unique[penduduk.nik]',
+                'rules' => 'required|is_unique[surat_bedanama.no_surat]',
                 'errors' => [
                     'required' => 'Form "Nomor Surat" harus diisi',
-                    'is_unique' => '{field} sudah terdaftar'
+                    'is_unique' => 'Nomor surat sudah terdaftar'
                 ]
             ],
             'isi_surat'   => [
@@ -52,14 +54,20 @@ class Persuratan extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $data = array(
-            'no_surat'       => $this->request->getPost('no_surat'),
-            'isi_surat'      => $this->request->getPost('isi_surat'),
-            'nik_pemohon'    => $this->request->getPost('nik_pemohon'),
-            'nama_pemohon'   => $this->request->getPost('nama_pemohon')
+        $surat = array(
+            'nomor'     => $this->request->getPost('no_surat'),
+            'perihal'   => $this->request->getPost('perihal'),
         );
 
-        $this->bedanama->insert($data);
+        $bedanama = array(
+            'no_surat'       => $this->request->getPost('no_surat'),
+            'nik_pemohon'    => $this->request->getPost('nik_pemohon'),
+            'nama_pemohon'   => $this->request->getPost('nama_pemohon'),
+            'isi_surat'      => $this->request->getPost('isi_surat'),
+        );
+
+        $this->bedanama->insert($bedanama);
+        $this->surat->insert($surat);
         return redirect()->to('Persuratan/print_beda_nama');
     }
 

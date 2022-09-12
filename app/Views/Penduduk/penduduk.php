@@ -55,7 +55,7 @@
                                 <td> <?= $row['nik']; ?> </td>
                                 <td> <?= $row['kk']; ?> </td>
                                 <td> <?= $row['nama']; ?> </td>
-                                <td> <?= $row['tpt_lahir']; ?>, <?= $row['tgl_lahir']; ?></td>
+                                <td> <?= $row['tpt_lahir']; ?>, <?= date('d M Y', strtotime($row['tgl_lahir'])); ?></td>
                                 <td> <?= $row['jenkel']; ?> </td>
                                 <td>
                                     <a href="<?= base_url('kependudukan/detail/' . $row['nik']); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-info"></i></a>

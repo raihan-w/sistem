@@ -23,7 +23,7 @@
             <hr>
 
             <!-- Cari Pemohon -->
-            <form action="" method="POST">
+            <form action="" method="GET">
                 <div class="m-2 row">
                     <label for="" class="col-sm-3 col-form-label"> NIK Pemohon</label>
                     <div class="col-sm-6">
@@ -37,51 +37,11 @@
                     </div>
                 </div>
             </form>
-            <br>
-            <!-- Form Surat -->
-            <form action="<?= base_url('persuratan/beda_nama'); ?>" method="POST" class="user" <?php if (empty(session()->getFlashdata('error'))) { echo "target = '_blank'"; } ?>>
-                <?= csrf_field(); ?>
-
-                <div class="form-group m-2 row">
-                    <label for="" class="col-sm-3 col-form-label"> Nomor Surat </label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="no_surat">
-                    </div>
-                </div>
-
-                <div class="form-group m-2 row">
-                    <label for="" class="col-sm-3 col-form-label"> Keterangan </label>
-                    <div class="col-sm-6">
-                        <textarea name="isi_surat" class="form-control" cols="3" rows="4"></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <input type="hidden" name="nik_pemohon" value="<?= $pemohon['nik']; ?>">
-                </div>
-
-                <div class="form-group">
-                    <input type="hidden" name="nama_pemohon" value="<?= $pemohon['nama']; ?>">
-                </div>
-
-                <hr>
-                <div class="form-group px-3 mb-1 row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-print "></i> Cetak
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-    </div>
-
-    <?php if ($pemohon != null) : ?>
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <table class="px-2 table">
+            
+            <?php if ($pemohon == null) : ?>
+                <div class="m-3 text-center">Data Pemohon Tidak Ditemukan</div>
+            <?php else : ?>
+                <table class="px-2 table table-sm">
                     <tbody>
                         <tr>
                             <td>Nama</td>
@@ -110,9 +70,53 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            <?php endif ?>
+
+            <!-- Form Surat -->
+            <form action="<?= base_url('persuratan/beda_nama'); ?>" method="POST" class="user" <?php if (empty(session()->getFlashdata('error'))) {
+                                                                                                    echo "target='_blank'";
+                                                                                                } ?>>
+                <?= csrf_field(); ?>
+
+                <div class="form-group m-2 row">
+                    <label for="" class="col-sm-3 col-form-label"> Nomor Surat </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="no_surat">
+                    </div>
+                </div>
+
+                <div class="form-group m-2 row">
+                    <label for="" class="col-sm-3 col-form-label"> Keterangan </label>
+                    <div class="col-sm-6">
+                        <textarea name="isi_surat" class="form-control" cols="3" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="perihal" value="Beda Nama">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="nik_pemohon" value="<?= $pemohon['nik']; ?>">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="nama_pemohon" value="<?= $pemohon['nama']; ?>">
+                </div>
+
+                <hr>
+                <div class="form-group px-3 mb-1 row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-print "></i> Cetak
+                        </button>
+                    </div>
+                </div>
+            </form>
+
         </div>
-    <?php endif; ?>
+    </div>
 
 </div>
 

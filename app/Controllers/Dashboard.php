@@ -2,16 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Models\ModelKeluarga;
-use App\Models\ModelPenduduk;
+use App\Models\Model_Keluarga;
+use App\Models\Model_Penduduk;
 
 class Dashboard extends BaseController
 {
     protected $penduduk, $keluarga;
     public function __construct()
     {
-        $this->penduduk     = new ModelPenduduk();
-        $this->keluarga     = new ModelKeluarga();
+        $this->penduduk     = new Model_Penduduk();
+        $this->keluarga     = new Model_Keluarga();
     }
 
     public function index()

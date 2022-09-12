@@ -2,15 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\DesaModel;
-use App\Models\ModelDesa;
+use App\Models\Model_Desa;
 
 class Konfigurasi extends BaseController
 {
     protected $desa;
     function __construct()
     {
-        $this->desa = new ModelDesa();
+        $this->desa = new Model_Desa();
     }
 
     public function profile()

@@ -2,18 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Models\ModelKeluarga;
-use App\Models\ModelPendidikan;
-use App\Models\ModelPenduduk;
+use App\Models\Model_Keluarga;
+use App\Models\Model_Pendidikan;
+use App\Models\Model_Penduduk;
 
 class Kependudukan extends BaseController
 {
     protected $penduduk, $keluarga, $pendidikan;
     public function __construct()
     {
-        $this->penduduk     = new ModelPenduduk();
-        $this->pendidikan   = new ModelPendidikan();
-        $this->keluarga     = new ModelKeluarga();
+        $this->penduduk     = new Model_Penduduk();
+        $this->pendidikan   = new Model_Pendidikan();
+        $this->keluarga     = new Model_Keluarga();
     }
 
     public function penduduk()
@@ -176,7 +176,7 @@ class Kependudukan extends BaseController
                     continue;
                 }
 
-                $nik = $this->ModelPenduduk->checkPenduduk($key['1']);
+                $nik = $this->ModelPenduduk->check($key['1']);
                 if ($key['1'] == $nik['nik']) {
                     continue;
                 }
