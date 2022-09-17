@@ -90,6 +90,11 @@
     background-color: #dde0e3;
 }
 
+.wrapper {
+    margin: 5px;
+    max-width: 150px;
+}
+
 .pappersize {
     background: #FFFFFF;
     font-family: 'Times New Roman', Times, serif;

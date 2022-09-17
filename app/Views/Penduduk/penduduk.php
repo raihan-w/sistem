@@ -35,7 +35,7 @@
         </div>
     <?php endif ?>
     <div class="card shadow mb-4">
-        
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -79,7 +79,7 @@
 
 <!-- Import Modal -->
 <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Import Data Penduduk</h5>
@@ -87,16 +87,22 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
+            <div class="alert alert-secondary m-3">
+                <h4 class="mb-1 text-gray-800">Format Excel</h4>
+                <span>NIK | No.KK | Nama | Alamat | Rt | RW | Tempat Lahir | Tanggal Lahir | Jenis Kelamin | Pernikahan | Pendidikan | Agama</span>
+            </div>
             <form class="user" action="<?= base_url('kependudukan/import'); ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
-                <div class="modal-body flex-column border-top-0">
-                    <div class="form-group">
-                        <label class="form-label" for="">Unggah File Excel</label>
-                        <input type="file" class="form-control" id="file-excel" name="file-excel" required>
+                <div class="modal-body">
+                    <div class="modal-body flex-column border-top-0">
+                        <div class="form-group">
+                            <label class="form-label" for="">Unggah File Excel</label>
+                            <input type="file" class="form-control" id="file-excel" name="file-excel" required>
+                        </div>
+                        <span class="kd">
+                            Ekstensi file yang diperbolehkan: .xml .xls .xlsx
+                        </span>
                     </div>
-                    <span class="kd">
-                        Ekstensi file yang diperbolehkan: .xml .xls .xlsx
-                    </span>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -105,7 +111,5 @@
         </div>
     </div>
 </div>
-
-<!-- nik, kk, nama, alamat, rt, rw, tempat, tgl, jenkel, pernikahan, pendidikan, agama,  -->
 
 <?= $this->endSection(); ?>

@@ -34,7 +34,7 @@
                         <?php foreach ($keluarga as $row) : ?>
                             <tr>
                                 <td> <?= $row['nkk']; ?> </td>
-                                <td> </td>
+                                <td> <?= $row['nama']; ?> </td>
                                 <td> <?= $row['jml']; ?> </td>
                                 <td> <?= $row['alamat']; ?> </td>
                                 <td> <?= $row['rt']; ?> / <?= $row['rw']; ?> </td>

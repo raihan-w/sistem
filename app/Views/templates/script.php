@@ -8,6 +8,7 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url(); ?>/js/sb-admin-2.min.js"></script>
 
+
 <!-- Page level plugins -->
 <script src="<?= base_url(); ?>/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(); ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
@@ -20,18 +21,10 @@
     });
 </script>
 
-<script>
-    // Auto refresh page
-    // $(document).ready(function() {
-    //     setTimeout(function() {
-    //         location.reload();
-    //     }, 10000) //interval 10 detik
-    // })
-</script>
 
 <script>
     logo.onchange = evt => {
-        const[file] = logo.files
+        const [file] = logo.files
         if (file) {
             imgPreview.src = URL.createObjectURL(file)
         }

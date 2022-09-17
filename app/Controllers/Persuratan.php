@@ -18,6 +18,11 @@ class Persuratan extends BaseController
         $this->bedanama = new Model_Bedanama();
     }
 
+    public function outgoing()
+    {
+        return view('Persuratan/outgoing');
+    }
+
     public function form_bedanama()
     {
         $keyword = $this->request->getVar('keyword');
@@ -54,20 +59,14 @@ class Persuratan extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $surat = array(
-            'nomor'     => $this->request->getPost('no_surat'),
-            'perihal'   => $this->request->getPost('perihal'),
-        );
-
-        $bedanama = array(
+        $data = array(
             'no_surat'       => $this->request->getPost('no_surat'),
             'nik_pemohon'    => $this->request->getPost('nik_pemohon'),
             'nama_pemohon'   => $this->request->getPost('nama_pemohon'),
             'isi_surat'      => $this->request->getPost('isi_surat'),
         );
 
-        $this->bedanama->insert($bedanama);
-        $this->surat->insert($surat);
+        $this->bedanama->insert($data);
         return redirect()->to('Persuratan/print_beda_nama');
     }
 
@@ -88,24 +87,38 @@ class Persuratan extends BaseController
         $key1 = $this->request->getVar('key1');
         $key2 = $this->request->getVar('key2');
 
+        $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');
         $data['ortu'] = $this->penduduk->where('nik', $key1)->first();
+        $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');
         $data['anak'] = $this->penduduk->where('nik', $key2)->first();
-        return view('Persuratan/form_bidikmisi', $data);
+        return view('Persuratan/form_bidik_misi', $data);
     }
 
     public function form_domisili()
     {
-        return view('Persuratan/form_domisili');
+        $keyword = $this->request->getVar('keyword');
+
+        $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');
+        $data['pemohon'] = $this->penduduk->where('nik', $keyword)->first();
+        return view('Persuratan/form_domisili', $data);
     }
 
     public function form_keterangan()
     {
-        return view('Persuratan/form_keterangan');
+        $keyword = $this->request->getVar('keyword');
+
+        $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');
+        $data['pemohon'] = $this->penduduk->where('nik', $keyword)->first();
+        return view('Persuratan/form_keterangan', $data);
     }
 
     public function form_sktm()
     {
-        return view('Persuratan/form_sktm');
+        $keyword = $this->request->getVar('keyword');
+
+        $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');
+        $data['pemohon'] = $this->penduduk->where('nik', $keyword)->first();
+        return view('Persuratan/form_sktm', $data);
     }
 
     public function form_kematian()
@@ -115,6 +128,10 @@ class Persuratan extends BaseController
 
     public function form_pengantar()
     {
-        return view('Persuratan/form_pengantar');
+        $keyword = $this->request->getVar('keyword');
+
+        $this->penduduk->join('keluarga', 'keluarga.nkk = penduduk.kk');
+        $data['pemohon'] = $this->penduduk->where('nik', $keyword)->first();
+        return view('Persuratan/form_pengantar', $data);
     }
 }

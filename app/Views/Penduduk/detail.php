@@ -90,47 +90,62 @@
             <form class="user" action="<?= base_url('kependudukan/update/' . $penduduk['nik']) ?>" method="POST">
                 <?= csrf_field(); ?>
                 <div class="modal-body flex-column border-top-0">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label"> No. Kartu Keluarga </label>
+                    <div class="m-2 px-4">
+                        <!-- Nomor Kartu Keluarga -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="kk" class="col-sm-3 col-form-label"> Nomor Kartu Keluarga </label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="kk" value="<?= $penduduk['kk']; ?>">
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> NIK </label>
-                                <input type="text" class="form-control" name="nik" value="<?= $penduduk['nik']; ?>" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> Nama Lengkap </label>
+                        </div>
+
+                        <!-- Nama Lengkap -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="nik" class="col-sm-3 col-form-label"> Nama Lengkap </label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="nama" value="<?= $penduduk['nama']; ?>">
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="" class="form-label"> Tempat Lahir </label>
+                        </div>
+
+                        <!-- Tempat & Tanggal Lahir -->
+                        <div class="form-group px-3 mb-3 row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <label for="tempat_lahir" class="col-sm-6 col-form-label"> Tempat Lahir </label>
+                                    <div class="col-sm-6">
                                         <input type="text" class="form-control" name="tempat_lahir" value="<?= $penduduk['tpt_lahir']; ?>">
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="" class="form-label"> Tanggal Lahir </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <label for="tanggal_lahir" class="col-sm-3 col-form-label"> Tanggal Lahir </label>
+                                    <div class="col-sm-6">
                                         <input type="date" class="form-control" name="tanggal_lahir" value="<?= $penduduk['tgl_lahir']; ?>">
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> Agama </label>
+                        </div>
+
+                        <!-- Agama -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="agama" class="col-sm-3 col-form-label"> Agama </label>
+                            <div class="col-sm-6">
                                 <select name="agama" class="form-control form-select">
-                                    <option value="Islam">Islam</option>
-                                    <option value="Kristen">Kristen</option>
-                                    <option value="Katolik">Katolik</option>
-                                    <option value="Hindu">Hindu</option>
-                                    <option value="Buddha">Buddha</option>
-                                    <option value="Konghucu">Konghucu</option>
+                                    <option value="Islam" <?= $penduduk['agama'] == "Islam" ? "selected" : ""; ?>>Islam</option>
+                                    <option value="Kristen" <?= $penduduk['agama'] == "Kristen" ? "selected" : ""; ?>>Kristen</option>
+                                    <option value="Katolik" <?= $penduduk['agama'] == "Katolik" ? "selected" : ""; ?>>Katolik</option>
+                                    <option value="Hindu" <?= $penduduk['agama'] == "Hindu" ? "selected" : ""; ?>>Hindu</option>
+                                    <option value="Buddha" <?= $penduduk['agama'] == "Buddha" ? "selected" : ""; ?>>Buddha</option>
+                                    <option value="Konghucu" <?= $penduduk['agama'] == "Konghucu" ? "selected" : ""; ?>>Konghucu</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> Jenis Kelamin<span class="tab2"></span></label>
+                        </div>
+
+                        <!-- Jenis Kelamin -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="jenis_kelamin" class="col-sm-3 col-form-label"> Jenis Kelamin </label>
+                            <div class="col-sm-6">
                                 <div class="form-check form-check-inline px-2 pl-2">
                                     <input class="form-check-input" type="radio" name="jenis_kelamin" value="Laki-laki" <?= $penduduk['jenkel'] == "Laki-laki" ? "checked" : "" ?>>
                                     <label class="form-check-label" for=""> Laki-laki </label>
@@ -140,8 +155,12 @@
                                     <label class="form-check-label" for=""> Perempuan </label>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> Golongan Darah<span class="tab1"></span> </label>
+                        </div>
+
+                        <!-- Golongan Darah -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="gol_darah" class="col-sm-3 col-form-label"> Golongan Darah </label>
+                            <div class="col-sm-6">
                                 <div class="form-check form-check-inline px-2 pl-2">
                                     <input class="form-check-input" type="radio" name="gol_darah" value="A" <?= $penduduk['goldar'] == "A" ? "checked" : ""; ?>>
                                     <label class="form-check-label" for=""> A </label>
@@ -160,41 +179,61 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label"> Pendidikan </label>
+
+                        <!-- Pendidikan -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="pendidikan" class="col-sm-3 col-form-label"> Pendidikan </label>
+                            <div class="col-sm-6">
                                 <select name="pendidikan" class="form-control form-select">
                                     <?php foreach ($pendidikan as $key) : ?>
                                         <option value="<?= $key['id']; ?>" <?= $key['id'] == $penduduk['id'] ? "selected" : null ?>><?= $key['pendidikan']; ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> Pekerjaan </label>
+                        </div>
+
+                        <!-- Pekerjaan -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="pekerjaan" class="col-sm-3 col-form-label"> Pekerjaan </label>
+                            <div class="col-sm-6">
                                 <input type="text" name="pekerjaan" class="form-control" value="<?= $penduduk['pekerjaan']; ?>">
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> Status Perkawinan </label>
+                        </div>
+
+                        <!-- Pernikahan -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="pernikahan" class="col-sm-3 col-form-label"> Status Pernikahan </label>
+                            <div class="col-sm-6">
                                 <select name="pernikahan" class="form-control form-select">
-                                    <option value="Belum Kawin"> Belum Kawin </option>
-                                    <option value="Kawin"> Kawin </option>
-                                    <option value="Cerai Hidup"> Cerai Hidup </option>
-                                    <option value="Cerai Mati"> Cerai Mati </option>
+                                    <option value="Belum Kawin" <?= $penduduk['pernikahan'] == "Belum Kawin" ? "selected" : ""; ?>> Belum Kawin </option>
+                                    <option value="Kawin" <?= $penduduk['pernikahan'] == "Kawin" ? "selected" : ""; ?>> Kawin </option>
+                                    <option value="Cerai Hidup" <?= $penduduk['pernikahan'] == "Cerai Hidup" ? "selected" : ""; ?>> Cerai Hidup </option>
+                                    <option value="Cerai Mati" <?= $penduduk['pernikahan'] == "Cerai Mati" ? "selected" : ""; ?>> Cerai Mati </option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> Hubungan Keluarga </label>
+                        </div>
+
+                        <!-- Hubungan Keluarga -->
+                        <div class="form-group px-3 mb-3 row">
+                            <label for="" class="col-sm-3 col-form-label"> Hubungan Keluarga </label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="hub_keluarga" value="<?= $penduduk['hub_keluarga']; ?>">
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label"> Kewarganegaraan </label>
+                        </div>
+
+                        <!-- Kewarganegaraan -->
+                        <div class="form-group px-3 mb-4 row">
+                            <label for="" class="col-sm-3 col-form-label"> Kewarganegaraan </label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="status" value="<?= $penduduk['status']; ?>">
                             </div>
                         </div>
                     </div>
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success"> Simpan </button>
                     </div>
+                </div>
             </form>
         </div>
     </div>

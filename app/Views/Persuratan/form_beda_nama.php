@@ -37,10 +37,8 @@
                     </div>
                 </div>
             </form>
-            
-            <?php if ($pemohon == null) : ?>
-                <div class="m-3 text-center">Data Pemohon Tidak Ditemukan</div>
-            <?php else : ?>
+            <br>
+            <?php if ($pemohon != null) : ?>
                 <table class="px-2 table table-sm">
                     <tbody>
                         <tr>
@@ -73,9 +71,7 @@
             <?php endif ?>
 
             <!-- Form Surat -->
-            <form action="<?= base_url('persuratan/beda_nama'); ?>" method="POST" class="user" <?php if (empty(session()->getFlashdata('error'))) {
-                                                                                                    echo "target='_blank'";
-                                                                                                } ?>>
+            <form action="<?= base_url('persuratan/beda_nama'); ?>" method="POST" class="user">
                 <?= csrf_field(); ?>
 
                 <div class="form-group m-2 row">
