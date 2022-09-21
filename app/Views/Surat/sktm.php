@@ -8,23 +8,19 @@
 
     <title>Cetak Surat Keterangan Tidak Mampu</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-
     <!-- Custom styles for this template-->
-    <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet" type="text/css">
-    <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
-<div class="container-fluid">
+<body>
 
     <div class="pappersize">
         <div class="header-srt">
-            <table class="surat" border="1">
+            <table class="surat">
                 <tr>
                     <td>
-                        <img class="logo-srt" src="<?= base_url('img/logo.png'); ?>" alt="">
+                        <img class="logo-srt" src="img/logo.png" alt="">
                     </td>
                     <td>
                         <h5 class="id-srt">pemerintah kabupaten klaten</h5>
@@ -36,7 +32,7 @@
             </table>
         </div>
 
-        <table class="kd-srt surat" border="1">
+        <table class="kd-srt surat">
             <tr>
                 <td>
                     <p>kode desa :</p>
@@ -44,7 +40,7 @@
             </tr>
         </table>
 
-        <table class="opp-srt surat" border="1">
+        <table class="opp-srt surat">
             <tr>
                 <td>
                     <h5 class="name-srt">surat keterangan tidak mampu</h5>
@@ -57,7 +53,7 @@
             </tr>
         </table>
 
-        <table class="surat" border="1">
+        <table class="surat">
             <tr>
                 <td>
                     <span>
@@ -67,7 +63,7 @@
             </tr>
         </table>
 
-        <table class="isi-srt" border="1">
+        <table class="isi-srt">
             <tr>
                 <td class="text-right"> 1. </td>
                 <td> Nama Lengkap </td>
@@ -118,7 +114,7 @@
             </tr>
         </table>
 
-        <table class="surat" border="1">
+        <table class="surat">
             <tr>
                 <td>
                     <p>
@@ -130,7 +126,7 @@
             <tr>
                 <td>
                     <p>
-                        Surat ini diperlukan untuk ???
+                        Surat ini diperlukan untuk 
                     </p>
                 </td>
             </tr>
@@ -143,7 +139,7 @@
 
         <div class="signature">
             <p>Geneng, . . . . . . . . . . . . . . . .</p>
-            <table class="surat" >
+            <table class="surat srt" >
                 <tr>
                     <td>
                         <p> Kepala Desa </p>
@@ -161,6 +157,6 @@
 
     </div>
 
-</div>
+</body>
 
 </html>

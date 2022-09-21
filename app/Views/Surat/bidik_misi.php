@@ -6,25 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Cetak Surat Keterangan</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
+    <title>Cetak Surat Bidik Misi</title>
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet" type="text/css">
-    <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
 
-<div class="container-fluid">
-
+<body>
     <div class="pappersize">
         <div class="header-srt">
-            <table class="surat" border="1">
+            <table class="surat">
                 <tr>
                     <td>
-                        <img class="logo-srt" src="<?= base_url('img/logo.png'); ?>" alt="">
+                        <img class="logo-srt" src="img/logo.png" alt="">
                     </td>
                     <td>
                         <h5 class="id-srt">pemerintah kabupaten klaten</h5>
@@ -36,15 +32,15 @@
             </table>
         </div>
 
-        <table class="kd-srt surat" border="1">
+        <table class="kd-srt surat">
             <tr>
                 <td>
-                    <p>nomor kode desa :</p>
+                    <span>nomor kode desa :</span>
                 </td>
             </tr>
         </table>
 
-        <table class="opp-srt surat" border="1">
+        <table class="opp-srt surat">
             <tr>
                 <td>
                     <h5 class="name-srt">surat keterangan</h5>
@@ -57,7 +53,7 @@
             </tr>
         </table>
 
-        <table class="surat" border="1">
+        <table class="surat">
             <tr>
                 <td>
                     <span>
@@ -67,52 +63,52 @@
             </tr>
         </table>
 
-        <table class="isi-srt" border="1">
+        <table class="isi-srt">
             <tr>
-                <td class="text-right"> 1. </td>
+                <td> 1. </td>
                 <td> Nama </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 2. </td>
+                <td> 2. </td>
                 <td> Tempat & tanggal lahir </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 3. </td>
+                <td> 3. </td>
                 <td> Pekerjaan </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 4. </td>
+                <td> 4. </td>
                 <td> Status </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 5. </td>
+                <td> 5. </td>
                 <td> Alamat </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 6. </td>
+                <td> 6. </td>
                 <td> NIK </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 7. </td>
+                <td> 7. </td>
                 <td> Penghasilan Orang Tua </td>
                 <td> : </td>
                 <td class="isian"> Rp. N/A </td>
             </tr>
         </table>
 
-        <table class="surat" border="1">
+        <table class="surat">
             <tr>
                 <td>
                     <span>
@@ -122,64 +118,64 @@
             </tr>
         </table>
 
-        <table class="isi-srt" border="1">
+        <table class="isi-srt">
             <tr>
-                <td class="text-right"> 1. </td>
+                <td> 1. </td>
                 <td> Nama </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 2. </td>
+                <td> 2. </td>
                 <td> Tempat & tanggal lahir </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 3. </td>
+                <td> 3. </td>
                 <td> Pekerjaan </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 4. </td>
+                <td> 4. </td>
                 <td> Alamat </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
             <tr>
-                <td class="text-right"> 5. </td>
+                <td> 5. </td>
                 <td> NIK </td>
                 <td> : </td>
                 <td class="isian"> N/A </td>
             </tr>
         </table>
 
-        <table class="surat" border="1">
+        <table class="surat">
             <tr>
                 <td>
-                    <p>
+                    <span>
                         Sehubungan dengan warga tersebut termasuk warga yang tidak mampu, mohon diberikan bantuan dari program <b>BEASISWA/JPS/BSM/BOS/BIDIK MISI/PIP/KIP.</b>
-                    </p>
+                    </span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <p>Demikian harap menjadikan maklum bagi yang berkepentingan.</p>
+                    <span>Demikian harap menjadikan maklum bagi yang berkepentingan.</span>
                 </td>
             </tr>
         </table>
 
         <div class="signature">
             <p>Geneng, . . . . . . . . . . . . . . . .</p>
-            <table class="surat" border="1">
+            <table class="surat srt">
                 <tr>
                     <td>
                         <p> Kepala Desa </p>
                     </td>
                 </tr>
             </table>
-            <table class="sig-name surat" border="1">
+            <table class="sig-name surat">
                 <tr>
                     <td>
                         <p> Nama </p>
@@ -189,14 +185,14 @@
         </div>
 
         <div class="applicant">
-            <table class="surat" border="1">
+            <table class="surat srt">
                 <tr>
                     <td>
                         <p> Pemegang </p>
                     </td>
                 </tr>
             </table>
-            <table class="sig-name surat" border="1">
+            <table class="sig-name surat">
                 <tr>
                     <td>
                         <p> Nama </p>
@@ -205,7 +201,6 @@
             </table>
         </div>
     </div>
-
-</div>
+</body>
 
 </html>

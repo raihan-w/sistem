@@ -4,11 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Model_Bedanama extends Model
+class Model_Bidikmisi extends Model
 {
-    protected $table = 'surat_bedanama';
+    protected $table = 'surat_bidikmisi';
     protected $primaryKey = 'nomor';
-    protected $allowedFields = ['nomor', 'isi_surat', 'nik_pemohon', 'nama_pemohon'];
+    protected $allowedFields = ['nomor', 'nik_ortu', 'nama_ortu', 'nik_anak', 'nama_jabatan',];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';

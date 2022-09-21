@@ -2,123 +2,141 @@
 <?= $this->section('PageContent'); ?>
 
 <div class="container-fluid">
-
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Surat Keluar</h1>
-        <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createModal">
-                <i class="fas fa-plus fa-sm text-white-50"></i>
-                <span class="text">Buat Surat</span>
-            </a>
-        </div>
+        <h1 class="h3 mb-0 text-gray-800">Blangko Surat Beda Nama</h1>
     </div>
 
     <div class="card shadow mb-4">
-
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No Surat</th>
-                            <th>Tanggal</th>
-                            <th>Perihal</th>
-                            <th>Isi</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td>
-                                <a href="" class="btn btn-circle btn-sm btn-info" data-toggle="modal" data-target="#previewModal">
-                                    <i class="fas fa-info"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 
-</div>
+            <form action="" method="POST" class="user">
 
+                <!-- Progress Bar -->
+                <div class="progressbar">
+                    <div class="progression" id="progression"></div>
+                    <div class="progress-step progress-step-active" data-title="Pemohon"><i class="fas fa-user"></i></div>
+                    <div class="progress-step" data-title="Isi Surat"><i class="fas fa-keyboard"></i></i></div>
+                    <div class="progress-step" data-title="Paraf/Penomoran"><i class="fas fa-bookmark"></i></div>
+                </div>
 
-<!-- Create Modal -->
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Blangko Surat</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body m-2 d-flex">
-                <div class="row">
-
-                    <div class="col-auto m-2 wrapper">
-                        <a href="<?= base_url('persuratan/bedanama'); ?>">
-                            <img src="<?= base_url('img/thumbnail/bedanama.png'); ?>" alt="Beda Nama" class="img-thumbnail" width="150">
-                        </a>
-                        <div class="text-center ">
-                            <span>Beda Nama</span>
+                <!-- Form step pemohon -->
+                <div class="form-step form-step-active">
+                    <div class="m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> NIK </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="nik" id="nik">
                         </div>
                     </div>
 
-                    <div class="col-auto m-2 wrapper">
-                        <a target="_blank" href="<?= base_url('persuratan/bidikmisi'); ?>">
-                            <img src="<?= base_url('img/thumbnail/bidikmisi.png'); ?>" alt="Bidik Misi" class="img-thumbnail" width="150">
-                        </a>
-                        <div class="text-center ">
-                            <span>Bidik Misi</span>
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Nama Lengkap </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="nama" id="nama" readonly>
                         </div>
                     </div>
 
-                    <div class="col-auto m-2 wrapper">
-                        <a href="<?= base_url('persuratan/domisili'); ?>">
-                            <img src="<?= base_url('img/thumbnail/domisili.png'); ?>" alt="Domisili" class="img-thumbnail" width="150">
-                        </a>
-                        <div class="text-center ">
-                            <span>Domisili</span>
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Jenis Kelamin </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="jenkel" id="jenkel" readonly>
                         </div>
                     </div>
 
-                    <div class="col-auto m-2 wrapper">
-                        <a href="<?= base_url('persuratan/keterangan'); ?>">
-                            <img src="<?= base_url('img/thumbnail/keterangan.png'); ?>" alt="Keterangan" class="img-thumbnail" width="150">
-                        </a>
-                        <div class="text-center ">
-                            <span>Keterangan</span>
+                    <div class="form-group m-2 row">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <label for="tempat_lahir" class="col-sm-6 col-form-label"> Tempat/Tanggal Lahir </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="tpt_lahir" id="tpt_lahir" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" readonly>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-auto m-2 wrapper">
-                        <a href="<?= base_url('persuratan/pengantar'); ?>">
-                            <img src="<?= base_url('img/thumbnail/pengantar.png'); ?>" alt="Pengantar" class="img-thumbnail" width="150">
-                        </a>
-                        <div class="text-center ">
-                            <span>Pengantar</span>
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Agama </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="agama" id="agama" readonly>
                         </div>
                     </div>
 
-                    <div class="col-auto m-2 wrapper">
-                        <a href="<?= base_url('persuratan/sktm'); ?>">
-                            <img src="<?= base_url('img/thumbnail/sktm.png'); ?>" alt="Ket.Tidak Mampu" class="img-thumbnail" width="150">
-                        </a>
-                        <div class="text-center ">
-                            <span>SKTM</span>
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Warganegara </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="status" id="status" readonly>
                         </div>
+                    </div>
+
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Pekerjaan </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Alamat</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="alamat" id="alamat" cols="3" rows="4" readonly></textarea>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="text-right">
+                        <a href="#" class="btn btn-primary btn-next">Next</a>
                     </div>
                 </div>
-            </div>
+
+                <!-- Form step isi surat -->
+                <div class="form-step">
+                    <div class="form-group">
+                        <label class="form-label" for="">Keterangan</label>
+                        <textarea class="form-control" name="isi" id="isi" cols="3" rows="5"></textarea>
+                    </div>
+
+                    <br>
+                    <div class="text-right">
+                        <a href="#" class="btn btn-light btn-prev">Previous</a>
+                        <a href="#" class="btn btn-primary btn-next">Next</a>
+                    </div>
+                </div>
+
+                <!-- Form step paraf/penomoran -->
+                <div class="form-step">
+                    <div class="m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Nomor Surat </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="nomor" id="nomor">
+                        </div>
+                    </div>
+
+                    <div class="m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Penandatangan </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="" id="">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="text-right">
+                        <a href="#" class="btn btn-light btn-prev">Previous</a>
+                        <a href="#" class="btn btn-success" id="btnPreview" data-toggle="modal" data-target="#previewModal">Preview</a>
+                    </div>
+                </div>
+
+            </form>
+
         </div>
     </div>
+
 </div>
 
 <!-- Preview Modal -->
@@ -138,7 +156,7 @@
                         <table class="surat srt">
                             <tr>
                                 <td>
-                                    <img src="img/logo.png" class="logo-srt">
+                                    <img src="<?= base_url('img/logo.png'); ?>" class="logo-srt">
                                 </td>
                                 <td>
                                     <h5 class="id-srt">pemerintah kabupaten klaten</h5>
@@ -166,7 +184,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <p class="no-srt">nomor : </p>
+                                <p class="no-srt">nomor : <span id="srt-no"></span> </p>
                             </td>
                         </tr>
                     </table>
@@ -186,43 +204,43 @@
                             <td> 1. </td>
                             <td> Nama Lengkap </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> </td>
                         </tr>
                         <tr>
                             <td> 2. </td>
                             <td> Jenis Kelamin </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> </td>
                         </tr>
                         <tr>
                             <td> 3. </td>
                             <td> Tampat/Tanggal Lahir </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> </td>
                         </tr>
                         <tr>
                             <td> 4. </td>
                             <td> Agama </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> </td>
                         </tr>
                         <tr>
                             <td> 5. </td>
                             <td> No.KTP/NIK </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> </td>
                         </tr>
                         <tr>
                             <td> 6. </td>
                             <td> Pekerjaan </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> </td>
                         </tr>
                         <tr>
                             <td> 7. </td>
                             <td> Alamat </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> </td>
                         </tr>
                     </table>
 
@@ -284,5 +302,7 @@
         </div>
     </div>
 </div>
+
+
 
 <?= $this->endSection(); ?>

@@ -3,24 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\Model_Bedanama;
+use App\Models\Model_Desa;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Surat;
 use Dompdf\Dompdf;
 
 class Persuratan extends BaseController
 {
-    protected $dompdf, $penduduk, $bedanama, $surat;
+    protected $dompdf, $penduduk, $bedanama, $desa;
     public function __construct()
     {
         $this->dompdf = new Dompdf();
         $this->penduduk = new Model_Penduduk();
-        $this->surat = new Model_Surat();
+        $this->desa = new Model_Desa();
         $this->bedanama = new Model_Bedanama();
-    }
-
-    public function outgoing()
-    {
-        return view('Persuratan/outgoing');
     }
 
     public function form_bedanama()
@@ -72,7 +68,13 @@ class Persuratan extends BaseController
 
     public function print_beda_nama()
     {
-        $html = view('Surat/beda_nama');
+
+        $data = [
+            'desa'      => $this->desa->first(),
+            'bedanama'    => $this->bedanama->first(),
+        ];
+
+        $html = view('Surat/beda_nama', $data);
 
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');

@@ -48,15 +48,21 @@ $routes->get('/kartu/(:segment)', 'Kependudukan::kartu/$1');
 $routes->get('keluarga/update/(:segment)', 'Kependudukan::update_kk/$1');
 $routes->delete('kartu/(:num)', 'Kependudukan::delete_kk/$1');
 
-$routes->get('outgoing', 'Persuratan::outgoing');
+$routes->get('outgoing', 'Outgoing::index');
 
 $routes->get('persuratan/beda-nama', 'Persuratan::form_bedanama');
 $routes->get('persuratan/bidik-misi', 'Persuratan::form_bidikmisi');
-$routes->get('persuratan/domisili', 'Persuratan::form_domisili');
-$routes->get('persuratan/keterangan', 'Persuratan::form_keterangan');
-$routes->get('persuratan/sktm', 'Persuratan::form_sktm');
-$routes->get('persuratan/kematian', 'Persuratan::form_kematian');
-$routes->get('persuratan/pengantar', 'Persuratan::form_pengantar');
+$routes->get('persuratan/form_domisili', 'Persuratan::form_domisili');
+$routes->get('persuratan/form_keterangan', 'Persuratan::form_keterangan');
+$routes->get('persuratan/form_sktm', 'Persuratan::form_sktm');
+$routes->get('persuratan/form_kematian', 'Persuratan::form_kematian');
+$routes->get('persuratan/form_pengantar', 'Persuratan::form_pengantar');
+
+$routes->get('persuratan/bedanama', 'Bedanama::index');
+$routes->get('persuratan/bidikmisi', 'Bidikmisi::index');
+$routes->get('persuratan/domisili', 'Domisili::index');
+
+$routes->resource('api/autofill', ['controller' => 'Api\autofill']);
 
 
 

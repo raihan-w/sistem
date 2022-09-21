@@ -65,11 +65,11 @@
                 <h6 class="collapse-header">Surat Keterangan:</h6>
                 <a class="collapse-item" href="<?= base_url('persuratan/beda-nama'); ?>">Beda Nama</a>
                 <a class="collapse-item" href="<?= base_url('persuratan/bidik-misi'); ?>">Bidik Misi</a>
-                <a class="collapse-item" href="<?= base_url('persuratan/domisili'); ?>">Domisili</a>
-                <a class="collapse-item" href="<?= base_url('persuratan/keterangan'); ?>">Keterangan</a>
-                <a class="collapse-item" href="<?= base_url('persuratan/sktm'); ?>">Ket. Tidak Mampu</a>
-                <a class="collapse-item" href="<?= base_url('persuratan/kematian'); ?>">Kematian</a>
-                <a class="collapse-item" href="<?= base_url('persuratan/pengantar'); ?>">Pengantar</a>
+                <a class="collapse-item" href="<?= base_url('persuratan/form_domisili'); ?>">Domisili</a>
+                <a class="collapse-item" href="<?= base_url('persuratan/form_keterangan'); ?>">Keterangan</a>
+                <a class="collapse-item" href="<?= base_url('persuratan/form_sktm'); ?>">Ket. Tidak Mampu</a>
+                <a class="collapse-item" href="<?= base_url('persuratan/form_kematian'); ?>">Kematian</a>
+                <a class="collapse-item" href="<?= base_url('persuratan/form_pengantar'); ?>">Pengantar</a>
             </div>
         </div>
     </li>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Cetak Surat Keterangan</title>
+    <title>Cetak Surat Keterangan Beda Nama</title>
 
     <!-- Custom styles for this template-->
     <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -48,7 +48,7 @@
             </tr>
             <tr>
                 <td>
-                    <p class="no-srt">nomor :</p>
+                    <p class="no-srt">nomor : </p>
                 </td>
             </tr>
         </table>

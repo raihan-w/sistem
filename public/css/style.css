@@ -1,3 +1,8 @@
+:root {
+    --line-border-fill: #2772b0;
+    --line-border-empty: #bdbdbd;
+}
+
 .btn-del {
     border: none;
     outline: none;
@@ -17,6 +22,12 @@
     margin-bottom: 1rem;
 }
 
+.wrapper {
+    margin: 5px;
+    max-width: 150px;
+}
+
+/* form upload */
 .form-select {
     display: block;
     width: 100%;
@@ -90,11 +101,92 @@
     background-color: #dde0e3;
 }
 
-.wrapper {
-    margin: 5px;
-    max-width: 150px;
+.form-step {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.4s;
 }
 
+.form-step-active {
+    display: block;
+}
+
+@keyframes animate {
+    from {
+        transform: scale(1, 0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+
+/* multistep progress */
+.progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 4rem 5rem 4rem;
+
+}
+
+.progressbar::before {
+    content: "";
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: 1;
+    transition: 0.4s ease;
+}
+
+.progression {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    z-index: 1;
+    transition: 0.4s ease;
+}
+
+.progress-step {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    border: 3px solid #b2bec3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    z-index: 3;
+}
+
+.progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 12px;
+    color: #666;
+}
+
+.progress-step.progress-step-active {
+    border-color: var(--line-border-fill);
+}
+
+
+
+
+/* Document */
 .pappersize {
     background: #FFFFFF;
     font-family: 'Times New Roman', Times, serif;

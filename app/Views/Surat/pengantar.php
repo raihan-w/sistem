@@ -6,25 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Cetak Surat Keterangan</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
+    <title>Cetak Surat Pengantar</title>
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet" type="text/css">
-    <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
 
-<div class="container-fluid">
+<body>
 
     <div class="pappersize">
-    <div class="header-srt">
-            <table class="surat" border="1">
+        <div class="header-srt">
+            <table class="surat">
                 <tr>
                     <td>
-                        <img class="logo-srt" src="<?= base_url('img/logo.png'); ?>" alt="">
+                        <img class="logo-srt" src="img/logo.png" alt="">
                     </td>
                     <td>
                         <h5 class="id-srt">pemerintah kabupaten klaten</h5>
@@ -36,7 +33,7 @@
             </table>
         </div>
 
-        <table class="kd-srt surat" border="1">
+        <table class="kd-srt surat">
             <tr>
                 <td>
                     <p>kode desa :</p>
@@ -44,7 +41,7 @@
             </tr>
         </table>
 
-        <table class="opp-srt surat" border="1">
+        <table class="opp-srt surat">
             <tr>
                 <td>
                     <h5 class="name-srt">surat pengantar</h5>
@@ -57,7 +54,7 @@
             </tr>
         </table>
 
-        <table class="surat" border="1">
+        <table class="surat">
             <tr>
                 <td>
                     <span>
@@ -67,7 +64,7 @@
             </tr>
         </table>
 
-        <table class="isi-srt" border="1">
+        <table class="isi-srt">
             <tr>
                 <td class="text-right"> 1. </td>
                 <td> Nama </td>
@@ -146,7 +143,7 @@
             </tr>
         </table>
 
-        <table class="surat" border="1">
+        <table class="surat">
             <tr>
                 <td>
                     <p>Demikian Surat Keterangan ini dibuat untuk dipergunakan seperlunya.</p>
@@ -156,14 +153,14 @@
 
         <div class="signature">
             <p>Geneng, . . . . . . . . . . . . . . . .</p>
-            <table class="surat" border="1">
+            <table class="surat srt">
                 <tr>
                     <td>
                         <p> Kepala Desa </p>
                     </td>
                 </tr>
             </table>
-            <table class="sig-name surat" border="1">
+            <table class="sig-name surat">
                 <tr>
                     <td>
                         <p> Nama </p>
@@ -173,14 +170,14 @@
         </div>
 
         <div class="applicant">
-            <table class="surat" border="1">
+            <table class="surat srt">
                 <tr>
                     <td>
                         <p> Pemohon </p>
                     </td>
                 </tr>
             </table>
-            <table class="sig-name surat" border="1">
+            <table class="sig-name surat">
                 <tr>
                     <td>
                         <p> Nama </p>
@@ -190,6 +187,6 @@
         </div>
     </div>
 
-</div>
+</body>
 
 </html>
