@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Cetak Surat Keterangan Beda Nama</title>
+    <title>Surat Beda Nama - <?= $data['nomor']; ?></title>
 
     <!-- Custom styles for this template-->
     <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -48,7 +48,7 @@
             </tr>
             <tr>
                 <td>
-                    <p class="no-srt">nomor : </p>
+                    <p class="no-srt">nomor : <?= $data['nomor']; ?> </p>
                 </td>
             </tr>
         </table>
@@ -68,43 +68,43 @@
                 <td> 1. </td>
                 <td> Nama Lengkap </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['nama_pemohon']; ?> </td>
             </tr>
             <tr>
                 <td> 2. </td>
                 <td> Jenis Kelamin </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['jk_pemohon']; ?> </td>
             </tr>
             <tr>
                 <td> 3. </td>
                 <td> Tampat/Tanggal Lahir </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['tpt_lahir']; ?>,  <?= date('d F Y', strtotime($data['tgl_lahir'])); ?> </td>
             </tr>
             <tr>
                 <td> 4. </td>
                 <td> Agama </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['agama']; ?></td>
             </tr>
             <tr>
                 <td> 5. </td>
                 <td> No.KTP/NIK </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['nik_pemohon']; ?> </td>
             </tr>
             <tr>
                 <td> 6. </td>
                 <td> Pekerjaan </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['pekerjaan']; ?> </td>
             </tr>
             <tr>
                 <td> 7. </td>
                 <td> Alamat </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['alamat']; ?> </td>
             </tr>
         </table>
 
@@ -116,7 +116,7 @@
             </tr>
             <tr>
                 <td>
-                    keterangan
+                    <?= $data['isi_surat']; ?>
                 </td>
             </tr>
             <tr>
@@ -127,18 +127,21 @@
         </table>
 
         <div class="signature">
-            <p>Geneng, . . . . . . . . . . . . . . . .</p>
+            <!-- <p>Geneng, . . . . . . . . . . . . . . . .</p> -->
+            <p>Geneng, <?= date('d F Y', strtotime($data['created_at'])); ?></p>
             <table class="surat srt" >
                 <tr>
                     <td>
-                        <p> Kepala Desa </p>
+                        <!-- <p> Kepala Desa </p> -->
+                        <p> <?= $data['jabatan']; ?> </p>
                     </td>
                 </tr>
             </table>
             <table class="sig-name surat" >
                 <tr>
                     <td>
-                        <p> Nama </p>
+                        <!-- <p> Nama </p> -->
+                        <p> <?= $data['nama']; ?> </p>
                     </td>
                 </tr>
             </table>
@@ -155,7 +158,8 @@
             <table class="sig-name surat" >
                 <tr>
                     <td>
-                        <p> Nama </p>
+                        <!-- <p> Nama </p> -->
+                        <p> <?= $data['nama_pemohon']; ?> </p>
                     </td>
                 </tr>
             </table>

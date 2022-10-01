@@ -21,15 +21,6 @@
     });
 </script>
 
-<script>
-    logo.onchange = evt => {
-        const [file] = logo.files
-        if (file) {
-            imgPreview.src = URL.createObjectURL(file)
-        }
-    }
-</script>
-
 <!-- multistep progress bar -->
 <script type="text/javascript">
     const prevBtns = document.querySelectorAll(".btn-prev");
@@ -81,10 +72,12 @@
     }
 </script>
 
+<!-- Autofill -->
 <script type="text/javascript">
     $('#nik').on('change', (event) => {
         // console.log(event)
         search(event.target.value).then(data => {
+            $('#kk').val(data.kk);
             $('#nama').val(data.nama);
             $('#jenkel').val(data.jenkel);
             $('#tpt_lahir').val(data.tpt_lahir);
@@ -95,6 +88,21 @@
             $('#alamat').val(data.alamat);
         });
     });
+
+    $('#nik_ank').on('change', (event) => {
+        // console.log(event)
+        search(event.target.value).then(data => {
+            $('#nama_ank').val(data.nama);
+            $('#jenkel_ank').val(data.jenkel);
+            $('#tpt_lahir_ank').val(data.tpt_lahir);
+            $('#tgl_lahir_ank').val(data.tgl_lahir);
+            $('#agama_ank').val(data.agama);
+            $('#status_ank').val(data.status);
+            $('#pekerjaan_ank').val(data.pekerjaan);
+            $('#alamat_ank').val(data.alamat);
+        });
+    });
+
     async function search(id) {
         let response = await fetch('/api/autofill/' + id)
         let data = await response.json();
@@ -104,10 +112,46 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#btnPreview').click(function(){
+    $(document).ready(function() {
+        $('#btnPreview').click(function() {
             var nomor = $('#nomor').val();
             $('#srt-no').html(nomor);
+            var nik = $('#nik').val();
+            $('#srt-nik').html(nik);
+            var kk = $('#kk').val();
+            $('#srt-kk').html(kk);
+            var nama = $('#nama').val();
+            $('#srt-nama').html(nama);
+            var jk = $('#jenkel').val();
+            $('#srt-jk').html(jk);
+            var tpt_lahir = $('#tpt_lahir').val();
+            $('#srt-tpt').html(tpt_lahir);
+            var tgl_lahir = $('#tgl_lahir').val();
+            $('#srt-tgl').html(tgl_lahir);
+            var agama = $('#agama').val();
+            $('#srt-agama').html(agama);
+            var status = $('#status').val();
+            $('#srt-status').html(status);
+            var pekerjaan = $('#pekerjaan').val();
+            $('#srt-pekerjaan').html(pekerjaan);
+            var alamat = $('#alamat').val();
+            $('#srt-alamat').html(alamat);
+            var isi = $('#isi').val();
+            $('#srt-isi').html(isi);
         });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var now = new Date();
+        var month = (now.getMonth() + 1);
+        var day = now.getDate();
+        if (month < 10)
+            month = "0" + month;
+        if (day < 10)
+            day = "0" + day;
+        var today = now.getFullYear() + '-' + month + '-' + day;
+        $('#dateNow').val(today);
     });
 </script>

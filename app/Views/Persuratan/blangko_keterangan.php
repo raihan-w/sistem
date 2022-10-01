@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Blangko Surat Beda Nama</h1>
+        <h1 class="h3 mb-0 text-gray-800">Blangko Surat Keterangan</h1>
     </div>
 
     <?php if (!empty(session()->getFlashdata('error'))) : ?>
@@ -20,7 +20,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
 
-            <form action="<?= base_url('bedanama/print'); ?>" method="POST" class="user" target="_blank">
+            <form action="<?= base_url('keterangan/print'); ?>" method="POST" class="user" target="_blank">
 
                 <!-- Progress Bar -->
                 <div class="progressbar">
@@ -36,6 +36,13 @@
                         <label for="" class="col-sm-3 col-form-label"> NIK </label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="nik" id="nik">
+                        </div>
+                    </div>
+
+                    <div class="m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> No. KK </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="kk" id="kk" readonly>
                         </div>
                     </div>
 
@@ -112,6 +119,22 @@
                         <textarea class="form-control" name="isi" id="isi" cols="3" rows="5"></textarea>
                     </div>
 
+                    <div class="form-group">
+                        <label class="form-label" for="">Keterangan Lain</label>
+                        <textarea class="form-control" name="isi" id="isi" cols="3" rows="5"></textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label class="form-label" for="">Berlaku</label>
+                            <input type="date" class="form-control" name="dateNow" id="dateNow">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="form-label" for="">Sampai Dengan</label>
+                            <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir">
+                        </div>
+                    </div>
+
                     <br>
                     <div class="text-right">
                         <a href="#" class="btn btn-light btn-prev">Previous</a>
@@ -166,152 +189,7 @@
                 </button>
             </div>
             <div class="modal-body m-2 d-flex">
-                <div class="pappersize">
-                    <div class="header-srt">
-                        <table class="surat srt">
-                            <tr>
-                                <td>
-                                    <img src="<?= base_url('img/logo.png'); ?>" class="logo-srt">
-                                </td>
-                                <td>
-                                    <h5 class="id-srt">pemerintah kabupaten klaten</h5>
-                                    <h5 class="id-srt">kecamatan prambanan</h5>
-                                    <h4 class="id-srt">desa geneng</h4>
-                                    <p class="add-srt">Alamat. Jln.Jogja-Solo Km 21 Ds.Geneng Kode Pos 57454</p>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
 
-                    <table class="kd-srt surat">
-                        <tr>
-                            <td>
-                                <p>nomor kode desa :</p>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table class="opp-srt surat">
-                        <tr>
-                            <td>
-                                <h5 class="name-srt">surat keterangan</h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p class="no-srt">nomor : <span id="srt-no"></span> </p>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table class="surat">
-                        <tr>
-                            <td>
-                                <span>
-                                    Yang bertandatangan dibawah ini Kepala Desa Geneng Kecamatan Prambanan Kabupaten Klaten Provinsi Jawa Tengah, menerangkan bahwa :
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table class="isi-srt">
-                        <tr>
-                            <td> 1. </td>
-                            <td> Nama Lengkap </td>
-                            <td> : </td>
-                            <td class="isian"> <span id="srt-nama"></span> </td>
-                        </tr>
-                        <tr>
-                            <td> 2. </td>
-                            <td> Jenis Kelamin </td>
-                            <td> : </td>
-                            <td class="isian"> <span id="srt-jk"></span> </td>
-                        </tr>
-                        <tr>
-                            <td> 3. </td>
-                            <td> Tampat/Tanggal Lahir </td>
-                            <td> : </td>
-                            <td class="isian"> <span id="srt-tpt"></span>, <span id="srt-tgl"></span> </td>
-                        </tr>
-                        <tr>
-                            <td> 4. </td>
-                            <td> Agama </td>
-                            <td> : </td>
-                            <td class="isian"> <span id="srt-agama"></span> </td>
-                        </tr>
-                        <tr>
-                            <td> 5. </td>
-                            <td> No.KTP/NIK </td>
-                            <td> : </td>
-                            <td class="isian"> <span id="srt-nik"></span> </td>
-                        </tr>
-                        <tr>
-                            <td> 6. </td>
-                            <td> Pekerjaan </td>
-                            <td> : </td>
-                            <td class="isian"> <span id="srt-pekerjaan"></span> </td>
-                        </tr>
-                        <tr>
-                            <td> 7. </td>
-                            <td> Alamat </td>
-                            <td> : </td>
-                            <td class="isian"> <span id="srt-alamat"></span> </td>
-                        </tr>
-                    </table>
-
-                    <table class="surat">
-                        <tr>
-                            <td>
-                                Sepanjang pengetahuan kami dan berdasarkan pengakuan warga tersebut, bahwa ;
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span id="srt-isi"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Demikian surat keterangan ini kami buat atas permintaan yang bersangkutan dan dapat dipergunakan sebagaimana mestinya.</p>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <div class="signature">
-                        <p>Geneng, . . . . . . . . . . . . . . . .</p>
-                        <table class="surat srt">
-                            <tr>
-                                <td>
-                                    <p> Kepala Desa </p>
-                                </td>
-                            </tr>
-                        </table>
-                        <table class="sig-name surat">
-                            <tr>
-                                <td>
-                                    <p> Nama </p>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="applicant">
-                        <table class="surat srt">
-                            <tr>
-                                <td>
-                                    <p> Pemohon </p>
-                                </td>
-                            </tr>
-                        </table>
-                        <table class="sig-name surat">
-                            <tr>
-                                <td>
-                                    <p> Nama </p>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
 
             </div>
         </div>

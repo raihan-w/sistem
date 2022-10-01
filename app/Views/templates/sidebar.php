@@ -83,9 +83,15 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('konfigurasi/profile'); ?>">
+        <a class="nav-link" href="<?= base_url('profile'); ?>">
             <i class="fas fa-id-card"></i>
             <span>Profil Desa</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('perangkat'); ?>">
+            <i class="fas fa-users"></i>
+            <span>Perangkat Desa</span></a>
     </li>
 
 

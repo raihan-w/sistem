@@ -4,23 +4,24 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Blangko Surat Bidik Misi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Blangko Surat Keterangan Tidak Mampu</h1>
     </div>
 
     <div class="card shadow mb-4">
         <div class="card-body">
 
-            <form action="" class="user">
+            <form action="" method="POST" class="user">
 
                 <!-- Progress Bar -->
                 <div class="progressbar">
                     <div class="progression" id="progression"></div>
-                    <div class="progress-step progress-step-active" data-title="Orang Tua"><i class="fas fa-user"></i></div>
-                    <div class="progress-step" data-title="Anak"><i class="fas fa-user"></i></div>
+                    <div class="progress-step progress-step-active" data-title="Pemohon"><i class="fas fa-user"></i></div>
+                    <div class="progress-step" data-title="Pengantar"><i class="fas fa-keyboard"></i></i></div>
+                    <div class="progress-step" data-title="Isi Surat"><i class="fas fa-keyboard"></i></i></div>
                     <div class="progress-step" data-title="Paraf/Penomoran"><i class="fas fa-bookmark"></i></div>
                 </div>
 
-                <!-- Form step orang tua -->
+                <!-- Form step pemohon -->
                 <div class="form-step form-step-active">
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> NIK </label>
@@ -32,14 +33,14 @@
                     <div class="form-group m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Nama Lengkap </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="nama" id="nama" disabled>
+                            <input type="text" class="form-control" name="nama" id="nama" readonly>
                         </div>
                     </div>
 
                     <div class="form-group m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Jenis Kelamin </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="jenkel" id="jenkel" disabled>
+                            <input type="text" class="form-control" name="jenkel" id="jenkel" readonly>
                         </div>
                     </div>
 
@@ -48,37 +49,51 @@
                             <div class="row">
                                 <label for="tempat_lahir" class="col-sm-6 col-form-label"> Tempat/Tanggal Lahir </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="tpt_lahir" id="tpt_lahir" disabled>
+                                    <input type="text" class="form-control" name="tpt_lahir" id="tpt_lahir" readonly>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" disabled>
+                                    <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" readonly>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> Pekerjaan </label>
+                        <label for="" class="col-sm-3 col-form-label"> Agama </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" disabled>
+                            <input type="text" class="form-control" name="agama" id="agama" readonly>
                         </div>
                     </div>
 
                     <div class="form-group m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> Alamat</label>
+                        <label for="" class="col-sm-3 col-form-label"> Warganegara </label>
                         <div class="col-sm-6">
-                            <textarea class="form-control" name="alamat" id="alamat" cols="3" rows="4" disabled></textarea>
+                            <input type="text" class="form-control" name="status" id="status" readonly>
                         </div>
                     </div>
 
-                    <div class="m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> Penghasilan </label>
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Pekerjaan </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="" id="">
+                            <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Alamat KTP </label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="alamat" id="alamat" cols="3" rows="4" readonly></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Alamat Domisili </label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="domisili" id="domisili" cols="3" rows="4"></textarea>
                         </div>
                     </div>
 
@@ -88,59 +103,34 @@
                     </div>
                 </div>
 
-                <!-- From step anak -->
+                <!-- Form step pengantar -->
                 <div class="form-step">
                     <div class="m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> NIK </label>
+                        <label for="" class="col-sm-3 col-form-label"> Nomor Surat Pengantar </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="nik_ank" id="nik_ank">
+                            <input type="text" class="form-control" name="no-pengantar" id="no-pengantar">
                         </div>
                     </div>
 
-                    <div class="form-group m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> Nama Lengkap </label>
+                    <div class="m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Tanggal </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="nama_ank" id="nama_ank" disabled>
+                            <input type="date" class="form-control" name="tgl-pengantar" id="tgl-pengantar">
                         </div>
                     </div>
 
-                    <div class="form-group m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> Jenis Kelamin </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="jenkel_ank" id="jenkel_ank" disabled>
-                        </div>
+                    <br>
+                    <div class="text-right">
+                        <a href="#" class="btn btn-light btn-prev">Previous</a>
+                        <a href="#" class="btn btn-primary btn-next">Next</a>
                     </div>
+                </div>
 
-                    <div class="form-group m-2 row">
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <label for="tempat_lahir" class="col-sm-6 col-form-label"> Tempat/Tanggal Lahir </label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="tpt_lahir_ank" id="tpt_lahir_ank" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <input type="date" class="form-control" name="tgl_lahir_ank" id="tgl_lahir_ank" disabled>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> Pekerjaan </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="pekerjaan_ank" id="pekerjaan_ank" disabled>
-                        </div>
-                    </div>
-
-                    <div class="form-group m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> Alamat</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" name="alamat_ank" id="alamat_ank" cols="3" rows="4" disabled></textarea>
-                        </div>
+                <!-- Form step isi surat -->
+                <div class="form-step">
+                    <div class="form-group">
+                        <label class="form-label" for="">Keperluan</label>
+                        <textarea class="form-control" name="isi" id="isi" cols="3" rows="5"></textarea>
                     </div>
 
                     <br>
@@ -155,7 +145,7 @@
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Nomor Surat </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="no.surat" id="no.surat">
+                            <input type="text" class="form-control" name="nomor" id="nomor">
                         </div>
                     </div>
 
@@ -169,7 +159,7 @@
                     <br>
                     <div class="text-right">
                         <a href="#" class="btn btn-light btn-prev">Previous</a>
-                        <a href="#" class="btn btn-success" data-toggle="modal" data-target="#previewModal">Preview</a>
+                        <a href="#" class="btn btn-success" id="btnPreview" data-toggle="modal" data-target="#previewModal">Preview</a>
                     </div>
                 </div>
 
@@ -181,7 +171,7 @@
 </div>
 
 <!-- Preview Modal -->
-<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -194,10 +184,10 @@
 
                 <div class="pappersize">
                     <div class="header-srt">
-                        <table class="surat">
+                        <table class="surat srt">
                             <tr>
                                 <td>
-                                    <img class="logo-srt" src="<?= base_url('img/logo.png'); ?>" alt="">
+                                    <img src="<?= base_url('img/logo.png'); ?>" class="logo-srt">
                                 </td>
                                 <td>
                                     <h5 class="id-srt">pemerintah kabupaten klaten</h5>
@@ -212,7 +202,7 @@
                     <table class="kd-srt surat">
                         <tr>
                             <td>
-                                <span>nomor kode desa :</span>
+                                <p>nomor kode desa :</p>
                             </td>
                         </tr>
                     </table>
@@ -225,7 +215,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <p class="no-srt">nomor :</p>
+                                <p class="no-srt">nomor : <span id="srt-no"></span> </p>
                             </td>
                         </tr>
                     </table>
@@ -243,102 +233,62 @@
                     <table class="isi-srt">
                         <tr>
                             <td> 1. </td>
-                            <td> Nama </td>
+                            <td> Nama Lengkap </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> <span id="srt-nama"></span> </td>
                         </tr>
                         <tr>
                             <td> 2. </td>
-                            <td> Tempat & tanggal lahir </td>
+                            <td> Jenis Kelamin </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> <span id="srt-jenkel"></span> </td>
                         </tr>
                         <tr>
                             <td> 3. </td>
-                            <td> Pekerjaan </td>
+                            <td> Tampat/Tanggal Lahir </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> <span id="srt-tpt"></span>,  <span id="srt-tgl"></span> </td>
                         </tr>
                         <tr>
                             <td> 4. </td>
-                            <td> Status </td>
+                            <td> Agama </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> <span id="srt-agama"></span> </td>
                         </tr>
                         <tr>
                             <td> 5. </td>
-                            <td> Alamat </td>
+                            <td> No.KTP/NIK </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> <span id="srt-nik"></span> </td>
                         </tr>
                         <tr>
                             <td> 6. </td>
-                            <td> NIK </td>
+                            <td> Pekerjaan </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> <span id="srt-pkj"></span> </td>
                         </tr>
                         <tr>
                             <td> 7. </td>
-                            <td> Penghasilan Orang Tua </td>
-                            <td> : </td>
-                            <td class="isian"> Rp. N/A </td>
-                        </tr>
-                    </table>
-
-                    <table class="surat">
-                        <tr>
-                            <td>
-                                <span>
-                                    Adalah orang tua dari:
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table class="isi-srt">
-                        <tr>
-                            <td> 1. </td>
-                            <td> Nama </td>
-                            <td> : </td>
-                            <td class="isian"> N/A </td>
-                        </tr>
-                        <tr>
-                            <td> 2. </td>
-                            <td> Tempat & tanggal lahir </td>
-                            <td> : </td>
-                            <td class="isian"> N/A </td>
-                        </tr>
-                        <tr>
-                            <td> 3. </td>
-                            <td> Pekerjaan </td>
-                            <td> : </td>
-                            <td class="isian"> N/A </td>
-                        </tr>
-                        <tr>
-                            <td> 4. </td>
                             <td> Alamat </td>
                             <td> : </td>
-                            <td class="isian"> N/A </td>
-                        </tr>
-                        <tr>
-                            <td> 5. </td>
-                            <td> NIK </td>
-                            <td> : </td>
-                            <td class="isian"> N/A </td>
+                            <td class="isian"> <span id="srt-alt"></span> </td>
                         </tr>
                     </table>
 
                     <table class="surat">
                         <tr>
                             <td>
-                                <span>
-                                    Sehubungan dengan warga tersebut termasuk warga yang tidak mampu, mohon diberikan bantuan dari program <b>BEASISWA/JPS/BSM/BOS/BIDIK MISI/PIP/KIP.</b>
-                                </span>
+                                Sepanjang pengetahuan kami dan berdasarkan pengakuan warga tersebut, bahwa ;
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <span>Demikian harap menjadikan maklum bagi yang berkepentingan.</span>
+                                keterangan
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Demikian surat keterangan ini kami buat atas permintaan yang bersangkutan dan dapat dipergunakan sebagaimana mestinya.</p>
                             </td>
                         </tr>
                     </table>
@@ -365,7 +315,7 @@
                         <table class="surat srt">
                             <tr>
                                 <td>
-                                    <p> Pemegang </p>
+                                    <p> Pemohon </p>
                                 </td>
                             </tr>
                         </table>
@@ -382,7 +332,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 

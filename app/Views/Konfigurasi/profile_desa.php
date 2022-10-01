@@ -70,17 +70,6 @@
                                 <input type="text" id="provinsi" name="provinsi" class="form-control" value="<?= $desa['provinsi']; ?>">
                             </div>
                         </div>
-                        <hr>
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label class="form-label" for="">Kepala Desa</label>
-                                <input type="text" id="kades" name="kades" class="form-control" value="<?= $desa['kades']; ?>">
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="form-label" for="">NIP</label>
-                                <input type="text" id="nip" name="nip" class="form-control" value="<?= $desa['nip']; ?>">
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <hr>
@@ -91,5 +80,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    logo.onchange = evt => {
+        const [file] = logo.files
+        if (file) {
+            imgPreview.src = URL.createObjectURL(file)
+        }
+    }
+</script>
 
 <?= $this->endSection(); ?>

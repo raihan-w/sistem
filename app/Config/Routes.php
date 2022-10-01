@@ -34,7 +34,11 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Dashboard::index');
 
-$routes->get('konfigurasi/profile', 'konfigurasi::profile');
+$routes->get('profile', 'konfigurasi::profile');
+$routes->get('perangkat', 'konfigurasi::perangkat');
+$routes->add('perangkat', 'konfigurasi::insert');
+$routes->delete('perangkat/(:num)', 'konfigurasi::delete/$1');
+$routes->get('perangkat/update/(:segment)', 'Konfigurasi::update_perangkat/$1');
 
 $routes->get('penduduk', 'Kependudukan::penduduk');
 $routes->delete('penduduk/(:num)', 'Kependudukan::delete/$1');
@@ -50,17 +54,12 @@ $routes->delete('kartu/(:num)', 'Kependudukan::delete_kk/$1');
 
 $routes->get('outgoing', 'Outgoing::index');
 
-$routes->get('persuratan/beda-nama', 'Persuratan::form_bedanama');
-$routes->get('persuratan/bidik-misi', 'Persuratan::form_bidikmisi');
-$routes->get('persuratan/form_domisili', 'Persuratan::form_domisili');
-$routes->get('persuratan/form_keterangan', 'Persuratan::form_keterangan');
-$routes->get('persuratan/form_sktm', 'Persuratan::form_sktm');
-$routes->get('persuratan/form_kematian', 'Persuratan::form_kematian');
-$routes->get('persuratan/form_pengantar', 'Persuratan::form_pengantar');
-
 $routes->get('persuratan/bedanama', 'Bedanama::index');
 $routes->get('persuratan/bidikmisi', 'Bidikmisi::index');
 $routes->get('persuratan/domisili', 'Domisili::index');
+$routes->get('persuratan/keterangan', 'Keterangan::index');
+$routes->get('persuratan/pengantar', 'Pengantar::index');
+$routes->get('persuratan/sktm', 'Sktm::index');
 
 $routes->resource('api/autofill', ['controller' => 'Api\autofill']);
 
