@@ -68,13 +68,13 @@
                 <td> 1. </td>
                 <td> Nama Lengkap </td>
                 <td> : </td>
-                <td class="isian"> <?= $data['nama_pemohon']; ?> </td>
+                <td class="isian"> <?= $data['nama']; ?> </td>
             </tr>
             <tr>
                 <td> 2. </td>
                 <td> Jenis Kelamin </td>
                 <td> : </td>
-                <td class="isian"> <?= $data['jk_pemohon']; ?> </td>
+                <td class="isian"> <?= $data['jenkel']; ?> </td>
             </tr>
             <tr>
                 <td> 3. </td>
@@ -92,7 +92,7 @@
                 <td> 5. </td>
                 <td> No.KTP/NIK </td>
                 <td> : </td>
-                <td class="isian"> <?= $data['nik_pemohon']; ?> </td>
+                <td class="isian"> <?= $data['nik']; ?> </td>
             </tr>
             <tr>
                 <td> 6. </td>
@@ -104,7 +104,7 @@
                 <td> 7. </td>
                 <td> Alamat </td>
                 <td> : </td>
-                <td class="isian"> <?= $data['alamat']; ?> </td>
+                <td class="isian">  </td>
             </tr>
         </table>
 
@@ -141,7 +141,7 @@
                 <tr>
                     <td>
                         <!-- <p> Nama </p> -->
-                        <p> <?= $data['nama']; ?> </p>
+                        <p> <?= $data['nama_penandatangan']; ?> </p>
                     </td>
                 </tr>
             </table>
@@ -159,7 +159,7 @@
                 <tr>
                     <td>
                         <!-- <p> Nama </p> -->
-                        <p> <?= $data['nama_pemohon']; ?> </p>
+                        <p> <?= $data['nama']; ?> </p>
                     </td>
                 </tr>
             </table>

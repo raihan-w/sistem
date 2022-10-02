@@ -4,21 +4,27 @@ namespace App\Controllers;
 
 use App\Models\Model_Bidikmisi;
 use App\Models\Model_Penduduk;
+use App\Models\Model_Perangkat;
 use Dompdf\Dompdf;
 
 class Bidikmisi extends BaseController
 {
-    protected $dompdf, $penduduk;
+    protected $dompdf, $penduduk, $perangkat;
     public function __construct()
     {
         $this->dompdf       = new Dompdf();
         $this->bedanama     = new Model_Bidikmisi();
         $this->penduduk     = new Model_Penduduk();
+        $this->perangkat    = new Model_Perangkat();
     }
 
     public function index()
     {
-        $data['data'] = $this->penduduk->findAll();
+        // $data['data'] = $this->penduduk->findAll();
+        $data = [
+            'penduduk' => $this->penduduk->findAll(),
+            'perangkat' => $this->perangkat->orderBy('nip', 'DESC')->findAll(),
+        ];
         return view('Persuratan/blangko_bidikmisi', $data);
     }
 

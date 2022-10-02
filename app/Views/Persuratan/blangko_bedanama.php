@@ -136,7 +136,6 @@
                                     <option value="<?= $key['nip']; ?>"><?= $key['nama']; ?> - <?= $key['jabatan']; ?></option>
                                 <?php endforeach ?>
                             </select>
-
                         </div>
                     </div>
 

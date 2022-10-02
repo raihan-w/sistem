@@ -59,23 +59,17 @@ class Bedanama extends BaseController
         $data = array(
             'nomor'         => $this->request->getPost('nomor'),
             'nik_pemohon'   => $this->request->getPost('nik'),
-            'nama_pemohon'  => $this->request->getPost('nama'),
-            'jk_pemohon'    => $this->request->getPost('jenkel'),
-            'tpt_lahir'     => $this->request->getPost('tpt_lahir'),
-            'tgl_lahir'     => $this->request->getPost('tgl_lahir'),
-            'agama'         => $this->request->getPost('agama'),
-            'warganegara'   => $this->request->getPost('status'),
-            'pekerjaan'     => $this->request->getPost('pekerjaan'),
-            'alamat'        => $this->request->getPost('alamat'),
             'isi_surat'     => $this->request->getPost('isi'),
             'penandatangan' => $this->request->getPost('penandatangan'),
         );
 
         $this->bedanama->insert($data);
         $id = $this->request->getVar('nomor');
+        $this->bedanama->select('nomor, penduduk.*, isi_surat, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
+        $this->bedanama->join('penduduk', 'penduduk.nik = surat_bedanama.nik_pemohon');
         $this->bedanama->join('perangkat_desa', 'perangkat_desa.nip = surat_bedanama.penandatangan');
         $print['data'] = $this->bedanama->find($id);
-        
+
         $html = view('Surat/bedanama', $print);
 
         $this->dompdf->loadHtml($html);

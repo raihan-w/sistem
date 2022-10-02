@@ -162,7 +162,11 @@
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Penandatangan </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="" id="">
+                            <select name="penandatangan" id="penandatangan" class="form-control form-select">
+                                <?php foreach ($perangkat as $key) : ?>
+                                    <option value="<?= $key['nip']; ?>"><?= $key['nama']; ?> - <?= $key['jabatan']; ?></option>
+                                <?php endforeach ?>
+                            </select>
                         </div>
                     </div>
 
@@ -170,6 +174,7 @@
                     <div class="text-right">
                         <a href="#" class="btn btn-light btn-prev">Previous</a>
                         <a href="#" class="btn btn-success" data-toggle="modal" data-target="#previewModal">Preview</a>
+                        <button type="submit" class="btn btn-success"> Cetak </button>
                     </div>
                 </div>
 
