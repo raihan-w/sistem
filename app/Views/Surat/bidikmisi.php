@@ -48,7 +48,7 @@
             </tr>
             <tr>
                 <td>
-                    <p class="no-srt">nomor :</p>
+                    <p class="no-srt">nomor : <?= $data['nomor']; ?> </p>
                 </td>
             </tr>
         </table>
@@ -68,25 +68,25 @@
                 <td> 1. </td>
                 <td> Nama </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['nama_ortu']; ?> </td>
             </tr>
             <tr>
                 <td> 2. </td>
                 <td> Tempat & tanggal lahir </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['tpt_ortu']; ?>, <?= date('d F Y', strtotime($data['tgl_ortu'])); ?> </td>
             </tr>
             <tr>
                 <td> 3. </td>
                 <td> Pekerjaan </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['pkj_ortu']; ?> </td>
             </tr>
             <tr>
                 <td> 4. </td>
                 <td> Status </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['pernikahan_ortu']; ?> </td>
             </tr>
             <tr>
                 <td> 5. </td>
@@ -98,13 +98,13 @@
                 <td> 6. </td>
                 <td> NIK </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['nik_ortu']; ?> </td>
             </tr>
             <tr>
                 <td> 7. </td>
                 <td> Penghasilan Orang Tua </td>
                 <td> : </td>
-                <td class="isian"> Rp. N/A </td>
+                <td class="isian"> Rp. <?= number_format($data['penghasilan'],0,',','.'); ?> </td>
             </tr>
         </table>
 
@@ -123,19 +123,19 @@
                 <td> 1. </td>
                 <td> Nama </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['nama_anak']; ?> </td>
             </tr>
             <tr>
                 <td> 2. </td>
                 <td> Tempat & tanggal lahir </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['tpt_anak']; ?>, <?= date('d F Y', strtotime($data['tgl_anak'])); ?> </td>
             </tr>
             <tr>
                 <td> 3. </td>
                 <td> Pekerjaan </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['pkj_anak']; ?> </td>
             </tr>
             <tr>
                 <td> 4. </td>
@@ -147,7 +147,7 @@
                 <td> 5. </td>
                 <td> NIK </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['nik_anak']; ?> </td>
             </tr>
         </table>
 
@@ -167,18 +167,21 @@
         </table>
 
         <div class="signature">
-            <p>Geneng, . . . . . . . . . . . . . . . .</p>
+            <!-- <p>Geneng, . . . . . . . . . . . . . . . .</p> -->
+            <p>Geneng, <?= date('d F Y', strtotime($data['created_at'])); ?></p>
             <table class="surat srt">
                 <tr>
                     <td>
-                        <p> Kepala Desa </p>
+                        <!-- <p> Kepala Desa </p> -->
+                        <p> <?= $data['jabatan']; ?> </p>
                     </td>
                 </tr>
             </table>
             <table class="sig-name surat">
                 <tr>
                     <td>
-                        <p> Nama </p>
+                        <!-- <p> Nama </p> -->
+                        <p> <?= $data['nama_penandatangan']; ?> </p>
                     </td>
                 </tr>
             </table>
@@ -195,7 +198,8 @@
             <table class="sig-name surat">
                 <tr>
                     <td>
-                        <p> Nama </p>
+                        <!-- <p> Nama </p> -->
+                        <p> <?= $data['nama_ortu']; ?> </p>
                     </td>
                 </tr>
             </table>

@@ -29,8 +29,6 @@ class Bedanama extends BaseController
 
     public function print()
     {
-        // dd($this->request->getVar());
-        
         if (!$this->validate([
             'nomor'   => [
                 'rules' => 'required|is_unique[surat_bedanama.nomor]',

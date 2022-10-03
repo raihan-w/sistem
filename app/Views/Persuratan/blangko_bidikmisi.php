@@ -10,7 +10,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
 
-            <form action="" class="user">
+            <form action="<?= base_url('bidikmisi/print'); ?>" class="user" method="POST" target="_blank">
 
                 <!-- Progress Bar -->
                 <div class="progressbar">
@@ -78,7 +78,7 @@
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Penghasilan </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="" id="">
+                            <input type="text" class="form-control" name="penghasilan" id="penghasilan">
                         </div>
                     </div>
 
@@ -155,7 +155,7 @@
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Nomor Surat </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="no.surat" id="no.surat">
+                            <input type="text" class="form-control" name="nomor" id="nomor">
                         </div>
                     </div>
 

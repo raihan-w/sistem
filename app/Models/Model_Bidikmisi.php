@@ -9,7 +9,7 @@ class Model_Bidikmisi extends Model
     protected $table = 'surat_bidikmisi';
     protected $primaryKey = 'nomor';
     protected $allowedFields = [
-        'nomor', 'nik_ortu', 'nik_anak', 'penghasilan_ortu', 'penandatangan'
+        'nomor', 'nik_ortu', 'nik_anak', 'penghasilan', 'penandatangan'
     ];
 
     protected $useTimestamps = true;
