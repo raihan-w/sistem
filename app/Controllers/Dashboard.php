@@ -22,4 +22,5 @@ class Dashboard extends BaseController
         $data['jml_P'] = $this->penduduk->where('jenkel', 'Perempuan')->countAllResults();
         return view('dashboard', $data);
     }
+
 }

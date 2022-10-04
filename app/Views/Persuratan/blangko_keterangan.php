@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="form-label" for="">Sampai Dengan</label>
-                            <input type="date" class="form-control" name="limit" id="limit">
+                            <input type="date" class="form-control" name="due_date" id="due_date">
                         </div>
                     </div>
 

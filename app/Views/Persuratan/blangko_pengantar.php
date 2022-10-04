@@ -20,7 +20,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
 
-            <form action="<?= base_url('keterangan/print'); ?>" method="POST" class="user" target="_blank">
+            <form action="<?= base_url('pengantar /print'); ?>" method="POST" class="user" target="_blank">
 
                 <!-- Progress Bar -->
                 <div class="progressbar">
@@ -121,7 +121,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="">Keterangan Lain</label>
-                        <textarea class="form-control" name="isi" id="isi" cols="3" rows="5"></textarea>
+                        <textarea class="form-control" name="isi_tambahan" id="isi_tambahan" cols="3" rows="5"></textarea>
                     </div>
 
                     <div class="row">
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="form-label" for="">Sampai Dengan</label>
-                            <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir">
+                            <input type="date" class="form-control" name="due_date" id="due_date">
                         </div>
                     </div>
 
