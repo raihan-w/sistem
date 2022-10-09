@@ -86,6 +86,7 @@
             $('#status').val(data.status);
             $('#pekerjaan').val(data.pekerjaan);
             $('#alamat').val(data.alamat);
+            $('#domisili').val(data.domisili);
         });
     });
 
@@ -100,6 +101,7 @@
             $('#status_ank').val(data.status);
             $('#pekerjaan_ank').val(data.pekerjaan);
             $('#alamat_ank').val(data.alamat);
+            $('#domisili_ank').val(data.domisili);
         });
     });
 

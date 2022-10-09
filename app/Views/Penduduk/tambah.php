@@ -166,7 +166,7 @@
 
                 <!-- Alamat -->
                 <div class="form-group px-3 mb-3 row">
-                    <label for="" class="col-sm-3 col-form-label"> Alamat </label>
+                    <label for="" class="col-sm-3 col-form-label"> Alamat KTP </label>
                     <div class="col-sm-6">
                         <textarea class="form-control mb-3" name="alamat" cols="3" rows="3"><?= old('alamat'); ?></textarea>
                         <div class="row">
@@ -179,6 +179,13 @@
                                 <input type="text" class="form-control" name="rw" value="<?= old('rw'); ?>">
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group px-3 mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label"> Alamat Domisili </label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control mb-3" name="domisili" cols="3" rows="3"><?= old('domisili'); ?></textarea>
                     </div>
                 </div>
 

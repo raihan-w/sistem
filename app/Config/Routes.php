@@ -58,6 +58,7 @@ $routes->get('persuratan/bedanama', 'Bedanama::index');
 $routes->get('persuratan/bidikmisi', 'Bidikmisi::index');
 $routes->get('persuratan/domisili', 'Domisili::index');
 $routes->get('persuratan/keterangan', 'Keterangan::index');
+$routes->get('persuratan/kematian', 'Kematian::index');
 $routes->get('persuratan/pengantar', 'Pengantar::index');
 $routes->get('persuratan/sktm', 'Sktm::index');
 

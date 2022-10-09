@@ -22,13 +22,23 @@
                                 <form class="user" action="<?= route_to('login') ?>" method="POST">
                                     <?= csrf_field() ?>
 
-                                    <!-- Username -->
-                                    <div class="form-group">
-                                        <input type="text" name="login" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" aria-describedby="emailHelp" placeholder="<?= lang('Auth.emailOrUsername') ?>">
-                                        <div class="invalid-feedback">
-                                            <?= session('errors.login') ?>
+                                    <!-- Email -->
+                                    <?php if ($config->validFields === ['email']) : ?>
+                                        <div class="form-group">
+                                            <input type="email" name="login" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" aria-describedby="emailHelp" placeholder="<?= lang('Auth.email') ?>">
+                                            <div class="invalid-feedback">
+                                                <?= session('errors.login') ?>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php else : ?>
+                                        <!-- Username -->
+                                        <div class="form-group">
+                                            <input type="text" name="login" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" aria-describedby="emailHelp" placeholder="<?= lang('Auth.emailOrUsername') ?>">
+                                            <div class="invalid-feedback">
+                                                <?= session('errors.login') ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
 
                                     <!-- Password -->
                                     <div class="form-group">
@@ -55,15 +65,6 @@
                                     </button>
 
                                 </form>
-                                <hr>
-
-                                <?php if ($config->activeResetter) : ?>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= route_to('forgot') ?>"><?= lang('Auth.forgotYourPassword') ?></a>
-                                    </div>
-                                <?php endif; ?>
-
-
 
                             </div>
                         </div>

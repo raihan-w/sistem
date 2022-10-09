@@ -95,6 +95,15 @@
                     </div>
 
                     <div class="col-auto m-2 wrapper">
+                        <a href="<?= base_url('persuratan/kematian'); ?>">
+                            <img src="<?= base_url('img/thumbnail/kematian.png'); ?>" alt="Kematian" class="img-thumbnail" width="150">
+                        </a>
+                        <div class="text-center ">
+                            <span>Kematian</span>
+                        </div>
+                    </div>
+
+                    <div class="col-auto m-2 wrapper">
                         <a href="<?= base_url('persuratan/pengantar'); ?>">
                             <img src="<?= base_url('img/thumbnail/pengantar.png'); ?>" alt="Pengantar" class="img-thumbnail" width="150">
                         </a>

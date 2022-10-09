@@ -70,6 +70,10 @@
                         <th> Kewarganegaraan </th>
                         <td> : <?= $penduduk['status']; ?> </td>
                     </tr>
+                    <tr>
+                        <th> Alamat Domisili </th>
+                        <td> : <?= $penduduk['domisili']; ?> </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -226,6 +230,14 @@
                             <label for="" class="col-sm-3 col-form-label"> Kewarganegaraan </label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="status" value="<?= $penduduk['status']; ?>">
+                            </div>
+                        </div>
+                        
+                        <!-- Alamat -->
+                        <div class="form-group px-3 mb-4 row">
+                            <label for="" class="col-sm-3 col-form-label"> Alamat Domisili </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="domisili" value="<?= $penduduk['domisili']; ?>">
                             </div>
                         </div>
                     </div>

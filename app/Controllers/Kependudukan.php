@@ -69,6 +69,7 @@ class Kependudukan extends BaseController
             'pernikahan'    => $this->request->getPost('pernikahan'),
             'hub_keluarga'  => $this->request->getPost('hub_keluarga'),
             'status'        => $this->request->getPost('status'),
+            'domisili'      => $this->request->getPost('domisili'),
         );
 
         $keluarga = array(
@@ -114,6 +115,7 @@ class Kependudukan extends BaseController
             'pernikahan'    => $this->request->getPost('pernikahan'),
             'hub_keluarga'  => $this->request->getPost('hub_keluarga'),
             'status'        => $this->request->getPost('status'),
+            'domisili'      => $this->request->getPost('domisili'),
         );
 
         $this->penduduk->update($id, $data);

@@ -7,11 +7,22 @@
         <h1 class="h3 mb-0 text-gray-800">Blangko Surat Bidik Misi</h1>
     </div>
 
+    <?php if (!empty(session()->getFlashdata('error'))) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="mb-3">Periksa kembali entrian form</h4>
+            <?php echo session()->getFlashdata('error') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif ?>
+
     <div class="card shadow mb-4">
         <div class="card-body">
 
             <form action="<?= base_url('bidikmisi/print'); ?>" class="user" method="POST" target="_blank">
-
+                <?= csrf_field(); ?>
+                
                 <!-- Progress Bar -->
                 <div class="progressbar">
                     <div class="progression" id="progression"></div>

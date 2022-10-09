@@ -29,6 +29,31 @@ class Pengantar extends BaseController
 
     public function print()
     {
+        if (!$this->validate([
+            'nomor'   => [
+                'rules' => 'required|is_unique[surat_pengantar.nomor]',
+                'errors' => [
+                    'required' => 'Form "{field}" harus diisi',
+                    'is_unique' => '{field} sudah terdaftar'
+                ]
+            ],
+            'nik'   => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Form pemohon harus diisi',
+                ]
+            ],
+            'isi'   => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Form keterangan harus diisi'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
+        }
+
         $data = array(
             'nomor'         => $this->request->getPost('nomor'),
             'nik_pemohon'   => $this->request->getPost('nik'),

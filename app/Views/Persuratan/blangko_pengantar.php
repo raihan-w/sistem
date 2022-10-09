@@ -21,7 +21,8 @@
         <div class="card-body">
 
             <form action="<?= base_url('pengantar /print'); ?>" method="POST" class="user" target="_blank">
-
+                <?= csrf_field(); ?>
+                
                 <!-- Progress Bar -->
                 <div class="progressbar">
                     <div class="progression" id="progression"></div>

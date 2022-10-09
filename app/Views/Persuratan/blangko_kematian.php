@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Blangko Surat Keterangan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Blangko Surat Kematian</h1>
     </div>
 
     <?php if (!empty(session()->getFlashdata('error'))) : ?>
@@ -20,9 +20,8 @@
     <div class="card shadow mb-4">
         <div class="card-body">
 
-            <form action="<?= base_url('keterangan/print'); ?>" method="POST" class="user" target="_blank">
+            <form action="<?= base_url('kematian/print'); ?>" method="POST" class="user" target="_blank">
                 <?= csrf_field(); ?>
-
                 <!-- Progress Bar -->
                 <div class="progressbar">
                     <div class="progression" id="progression"></div>
@@ -33,6 +32,17 @@
 
                 <!-- Form step pemohon -->
                 <div class="form-step form-step-active">
+                    <div class="m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Nama Pemohon </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="pemohon" id="pemohon">
+                        </div>
+                    </div>
+
+                    <div class="m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Data Warga Meninggal </label>
+                    </div>
+
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> NIK </label>
                         <div class="col-sm-6">
@@ -101,9 +111,16 @@
                     </div>
 
                     <div class="form-group m-2 row">
-                        <label for="" class="col-sm-3 col-form-label"> Alamat</label>
+                        <label for="" class="col-sm-3 col-form-label"> Alamat KTP</label>
                         <div class="col-sm-6">
                             <textarea class="form-control" name="alamat" id="alamat" cols="3" rows="4" readonly></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-2 row">
+                        <label for="" class="col-sm-3 col-form-label"> Alamat Domisili</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="domisili" id="domisili" cols="3" rows="4" readonly></textarea>
                         </div>
                     </div>
 
@@ -116,13 +133,13 @@
                 <!-- Form step isi surat -->
                 <div class="form-step">
                     <div class="form-group">
-                        <label class="form-label" for="">Keterangan</label>
-                        <textarea class="form-control" name="isi" id="isi" cols="3" rows="5"></textarea>
+                        <label class="form-label" for="">Keperluan</label>
+                        <textarea class="form-control" name="isi_surat" id="isi_surat" cols="3" rows="5"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="">Keterangan Lain</label>
-                        <textarea class="form-control" name="isi_tambahan" id="isi" cols="3" rows="5"></textarea>
+                        <label class="form-label" for="">Keterangan</label>
+                        <textarea class="form-control" name="keterangan" id="keterangan" cols="3" rows="5"></textarea>
                     </div>
 
                     <div class="row">
