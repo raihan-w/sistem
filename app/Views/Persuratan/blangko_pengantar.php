@@ -20,7 +20,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
 
-            <form action="<?= base_url('pengantar /print'); ?>" method="POST" class="user" target="_blank">
+            <form action="<?= base_url('pengantar/print'); ?>" method="POST" class="user" target="_blank">
                 <?= csrf_field(); ?>
                 
                 <!-- Progress Bar -->
@@ -160,7 +160,6 @@
                                     <option value="<?= $key['nip']; ?>"><?= $key['nama']; ?> - <?= $key['jabatan']; ?></option>
                                 <?php endforeach ?>
                             </select>
-
                         </div>
                     </div>
 

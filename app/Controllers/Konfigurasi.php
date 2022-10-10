@@ -14,13 +14,13 @@ class Konfigurasi extends BaseController
         $this->desa = new Model_Desa();
     }
 
-    public function profile()
+    public function desa()
     {
-        $data['desa'] = $this->desa->first();
-        return view('Konfigurasi/profile_desa', $data);
+        $data['data'] = $this->desa->first();
+        return view('Konfigurasi/desa', $data);
     }
 
-    public function update()
+    public function update_desa($id)
     {
         if (!$this->validate([
             'logo'   => [
@@ -46,7 +46,6 @@ class Konfigurasi extends BaseController
         }
 
         $data = array(
-            'id_desa'   => $this->request->getPost('id_desa'),
             'kode_pos'   => $this->request->getPost('kode_pos'),
             'logo'   => $nameLogo,
             'desa'      => $this->request->getPost('desa'),
@@ -55,7 +54,7 @@ class Konfigurasi extends BaseController
             'provinsi'      => $this->request->getPost('provinsi'),
             'alamat' => $this->request->getPost('alamat'),
         );
-        $this->desa->updateDesa($data);
+        $this->desa->update($id, $data);
         return redirect()->back();
     }
 

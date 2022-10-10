@@ -20,7 +20,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
 
-            <form action="" method="POST" class="user">
+            <form action="<?= base_url('sktm/print'); ?>" method="POST" class="user" target="_blank">
                 <?= csrf_field(); ?>
 
                 <!-- Progress Bar -->
@@ -119,14 +119,14 @@
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Nomor Surat Pengantar </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="no-pengantar" id="no-pengantar">
+                            <input type="text" class="form-control" name="no_pengantar" id="no_pengantar">
                         </div>
                     </div>
 
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Tanggal </label>
                         <div class="col-sm-6">
-                            <input type="date" class="form-control" name="tgl-pengantar" id="tgl-pengantar">
+                            <input type="date" class="form-control" name="tgl_pengantar" id="tgl_pengantar">
                         </div>
                     </div>
 
@@ -141,7 +141,7 @@
                 <div class="form-step">
                     <div class="form-group">
                         <label class="form-label" for="">Keperluan</label>
-                        <textarea class="form-control" name="isi" id="isi" cols="3" rows="5"></textarea>
+                        <textarea class="form-control" name="isi" id="isi" cols="3" rows="6"></textarea>
                     </div>
 
                     <br>
@@ -163,14 +163,19 @@
                     <div class="m-2 row">
                         <label for="" class="col-sm-3 col-form-label"> Penandatangan </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="" id="">
+                            <select name="penandatangan" id="penandatangan" class="form-control form-select">
+                                <?php foreach ($perangkat as $key) : ?>
+                                    <option value="<?= $key['nip']; ?>"><?= $key['nama']; ?> - <?= $key['jabatan']; ?></option>
+                                <?php endforeach ?>
+                            </select>
                         </div>
                     </div>
 
                     <br>
                     <div class="text-right">
                         <a href="#" class="btn btn-light btn-prev">Previous</a>
-                        <a href="#" class="btn btn-success" id="btnPreview" data-toggle="modal" data-target="#previewModal">Preview</a>
+                        <a href="#" class="btn btn-info" id="btnPreview" data-toggle="modal" data-target="#previewModal">Preview</a>
+                        <button type="submit" class="btn btn-success"> Cetak </button>
                     </div>
                 </div>
 

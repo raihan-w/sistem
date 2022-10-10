@@ -73,7 +73,7 @@ class Bedanama extends BaseController
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();
-        $this->dompdf->stream('Surat Beda Nama - '.$id.'.pdf', array(
+        $this->dompdf->stream('Surat Beda Nama-'.$id.'.pdf', array(
             "Attachment" => false
         ));
     }

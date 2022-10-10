@@ -82,7 +82,7 @@ class Domisili extends BaseController
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();
-        $this->dompdf->stream('Surat Keterangan Kematian-' . $id . '.pdf', array(
+        $this->dompdf->stream('Surat Domisili-' . $id . '.pdf', array(
             "Attachment" => false
         ));
     }

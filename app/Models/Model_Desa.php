@@ -8,10 +8,8 @@ class Model_Desa extends Model
 {
     protected $table = 'desa';
     protected $primaryKey = 'id_desa';
+    protected $allowedFields = [
+        'id_desa', 'desa', 'kode_pos', 'alamat', 'kecamatan', 'kabupaten', 'provinsi'
+    ];
 
-    public function updateDesa($data)
-    {
-        $query = $this->db->table($this->table)->update($data);
-        return $query;
-    }
 }

@@ -27,7 +27,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Pengaturan:</div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#importModal">Edit</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#updateModal">Edit</a>
                         <?php if ($list == null) : ?>
                             <div class="dropdown-divider"></div>
                             <form action="/kartu/<?= $kartu['nkk']; ?>" method="POST" class="dropdown-item">
@@ -87,7 +87,7 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">

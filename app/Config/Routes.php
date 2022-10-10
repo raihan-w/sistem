@@ -34,7 +34,10 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Dashboard::index');
 
-$routes->get('profile', 'konfigurasi::profile');
+$routes->get('users', 'users::index');
+$routes->get('profile', 'users::profile');
+
+$routes->get('desa', 'konfigurasi::desa');
 $routes->get('perangkat', 'konfigurasi::perangkat');
 $routes->add('perangkat', 'konfigurasi::insert');
 $routes->delete('perangkat/(:num)', 'konfigurasi::delete/$1');
