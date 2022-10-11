@@ -43,6 +43,9 @@ class Konfigurasi extends BaseController
         } else {
             $nameLogo = $fileLogo->getName();
             $fileLogo->move('img');
+            if ($oldLogo != 'default.jpg') {
+                unlink('img/'.$oldLogo);
+            }
         }
 
         $data = array(

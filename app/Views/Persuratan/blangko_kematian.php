@@ -126,7 +126,7 @@
 
                     <br>
                     <div class="text-right">
-                        <a href="#" class="btn btn-primary btn-next">Next</a>
+                        <a class="btn btn-primary btn-next">Next</a>
                     </div>
                 </div>
 
@@ -183,8 +183,8 @@
 
                     <br>
                     <div class="text-right">
-                        <a href="#" class="btn btn-light btn-prev">Previous</a>
-                        <a href="#" class="btn btn-info" id="btnPreview" data-toggle="modal" data-target="#previewModal">Preview</a>
+                        <a class="btn btn-light btn-prev">Previous</a>
+                        <a class="btn btn-info" id="btnPreview" data-toggle="modal" data-target="#previewModal">Preview</a>
                         <button type="submit" class="btn btn-success"> Cetak </button>
                     </div>
                 </div>

@@ -11,7 +11,7 @@
                 <i class="fas fa-file-import fa-sm text-white-50"></i>
                 <span class="text">Import</span>
             </a>
-            <a href="<?= base_url('penduduk/tambah'); ?>" class="btn btn-sm btn-primary shadow-sm">
+            <a href="<?= base_url('penduduk/add'); ?>" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i>
                 <span class="text">Tambah</span>
             </a>
@@ -34,6 +34,7 @@
             </button>
         </div>
     <?php endif ?>
+    
     <div class="card shadow mb-4">
 
         <div class="card-body">

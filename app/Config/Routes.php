@@ -34,7 +34,16 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Dashboard::index');
 
-$routes->get('users', 'users::index');
+$routes->group('', ['filter' => 'role:administrator'], function ($routes) {
+    $routes->get('users', 'users::index');
+    $routes->get('users/add', 'users::create');
+    $routes->get('users/setPassword/(:segment)', 'users::setPessword/$1');
+    $routes->get('users/user/(:segment)', 'users::user/$1');
+    $routes->get('users/update/(:segment)', 'users::update/$1');
+    $routes->delete('users/(:num)', 'users::delete/$1');
+});
+
+
 $routes->get('profile', 'users::profile');
 
 $routes->get('desa', 'konfigurasi::desa');
@@ -45,7 +54,7 @@ $routes->get('perangkat/update/(:segment)', 'Konfigurasi::update_perangkat/$1');
 
 $routes->get('penduduk', 'Kependudukan::penduduk');
 $routes->delete('penduduk/(:num)', 'Kependudukan::delete/$1');
-$routes->get('penduduk/tambah', 'Kependudukan::create');
+$routes->get('penduduk/add', 'Kependudukan::create');
 $routes->get('penduduk/detail/(:segment)', 'Kependudukan::detail/$1');
 $routes->get('penduduk/update/(:segment)', 'Kependudukan::update/$1');
 $routes->get('penduduk/import', 'Kependudukan::import');

@@ -74,11 +74,13 @@
             <span>Perangkat Desa</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('users'); ?>">
-            <i class="fas fa-users"></i>
-            <span>Users</span></a>
-    </li>
+    <?php if (in_groups('administrator')) : ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('users'); ?>">
+                <i class="fas fa-users"></i>
+                <span>Users</span></a>
+        </li>
+    <?php endif ?>
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('profile'); ?>">

@@ -39,7 +39,7 @@
                                 <td> <?= $row['alamat']; ?> </td>
                                 <td> <?= $row['rt']; ?> / <?= $row['rw']; ?> </td>
                                 <td>
-                                    <a href="<?= base_url('kependudukan/kartu/' . $row['nkk']); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-info"></i></a>
+                                    <a href="<?= base_url('kependudukan/kartu/' . $row['nkk']); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-list"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

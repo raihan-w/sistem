@@ -6,8 +6,8 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Data Penduduk</h1>
-        <a href="" class="btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editModal">
-            <i class="fas fa-edit fa-sm text-white-50"></i>
+        <a href="" class="btn btn-sm btn-warning shadow-sm" data-toggle="modal" data-target="#editModal">
+            <i class="fas fa-pen fa-sm text-white-50"></i>
             <span class="text">Edit</span>
         </a>
     </div>

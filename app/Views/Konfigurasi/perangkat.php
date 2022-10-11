@@ -52,7 +52,7 @@
                                 <td> <?= $row['nama']; ?> </td>
                                 <td> <?= $row['jabatan']; ?> </td>
                                 <td>
-                                    <a class="btn btn-circle btn-sm btn-info" data-toggle="modal" data-target="#updateModal<?= $row['nip']; ?>"><i class="fas fa-pen"></i></a>
+                                    <a class="btn btn-circle btn-sm btn-warning" data-toggle="modal" data-target="#updateModal<?= $row['nip']; ?>"><i class="fas fa-pen"></i></a>
                                     <form action="/perangkat/<?= $row['nip']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
