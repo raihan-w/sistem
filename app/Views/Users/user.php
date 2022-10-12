@@ -13,7 +13,7 @@
         <div class="row m-2">
             <div class="col-md-4">
                 <div class="text-center py-2">
-                    <img src="<?= base_url('/img/user_img/' . $user->user_img); ?>" class="img-fluid rounded-start w-75" alt="...">
+                    <img src="<?= base_url('/img/user_img/' . $user->user_img); ?>" class="img-profile rounded-circle w-75" alt="...">
                 </div>
             </div>
             <div class="col-md-8">
@@ -98,7 +98,7 @@
                             <input type="password" class="form-control" name="password" id="password" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Repear New Password</label>
+                            <label class="form-label">Repeat New Password</label>
                             <input type="password" class="form-control" name="pass_confirm" id="pass_confirm" autocomplete="off">
                         </div>
                     </div>

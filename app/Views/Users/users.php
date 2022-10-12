@@ -63,7 +63,7 @@
                 <div class="modal-body flex-column border-top-0">
                     <div class="form-group">
                         <div class="text-center my-4">
-                            <img class="img-thumbnail w-50" id="imgPreview" src="<?= base_url('/img/user_img/' . $row->user_img); ?>" alt="User Image">
+                            <img class="img-thumbnail rounded-circle w-50" id="imgPreview" src="<?= base_url('/img/user_img/' . $row->user_img); ?>" alt="User Image">
                         </div>
                         <input type="hidden" name="oldImg" value="<?= $row->user_img; ?>">
                         <div class="form-group">

@@ -27,7 +27,6 @@ class Users extends BaseController
         $this->users->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
         $data = [
             'users'  => $this->users->findAll(),
-            'groups' => $this->groups->findAll(),
         ];
         return view('Users/users', $data);
     }
@@ -197,6 +196,8 @@ class Users extends BaseController
         if ($user->user_img !='default.svg') {
             unlink('img/user_img/'.$user->user_img);
         }
+
+        $this->groups->removeUserFromAllGroups($id);
         $this->users->delete($id);
         return redirect()->to(base_url('users/index'))->with('message', 'Data deleted successfully');
     }

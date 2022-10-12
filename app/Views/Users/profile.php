@@ -13,7 +13,7 @@
         <div class="row m-2">
             <div class="col-md-4">
                 <div class="text-center py-2">
-                    <img src="<?= base_url('/img/user_img/' . user()->user_img); ?>" class="img-fluid rounded-start w-75" alt="...">
+                    <img src="<?= base_url('/img/user_img/' . user()->user_img); ?>" class="img-profile rounded-circle w-75" alt="...">
                 </div>
             </div>
             <div class="col-md-8">
@@ -52,7 +52,7 @@
                 <div class="modal-body flex-column border-top-0">
                     <div class="form-group">
                         <div class="text-center my-4">
-                            <img class="img-thumbnail w-50" id="imgPreview" src="<?= base_url('/img/user_img/' . user()->user_img); ?>" alt="User Image">
+                            <img class="img-thumbnail rounded-circle w-50" id="imgPreview" src="<?= base_url('/img/user_img/' . user()->user_img); ?>" alt="User Image">
                         </div>
                         <input type="hidden" name="oldImg" value="<?= user()->user_img; ?>">
                         <div class="form-group">
@@ -100,7 +100,7 @@
                             <input type="password" class="form-control" name="password" id="password" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Repear New Password</label>
+                            <label class="form-label">Repeat New Password</label>
                             <input type="password" class="form-control" name="pass_confirm" id="pass_confirm" autocomplete="off">
                         </div>
                     </div>

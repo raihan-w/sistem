@@ -124,8 +124,8 @@ class Kependudukan extends BaseController
 
     public function keluarga()
     {
-        $this->keluarga->select('nkk, alamat, rt, rw, count(kk) as jml, hub_keluarga, nama');
-        $this->keluarga->join('penduduk', 'penduduk.kk = keluarga.nkk', 'right');
+        $this->keluarga->select('nkk, alamat, rt, rw, count(kk) as jml, nama');
+        $this->keluarga->join('penduduk', 'penduduk.kk = keluarga.nkk', 'LEFT');
         $this->keluarga->groupBy('nkk');
         
         $data['keluarga'] = $this->keluarga->findAll();
@@ -173,33 +173,62 @@ class Kependudukan extends BaseController
                 $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
             }
             $spreadsheet = $reader->load($file);
-            $penduduk = $spreadsheet->getActiveSheet()->toArray();
-            foreach ($penduduk as $key => $row) {
+            $data = $spreadsheet->getActiveSheet()->toArray();
+
+            foreach ($data as $key => $row) {
                 if ($key == 0) {
                     continue;
                 }
 
-                $nik = $this->ModelPenduduk->check($key['1']);
-                if ($key['1'] == $nik['nik']) {
-                    continue;
+                $keluarga = [
+                    'nkk' => $row[2],
+                    'alamat' => $row[14],
+                    'rt' => $row[15],
+                    'rw' => $row[16],
+                ];
+                $this->keluarga->ignore(true)->insert($keluarga);
+
+                if ($row[9] == 'Tidak/Belum Sekolah' || $row[9] == 'Tidak Sekolah' || $row[9] == 'Belum Sekolah') {
+                    $pendidikan = 1;
+                } elseif ($row[9] == 'Belum Tamat SD/Sederajat') {
+                    $pendidikan = 2;
+                } elseif ($row[9] == 'Tamat SD/Sederajat' || $row[9] == 'SD' || $row[9] == 'SDLB' || $row[9] == 'Paket A') {
+                    $pendidikan = 3;
+                } elseif ($row[9] == 'SLTP/Sederajat' || $row[9] == 'SMP' || $row[9] == 'MTS' || $row[9] == 'Paket B') {
+                    $pendidikan = 4;
+                } elseif ($row[9] == 'SLTA/Sederajat' || $row[9] == 'SLTA' || $row[9] == 'SMA' || $row[9] == 'SMK' || $row[9] == 'MAN' || $row[9] == 'Paket C') {
+                    $pendidikan = 5;
+                } elseif ($row[9] == 'Diploma I/II' || $row[9] == 'Diploma I' || $row[9] == 'Diploma II' || $row[9] == 'D-1' || $row[9] == 'D-2' || $row[9] == 'D1' || $row[9] == 'D2') {
+                    $pendidikan = 6;
+                } elseif ($row[9] == 'Akademi/Diploma III/Sarjana Muda' || $row[9] == 'Diploma III/Sarjana Muda' || $row[9] == 'Diploma 3/Sarjana Muda' || $row[9] == 'Diploma III' || $row[9] == 'Sarjana Muda' || $row[9] == 'D-3' || $row[9] == 'D3') {
+                    $pendidikan = 7;
+                } elseif ($row[9] == 'Diploma IV/Strata I' || $row[9] == 'Diploma IV' || $row[9] == 'Strata I' || $row[9] == 'D-4' || $row[9] == 'S-1' || $row[9] == 'D4' || $row[9] == 'S1') {
+                    $pendidikan = 8;
+                } elseif ($row[9] == 'Strata II' || $row[9] == 'S-2' || $row[9] == 'S2') {
+                    $pendidikan = 9;
+                } elseif ($row[9] == 'Strata III' || $row[9] == 'S-3' || $row[9] == 'S3') {
+                    $pendidikan = 10;
                 }
 
-                $data = [
+                $penduduk = [
                     'nik' => $row[1],
-                    'nama' => $row[1],
-                    'tpt_lahir' => $row[1],
-                    'tgl_lahir' => $row[1],
-                    'jenkel' => $row[1],
-                    'agama' => $row[1],
-                    'goldar' => $row[1],
-                    'pendidikan' => 0,
-                    'pekerjaan' => $row[1],
-                    'pernikahan' => $row[1],
-                    'hub_keluarga' => $row[1],
+                    'kk' => $row[2],
+                    'nama' => $row[3],
+                    'tpt_lahir' => $row[4],
+                    'tgl_lahir' => $row[5],
+                    'jenkel' => $row[6],
+                    'goldar' => $row[7],
+                    'pernikahan' => $row[8],
+                    'pendidikan' => $pendidikan,
+                    'agama' => $row[10],
+                    'hub_keluarga' => $row[11],
+                    'pekerjaan' => $row[12],
+                    'status' => $row[13],
+                    'domisili' => $row[17],
                 ];
-                $this->penduduk->saveData($data);
+                $this->penduduk->ignore(true)->insert($penduduk);
             }
-            return redirect()->back()->with('massage', 'Data Excel Berhasil Diimport');
+            return redirect()->to('penduduk')->with('message', 'Data Excel Berhasil Diimport');
         } else {
             return redirect()->back()->with('error', 'Format File Tidak Sesuai');
         }

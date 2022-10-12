@@ -61,20 +61,20 @@
     <div class="sidebar-heading">
         Konfigurasi
     </div>
-
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('desa'); ?>">
-            <i class="fas fa-id-card"></i>
-            <span>Desa</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('perangkat'); ?>">
-            <i class="fas fa-users"></i>
-            <span>Perangkat Desa</span></a>
-    </li>
-
     <?php if (in_groups('administrator')) : ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('desa'); ?>">
+                <i class="fas fa-id-card"></i>
+                <span>Desa</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('perangkat'); ?>">
+                <i class="fas fa-users"></i>
+                <span>Perangkat Desa</span></a>
+        </li>
+
+
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url('users'); ?>">
                 <i class="fas fa-users"></i>

@@ -90,7 +90,7 @@
             </div>
             <div class="alert alert-secondary m-3">
                 <h4 class="mb-1 text-gray-800">Format Excel</h4>
-                <span>NIK | No.KK | Nama | Alamat | Rt | RW | Tempat Lahir | Tanggal Lahir | Jenis Kelamin | Pernikahan | Pendidikan | Agama</span>
+                <spam class="text-muted">No | NIK | No.KK | Nama | Tempat Lahir | Tanggal Lahir | Jenis Kelamin | Gol. Darah | Status Kawin | Pendidikan | Agama | Hub. Keluarga | Pekerjaan | Kewarganegaraan | Alamat KTP | RT | RW | Alamat Domisili</spam>
             </div>
             <form class="user" action="<?= base_url('kependudukan/import'); ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
