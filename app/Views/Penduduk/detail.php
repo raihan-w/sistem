@@ -30,7 +30,7 @@
                 </span>
             </div>
             <hr>
-            <table class="table table-sm table-borderless">
+            <table class="table table-sm table-borderless w-75">
                 <tbody>
                     <tr>
                         <th> No. Kartu Keluarga </th>

@@ -34,7 +34,7 @@
                             <td> </td>
                             <td> </td>
                             <td> </td>
-                            <td> </td>
+                            <td> <a href="<?= base_url('outgoing/detail'); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-list"></i></a> </td>
                         </tr>
                     </tbody>
                 </table>

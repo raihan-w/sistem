@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Model_Bedanama;
 use Dompdf\Dompdf;
 
 class Outgoing extends BaseController
@@ -11,12 +10,16 @@ class Outgoing extends BaseController
     public function __construct()
     {
         $this->dompdf       = new Dompdf();
-        $this->bedanama     = new Model_Bedanama();
     }
 
     public function index()
     {
         return view('Persuratan/outgoing');
+    }
+
+    public function detail()
+    {
+        return view('Persuratan/detail');
     }
 
 

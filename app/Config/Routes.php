@@ -67,6 +67,7 @@ $routes->get('keluarga/update/(:segment)', 'Kependudukan::update_kk/$1');
 $routes->delete('kartu/(:num)', 'Kependudukan::delete_kk/$1');
 
 $routes->get('outgoing', 'Outgoing::index');
+$routes->get('outgoing/detail', 'Outgoing::detail');
 
 $routes->get('persuratan/bedanama', 'Bedanama::index');
 $routes->get('persuratan/bidikmisi', 'Bidikmisi::index');
