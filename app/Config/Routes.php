@@ -49,10 +49,7 @@ $routes->group('', ['filter' => 'role:administrator'], function ($routes) {
     $routes->get('perangkat/update/(:segment)', 'Konfigurasi::update_perangkat/$1');
 });
 
-
 $routes->get('profile', 'users::profile');
-
-
 
 $routes->get('penduduk', 'Kependudukan::penduduk');
 $routes->delete('penduduk/(:num)', 'Kependudukan::delete/$1');
@@ -67,7 +64,7 @@ $routes->get('keluarga/update/(:segment)', 'Kependudukan::update_kk/$1');
 $routes->delete('kartu/(:num)', 'Kependudukan::delete_kk/$1');
 
 $routes->get('outgoing', 'Outgoing::index');
-$routes->get('outgoing/detail', 'Outgoing::detail');
+$routes->get('outgoing/detail/(:segment)', 'Outgoing::detail/$1');
 
 $routes->get('persuratan/bedanama', 'Bedanama::index');
 $routes->get('persuratan/bidikmisi', 'Bidikmisi::index');

@@ -71,7 +71,7 @@
                             <input type="file" class="form-control" id="user_img" name="user_img">
                         </div>
                         <small class="text-muted">
-                            Besar file maksimum 2 Mb. Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
+                            Besar file maksimum 2 Mb. <br> Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
                         </small>
                     </div>
                     <div class="form-group">

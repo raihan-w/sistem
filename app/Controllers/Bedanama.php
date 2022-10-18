@@ -3,19 +3,21 @@
 namespace App\Controllers;
 
 use App\Models\Model_Bedanama;
+use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Perangkat;
 use Dompdf\Dompdf;
 
 class Bedanama extends BaseController
 {
-    protected $dompdf, $penduduk;
+    protected $dompdf, $penduduk, $perangkat, $outgoing;
     public function __construct()
     {
         $this->dompdf       = new Dompdf();
         $this->bedanama     = new Model_Bedanama();
         $this->penduduk     = new Model_Penduduk();
         $this->perangkat    = new Model_Perangkat();
+        $this->outgoing     = new Model_Outgoing();
     }
 
     public function index()
@@ -60,6 +62,13 @@ class Bedanama extends BaseController
             'isi_surat'     => $this->request->getPost('isi'),
             'penandatangan' => $this->request->getPost('penandatangan'),
         );
+
+        $outgoing = [
+            'nomor_surat' => $this->request->getPost('nomor'),
+            'pemohon' => $this->request->getPost('nama'),
+            'perihal' => $this->request->getPost('perihal'),
+        ];
+        $this->outgoing->insert($outgoing);
 
         $this->bedanama->insert($data);
         $id = $this->request->getVar('nomor');

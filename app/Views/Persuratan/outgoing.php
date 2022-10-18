@@ -24,18 +24,18 @@
                             <th>No Surat</th>
                             <th>Tanggal</th>
                             <th>Perihal</th>
-                            <th>Isi</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($outgoing as $row) : ?>
                         <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> <a href="<?= base_url('outgoing/detail'); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-list"></i></a> </td>
+                            <td> <?= $row['nomor_surat']; ?></td>
+                            <td> <?= date('d-M-Y', strtotime($row['created_at'])); ?> </td>
+                            <td> <?= $row['perihal']; ?> </td>
+                            <td> <a href="<?= base_url('outgoing/detail/'.$row['id']); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-list"></i></a> </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

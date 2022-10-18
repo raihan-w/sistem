@@ -104,7 +104,7 @@
                 <td> 7. </td>
                 <td> Alamat </td>
                 <td> : </td>
-                <td class="isian">  </td>
+                <td class="isian"> <?= $data['domisili']; ?> </td>
             </tr>
         </table>
 

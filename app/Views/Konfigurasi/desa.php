@@ -75,7 +75,7 @@
                             <input type="file" class="form-control" id="logo" name="logo">
                         </div>
                         <span class="kd">
-                            Besar file maksimum 2 Mb. Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
+                            Besar file maksimum 2 Mb. <br> Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
                         </span>
                     </div>
                     <div class="form-group">
