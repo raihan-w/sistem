@@ -7,6 +7,23 @@
         <h1 class="h3 mb-0 text-gray-800">Detail Surat Keluar</h1>
     </div>
 
+    <?php if (!empty(session()->getFlashdata('message'))) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo session()->getFlashdata('message'); ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+    <?php if (!empty(session()->getFlashdata('error'))) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo session()->getFlashdata('error') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif ?>
+
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -19,72 +36,54 @@
                             <td> : <?= date('d-M-Y', strtotime($outgoing['created_at'])); ?> </td>
                         </tr>
                         <tr>
-                            <th> Pemohon </th>
-                            <td> : <?= $outgoing['pemohon']; ?> </td>
-                        </tr>
-                        <tr>
                             <th> Perihal </th>
                             <td> : <?= $outgoing['perihal']; ?> </td>
                         </tr>
+                        <tr>
+                            <th> Pemohon </th>
+                            <td> : <?= $outgoing['pemohon']; ?> </td>
+                        </tr>
                     </tbody>
                 </table>
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h5 class="mb-0">Lampiran</h5>
-                    <div class="d-grid gap-2 d-md-block">
-                        <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#uploadModal">
-                            <i class="fas fa-plus fa-sm text-white-50"></i>
-                            <span class="text">Tambah</span>
-                        </a>
+            </div>
+            <h5>Lampiran</h5>
+            <?php if ($outgoing['lampiran'] == null) : ?>
+                <form action="<?= base_url('outgoing/upload/' . $outgoing['id']); ?>" method="POST" enctype="multipart/form-data">
+                    <div class="form-group m-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="file" name="lampiran" id="lampiran" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary"> Submit </button>
+                            </div>
+                        </div>
+                        <small class="text-muted">
+                            Besar file maksimum 2 Mb. Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
+                        </small>
                     </div>
-                </div>
+                </form>
+            <?php endif ?>
+            <?php if ($outgoing['lampiran'] != null) : ?>
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Dokumen</th>
-                            <th>Action</th>
+                            <th class="w-75"> Dokumen </th>
+                            <th> Action </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td> </td>
-                            <td> </td>
+                            <td> <?= $outgoing['lampiran']; ?> </td>
+                            <td>
+                                <a href="<?= base_url('Outgoing/unlink/' . $outgoing['id']); ?>" class="btn btn-circle btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash-alt"></i></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Upload Modal -->
-<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Upload Lampiran</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <form class="user" action="#" method="POST" enctype="multipart/form-data">
-                <?= csrf_field(); ?>
-                <div class="modal-body flex-column border-top-0">
-                    <div class="form-group">
-                        <div class="form-group">
-                            <label class="form-label" for="">Lampiran</label>
-                            <input type="file" class="form-control" id="user_img" name="user_img">
-                        </div>
-                        <small class="text-muted">
-                            Besar file maksimum 2 Mb. <br> Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
-                        </small>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary"> Submit </button>
-                </div>
-            </form>
+                <iframe src="<?= base_url('lampiran/' . $outgoing['lampiran']); ?>" width="100%" height="500px">
+                <?php endif ?>
         </div>
     </div>
 </div>

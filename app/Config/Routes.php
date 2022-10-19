@@ -65,6 +65,7 @@ $routes->delete('kartu/(:num)', 'Kependudukan::delete_kk/$1');
 
 $routes->get('outgoing', 'Outgoing::index');
 $routes->get('outgoing/detail/(:segment)', 'Outgoing::detail/$1');
+$routes->delete('outgoing/(:num)', 'Outgoing::delete/$1');
 
 $routes->get('persuratan/bedanama', 'Bedanama::index');
 $routes->get('persuratan/bidikmisi', 'Bidikmisi::index');

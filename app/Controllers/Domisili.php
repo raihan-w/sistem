@@ -3,19 +3,21 @@
 namespace App\Controllers;
 
 use App\Models\Model_Domisili;
+use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Perangkat;
 use Dompdf\Dompdf;
 
 class Domisili extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $domisili;
+    protected $dompdf, $penduduk, $perangkat, $domisili, $outgoing;
     public function __construct()
     {
-        $this->dompdf       = new Dompdf();
-        $this->penduduk     = new Model_Penduduk();
-        $this->perangkat    = new Model_Perangkat();
-        $this->domisili     = new Model_Domisili();
+        $this->dompdf    = new Dompdf();
+        $this->penduduk  = new Model_Penduduk();
+        $this->perangkat = new Model_Perangkat();
+        $this->domisili  = new Model_Domisili();
+        $this->outgoing  = new Model_Outgoing();
     }
 
     public function index()
@@ -49,16 +51,17 @@ class Domisili extends BaseController
                     'required' => 'Form nomor surat pengantar harus diisi'
                 ]
             ],
-            'tgl_pengantar'   => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Form tanggal surat pengantar harus diisi'
-                ]
-            ],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
+
+        $outgoing = [
+            'nomor_surat' => $this->request->getPost('nomor'),
+            'pemohon' => $this->request->getPost('nama'),
+            'perihal' => $this->request->getPost('perihal'),
+        ];
+        $this->outgoing->insert($outgoing);
 
         $data = array(
             'nomor'         => $this->request->getPost('nomor'),
@@ -68,11 +71,10 @@ class Domisili extends BaseController
             'isi_surat'     => $this->request->getPost('keterangan'),
             'penandatangan' => $this->request->getPost('penandatangan'),
         );
-
         $this->domisili->insert($data);
-        $id = $this->request->getVar('nomor');
 
-        $this->domisili->select('nomor, penduduk.*, isi_surat, no_pengantar, tgl_pengantar, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
+        $id = $this->request->getVar('nomor');
+        $this->domisili->select('nomor, penduduk.*, alamat, isi_surat, no_pengantar, tgl_pengantar, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
         $this->domisili->join('penduduk', 'penduduk.nik = surat_domisili.nik_pemohon');
         $this->domisili->join('perangkat_desa', 'perangkat_desa.nip = surat_domisili.penandatangan');
         $print['data'] = $this->domisili->find($id);
@@ -82,7 +84,7 @@ class Domisili extends BaseController
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();
-        $this->dompdf->stream('Surat Domisili-' . $id . '.pdf', array(
+        $this->dompdf->stream('Surat Domisili.pdf', array(
             "Attachment" => false
         ));
     }

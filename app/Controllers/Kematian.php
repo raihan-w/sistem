@@ -3,19 +3,21 @@
 namespace App\Controllers;
 
 use App\Models\Model_Kematian;
+use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Perangkat;
 use Dompdf\Dompdf;
 
 class Kematian extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $kematian;
+    protected $dompdf, $penduduk, $perangkat, $kematian, $outgoing;
     public function __construct()
     {
         $this->dompdf       = new Dompdf();
         $this->penduduk     = new Model_Penduduk();
         $this->perangkat    = new Model_Perangkat();
         $this->kematian     = new Model_Kematian();
+        $this->outgoing     = new Model_Outgoing();
     }
 
     public function index()
@@ -55,16 +57,17 @@ class Kematian extends BaseController
                     'required' => 'Form keperluan harus diisi'
                 ]
             ],
-            'keterangan'   => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Form keterangan harus diisi'
-                ]
-            ],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
-            return redirect()->back()->withInput();
+            return redirect()->to('kematian')->withInput();
         }
+
+        $outgoing = [
+            'nomor_surat' => $this->request->getPost('nomor'),
+            'pemohon' => $this->request->getPost('nama'),
+            'perihal' => $this->request->getPost('perihal'),
+        ];
+        $this->outgoing->insert($outgoing);
 
         $data = array(
             'nomor'         => $this->request->getPost('nomor'),
@@ -79,7 +82,7 @@ class Kematian extends BaseController
         $this->kematian->insert($data);
         $id = $this->request->getVar('nomor');
 
-        $this->kematian->select('nomor, pemohon, penduduk.*, isi_surat, keterangan, due_date, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
+        $this->kematian->select('nomor, pemohon, penduduk.*, alamat, isi_surat, keterangan, due_date, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
         $this->kematian->join('penduduk', 'penduduk.nik = surat_kematian.nik');
         $this->kematian->join('perangkat_desa', 'perangkat_desa.nip = surat_kematian.penandatangan');
         $print['data'] = $this->kematian->find($id);
@@ -89,7 +92,7 @@ class Kematian extends BaseController
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();
-        $this->dompdf->stream('Surat Keterangan Kematian-' . $id . '.pdf', array(
+        $this->dompdf->stream('Surat Keterangan Kematian.pdf', array(
             "Attachment" => false
         ));
     }

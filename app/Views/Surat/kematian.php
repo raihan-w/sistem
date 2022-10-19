@@ -128,7 +128,7 @@
                 <td> 9. </td>
                 <td> Alamat Sesuai KTP </td>
                 <td> : </td>
-                <td class="isian">  </td>
+                <td class="isian"> <?= $data['alamat']; ?> </td>
             </tr>
             <tr>
                 <td> </td>

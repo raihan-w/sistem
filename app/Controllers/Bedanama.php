@@ -13,11 +13,11 @@ class Bedanama extends BaseController
     protected $dompdf, $penduduk, $perangkat, $outgoing;
     public function __construct()
     {
-        $this->dompdf       = new Dompdf();
-        $this->bedanama     = new Model_Bedanama();
-        $this->penduduk     = new Model_Penduduk();
-        $this->perangkat    = new Model_Perangkat();
-        $this->outgoing     = new Model_Outgoing();
+        $this->dompdf    = new Dompdf();
+        $this->bedanama  = new Model_Bedanama();
+        $this->penduduk  = new Model_Penduduk();
+        $this->perangkat = new Model_Perangkat();
+        $this->outgoing  = new Model_Outgoing();
     }
 
     public function index()
@@ -62,6 +62,7 @@ class Bedanama extends BaseController
             'isi_surat'     => $this->request->getPost('isi'),
             'penandatangan' => $this->request->getPost('penandatangan'),
         );
+        $this->bedanama->insert($data);
 
         $outgoing = [
             'nomor_surat' => $this->request->getPost('nomor'),
@@ -70,7 +71,6 @@ class Bedanama extends BaseController
         ];
         $this->outgoing->insert($outgoing);
 
-        $this->bedanama->insert($data);
         $id = $this->request->getVar('nomor');
         $this->bedanama->select('nomor, penduduk.*, isi_surat, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
         $this->bedanama->join('penduduk', 'penduduk.nik = surat_bedanama.nik_pemohon');
@@ -82,7 +82,7 @@ class Bedanama extends BaseController
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();
-        $this->dompdf->stream('Surat Beda Nama-'.$id.'.pdf', array(
+        $this->dompdf->stream('Surat Beda Nama.pdf', array(
             "Attachment" => false
         ));
     }

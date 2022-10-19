@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Pengantar;
 use App\Models\Model_Perangkat;
@@ -9,13 +10,14 @@ use Dompdf\Dompdf;
 
 class Pengantar extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $pengantar;
+    protected $dompdf, $penduduk, $perangkat, $pengantar, $outgoing;
     public function __construct()
     {
         $this->dompdf       = new Dompdf();
         $this->penduduk     = new Model_Penduduk();
         $this->perangkat    = new Model_Perangkat();
         $this->pengantar    = new Model_Pengantar();
+        $this->outgoing     = new Model_Outgoing();
     }
 
     public function index()
@@ -51,8 +53,15 @@ class Pengantar extends BaseController
             ],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
-            return redirect()->back()->withInput();
+            return redirect()->to('pengantar');
         }
+
+        $outgoing = [
+            'nomor_surat' => $this->request->getPost('nomor'),
+            'pemohon' => $this->request->getPost('nama'),
+            'perihal' => $this->request->getPost('perihal'),
+        ];
+        $this->outgoing->insert($outgoing);
 
         $data = array(
             'nomor'         => $this->request->getPost('nomor'),

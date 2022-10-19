@@ -94,8 +94,8 @@ class Kependudukan extends BaseController
     {
         $this->penduduk->join('pendidikan', 'pendidikan.id = penduduk.pendidikan');
         $data = [
-            'penduduk'      => $this->penduduk->find($id),
-            'pendidikan'    => $this->pendidikan->findAll(),
+            'penduduk'    => $this->penduduk->find($id),
+            'pendidikan'  => $this->pendidikan->findAll(),
         ];
         return view('Penduduk/detail', $data);
     }

@@ -164,10 +164,10 @@
                         </div>
                     </div>
 
+                    <input type="hidden" class="form-control" name="perihal" id="perihal" value="Keterangan">
                     <br>
                     <div class="text-right">
                         <a class="btn btn-light btn-prev">Previous</a>
-                        <a class="btn btn-info" id="btnPreview" data-toggle="modal" data-target="#previewModal">Preview</a>
                         <button type="submit" class="btn btn-success"> Cetak </button>
                     </div>
                 </div>
@@ -178,24 +178,5 @@
     </div>
 
 </div>
-
-<!-- Preview Modal -->
-<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Preview Surat</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body m-2 d-flex">
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <?= $this->endSection(); ?>

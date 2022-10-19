@@ -92,7 +92,7 @@
                 <td> 5. </td>
                 <td> Alamat </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['domisili_ortu']; ?> </td>
             </tr>
             <tr>
                 <td> 6. </td>
@@ -141,7 +141,7 @@
                 <td> 4. </td>
                 <td> Alamat </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['domisili_anak']; ?> </td>
             </tr>
             <tr>
                 <td> 5. </td>

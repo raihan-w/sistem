@@ -68,31 +68,31 @@
 
         <table class="isi-srt">
             <tr>
-                <td class="text-right"> 1. </td>
+                <td> 1. </td>
                 <td> Nama Lengkap </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['nama']; ?> </td>
             </tr>
             <tr>
-                <td class="text-right"> 2. </td>
+                <td> 2. </td>
                 <td> Jenis Kelamin </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['jenkel']; ?> </td>
             </tr>
             <tr>
-                <td class="text-right"> 3. </td>
+                <td> 3. </td>
                 <td> Tampat/Tanggal Lahir </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['tpt_lahir']; ?>,  <?= date('d F Y', strtotime($data['tgl_lahir'])); ?> </td>
             </tr>
             <tr>
-                <td class="text-right"> 4. </td>
+                <td> 4. </td>
                 <td> Agama </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['agama']; ?> </td>
             </tr>
             <tr>
-                <td class="text-right"> 5. </td>
+                <td> 5. </td>
                 <td> Warganegara </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['status']; ?> </td>
@@ -110,7 +110,7 @@
                 <td class="isian"> <?= $data['kk']; ?> </td>
             </tr>
             <tr>
-                <td class="text-right"> 7. </td>
+                <td> 7. </td>
                 <td> Pekerjaan </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['pekerjaan']; ?> </td>
@@ -119,7 +119,7 @@
                 <td> 8. </td>
                 <td> Alamat Sesuai KTP </td>
                 <td> : </td>
-                <td class="isian"> </td>
+                <td class="isian"> <?= $data['alamat']; ?> </td>
             </tr>
             <tr>
                 <td> </td>

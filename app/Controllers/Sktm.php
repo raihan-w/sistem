@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Perangkat;
 use App\Models\Model_Sktm;
@@ -9,13 +10,14 @@ use Dompdf\Dompdf;
 
 class Sktm extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $sktm;
+    protected $dompdf, $penduduk, $perangkat, $sktm, $outgoing;
     public function __construct()
     {
         $this->dompdf       = new Dompdf();
         $this->penduduk     = new Model_Penduduk();
         $this->perangkat    = new Model_Perangkat();
         $this->sktm         = new Model_Sktm();
+        $this->outgoing     = new Model_Outgoing();
     }
 
     public function index()
@@ -29,6 +31,44 @@ class Sktm extends BaseController
 
     public function print()
     {
+        if (!$this->validate([
+            'nomor'   => [
+                'rules' => 'required|is_unique[surat_tidakmampu.nomor]',
+                'errors' => [
+                    'required' => 'Form "{field}" harus diisi',
+                    'is_unique' => '{field} sudah terdaftar'
+                ]
+            ],
+            'nik'   => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Form pemohon harus diisi',
+                ]
+            ],
+            'no_pengantar'   => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Form nomor surat pengantar harus diisi'
+                ]
+            ],
+            'isi'   => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Form keterangan harus diisi'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->to('sktm');
+        }
+
+        $outgoing = [
+            'nomor_surat' => $this->request->getPost('nomor'),
+            'pemohon' => $this->request->getPost('nama'),
+            'perihal' => $this->request->getPost('perihal'),
+        ];
+        $this->outgoing->insert($outgoing);
+
         $data = array(
             'nomor'         => $this->request->getPost('nomor'),
             'nik_pemohon'   => $this->request->getPost('nik'),

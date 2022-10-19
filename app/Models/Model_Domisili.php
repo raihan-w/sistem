@@ -9,7 +9,7 @@ class Model_Domisili extends Model
     protected $table = 'surat_domisili';
     protected $primaryKey = 'nomor';
     protected $allowedFields = [
-        'nomor', 'nik_pemohon', 'no_pengantar', 'tg_pengantar', 'isi_surat', 'penandatangan'
+        'nomor', 'nik_pemohon', 'no_pengantar', 'tgl_pengantar', 'isi_surat', 'penandatangan'
     ];
 
     protected $useTimestamps = true;

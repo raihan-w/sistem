@@ -74,9 +74,9 @@
                             <label class="form-label" for="">Logo Desa</label>
                             <input type="file" class="form-control" id="logo" name="logo">
                         </div>
-                        <span class="kd">
-                            Besar file maksimum 2 Mb. <br> Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
-                        </span>
+                        <small class="text-muted">
+                            Besar file maksimum 2 Mb. Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
+                        </small>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="">Kelurahan/Desa</label>
