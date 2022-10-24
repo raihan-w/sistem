@@ -20,7 +20,7 @@
             <table class="surat">
                 <tr>
                     <td>
-                        <img class="logo-srt" src="img/logo.png" alt="">
+                        <img class="logo-srt" src="img/<?= $desa['logo']; ?>" alt="">
                     </td>
                     <td>
                         <h5 class="id-srt">pemerintah kabupaten klaten</h5>
@@ -35,7 +35,7 @@
         <table class="kd-srt surat">
             <tr>
                 <td>
-                    <p>kode desa :</p>
+                    <p>kode desa : <?= $desa['id_desa']; ?></p>
                 </td>
             </tr>
         </table>
@@ -104,7 +104,7 @@
                 <td> 7. </td>
                 <td> Tempat Tinggal </td>
                 <td> : </td>
-                <td class="isian"> N/A </td>
+                <td class="isian"> <?= $data['domisili']; ?> </td>
             </tr>
             <tr>
                 <td> 8. </td>

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Desa;
 use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Perangkat;
@@ -10,10 +11,11 @@ use Dompdf\Dompdf;
 
 class Sktm extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $sktm, $outgoing;
+    protected $dompdf, $penduduk, $perangkat, $sktm, $outgoing, $desa;
     public function __construct()
     {
         $this->dompdf       = new Dompdf();
+        $this->desa         = new Model_Desa();
         $this->penduduk     = new Model_Penduduk();
         $this->perangkat    = new Model_Perangkat();
         $this->sktm         = new Model_Sktm();
@@ -82,11 +84,15 @@ class Sktm extends BaseController
         $id = $this->request->getVar('nomor');
         $this->sktm->select('nomor, penduduk.*, no_pengantar, tgl_pengantar, isi_surat, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
         $this->sktm->join('penduduk', 'penduduk.nik = surat_tidakmampu.nik_pemohon');
+        $this->sktm->join('keluarga', 'keluarga.nkk=penduduk.kk');
         $this->sktm->join('perangkat_desa', 'perangkat_desa.nip = surat_tidakmampu.penandatangan');
-        $print['data'] = $this->sktm->find($id);
+        
+        $print = [
+            'data' => $this->sktm->find($id),
+            'desa' => $this->desa->first(),
+        ];
 
         $html = view('Surat/sktm', $print);
-
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();

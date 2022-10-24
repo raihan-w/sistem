@@ -52,17 +52,14 @@ class Outgoing extends BaseController
             ],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
-            return redirect()->back()->withInput();
+            return redirect()->back();
         }
 
         $lampiran = $this->request->getFile('lampiran');
         $fileName = $lampiran->getName();
         $lampiran->move('lampiran');
 
-        $data = array(
-            'lampiran' => $fileName,
-        );
-        $this->outgoing->update($id, $data);
+        $this->outgoing->update($id, ['lampiran' => $fileName]);
         return redirect()->back();
     }
 
@@ -100,5 +97,4 @@ class Outgoing extends BaseController
         return redirect()->back();
     }
 
-    
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Desa;
 use App\Models\Model_Kematian;
 use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
@@ -10,14 +11,15 @@ use Dompdf\Dompdf;
 
 class Kematian extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $kematian, $outgoing;
+    protected $dompdf, $penduduk, $perangkat, $kematian, $outgoing, $desa;
     public function __construct()
     {
-        $this->dompdf       = new Dompdf();
-        $this->penduduk     = new Model_Penduduk();
-        $this->perangkat    = new Model_Perangkat();
-        $this->kematian     = new Model_Kematian();
-        $this->outgoing     = new Model_Outgoing();
+        $this->dompdf    = new Dompdf();
+        $this->desa      = new Model_Desa();
+        $this->penduduk  = new Model_Penduduk();
+        $this->perangkat = new Model_Perangkat();
+        $this->kematian  = new Model_Kematian();
+        $this->outgoing  = new Model_Outgoing();
     }
 
     public function index()
@@ -84,11 +86,15 @@ class Kematian extends BaseController
 
         $this->kematian->select('nomor, pemohon, penduduk.*, alamat, isi_surat, keterangan, due_date, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
         $this->kematian->join('penduduk', 'penduduk.nik = surat_kematian.nik');
+        $this->kematian->join('keluarga', 'keluarga.nkk=penduduk.kk');
         $this->kematian->join('perangkat_desa', 'perangkat_desa.nip = surat_kematian.penandatangan');
-        $print['data'] = $this->kematian->find($id);
+        
+        $print = [
+            'data' => $this->kematian->find($id),
+            'desa' => $this->desa->first(),
+        ];
 
         $html = view('Surat/kematian', $print);
-
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();

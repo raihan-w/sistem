@@ -22,7 +22,7 @@
             <table class="surat">
                 <tr>
                     <td>
-                        <img class="logo-srt" src="img/logo.png" alt="">
+                        <img class="logo-srt" src="img/<?= $desa['logo']; ?>" alt="">
                     </td>
                     <td>
                         <h5 class="id-srt">pemerintah kabupaten klaten</h5>
@@ -37,7 +37,7 @@
         <table class="kd-srt surat">
             <tr>
                 <td>
-                    <p>kode desa :</p>
+                    <p>kode desa : <?= $desa['id_desa class=']; ?></p>
                 </td>
             </tr>
         </table>
@@ -68,37 +68,37 @@
         <table class="isi-srt">
             <tr>
                 <td> 1. </td>
-                <td> Nama </td>
+                <td class='w-25'> Nama </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['nama']; ?> </td>
             </tr>
             <tr>
                 <td> 2. </td>
-                <td> Jenis Kelamin </td>
+                <td class='w-25'> Jenis Kelamin </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['jenkel']; ?> </td>
             </tr>
             <tr>
                 <td> 3. </td>
-                <td> Tempat/Tanggal Lahir </td>
+                <td class='w-25'> Tempat/Tanggal Lahir </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['tpt_lahir']; ?>,  <?= date('d F Y', strtotime($data['tgl_lahir'])); ?> </td>
             </tr>
             <tr>
                 <td> 4. </td>
-                <td> Agama </td>
+                <td class='w-25'> Agama </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['agama']; ?> </td>
             </tr>
             <tr>
                 <td> 5. </td>
-                <td> Warganegara </td>
+                <td class='w-25'> Warganegara </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['status']; ?> </td>
             </tr>
             <tr>
                 <td> 6. </td>
-                <td> Surat Bukti Diri </td>
+                <td class='w-25'> Surat Bukti Diri </td>
             </tr>
             <tr>
                 <td> </td>
@@ -114,19 +114,19 @@
             </tr>
             <tr>
                 <td> 7. </td>
-                <td> Pekerjaan </td>
+                <td class='w-25'> Pekerjaan </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['pekerjaan']; ?> </td>
             </tr>
             <tr>
                 <td> 8. </td>
-                <td> Berlaku </td>
+                <td class='w-25'> Berlaku </td>
                 <td> : </td>
                 <td class="isian"> <?= date('d F Y', strtotime($data['created_at'])); ?> s/d <?= date('d F Y', strtotime($data['due_date'])); ?> </td>
             </tr>
             <tr>
                 <td> 9. </td>
-                <td> Alamat Sesuai KTP </td>
+                <td class='w-25'> Alamat Sesuai KTP </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['alamat']; ?> </td>
             </tr>
@@ -138,13 +138,13 @@
             </tr>
             <tr>
                 <td> 10. </td>
-                <td> Keperluan </td>
+                <td class='w-25'> Keperluan </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['isi_surat']; ?> </td>
             </tr>
             <tr>
                 <td> 11. </td>
-                <td> Keterangan </td>
+                <td class='w-25'> Keterangan </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['keterangan']; ?> </td>
             </tr>

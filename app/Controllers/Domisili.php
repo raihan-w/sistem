@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Desa;
 use App\Models\Model_Domisili;
 use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
@@ -10,10 +11,11 @@ use Dompdf\Dompdf;
 
 class Domisili extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $domisili, $outgoing;
+    protected $dompdf, $penduduk, $perangkat, $domisili, $outgoing, $desa;
     public function __construct()
     {
         $this->dompdf    = new Dompdf();
+        $this->desa      = new Model_Desa();
         $this->penduduk  = new Model_Penduduk();
         $this->perangkat = new Model_Perangkat();
         $this->domisili  = new Model_Domisili();
@@ -76,11 +78,15 @@ class Domisili extends BaseController
         $id = $this->request->getVar('nomor');
         $this->domisili->select('nomor, penduduk.*, alamat, isi_surat, no_pengantar, tgl_pengantar, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
         $this->domisili->join('penduduk', 'penduduk.nik = surat_domisili.nik_pemohon');
+        $this->domisili->join('keluarga', 'keluarga.nkk=penduduk.kk');
         $this->domisili->join('perangkat_desa', 'perangkat_desa.nip = surat_domisili.penandatangan');
-        $print['data'] = $this->domisili->find($id);
+        
+        $print = [
+            'data' => $this->domisili->find($id),
+            'desa' => $this->desa->first(),
+        ];
 
         $html = view('Surat/domisili', $print);
-
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();

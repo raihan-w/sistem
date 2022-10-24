@@ -23,7 +23,7 @@
             <table class="surat">
                 <tr>
                     <td>
-                        <img class="logo-srt" src="img/logo.png" alt="">
+                        <img class="logo-srt" src="img/<?= $desa['logo']; ?>" alt="">
                     </td>
                     <td>
                         <h5 class="id-srt">pemerintah kabupaten klaten</h5>
@@ -38,7 +38,7 @@
         <table class="kd-srt surat">
             <tr>
                 <td>
-                    <p>kode desa :</p>
+                    <p>kode desa : <?= $desa['id_desa']; ?></p>
                 </td>
             </tr>
         </table>
@@ -69,67 +69,67 @@
         <table class="isi-srt">
             <tr>
                 <td> 1. </td>
-                <td> Nama Lengkap </td>
+                <td class="w-25"> Nama Lengkap </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['nama']; ?> </td>
             </tr>
             <tr>
                 <td> 2. </td>
-                <td> Jenis Kelamin </td>
+                <td class="w-25"> Jenis Kelamin </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['jenkel']; ?> </td>
             </tr>
             <tr>
                 <td> 3. </td>
-                <td> Tampat/Tanggal Lahir </td>
+                <td class="w-25"> Tampat/Tanggal Lahir </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['tpt_lahir']; ?>,  <?= date('d F Y', strtotime($data['tgl_lahir'])); ?> </td>
             </tr>
             <tr>
                 <td> 4. </td>
-                <td> Agama </td>
+                <td class="w-25"> Agama </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['agama']; ?> </td>
             </tr>
             <tr>
                 <td> 5. </td>
-                <td> Warganegara </td>
+                <td class="w-25"> Warganegara </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['status']; ?> </td>
             </tr>
             <tr>
                 <td> 6. </td>
-                <td> NIK </td>
+                <td class="w-25"> NIK </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['nik']; ?> </td>
             </tr>
             <tr>
                 <td> </td>
-                <td> Kartu Keluarga </td>
+                <td class="w-25"> Kartu Keluarga </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['kk']; ?> </td>
             </tr>
             <tr>
                 <td> 7. </td>
-                <td> Pekerjaan </td>
+                <td class="w-25"> Pekerjaan </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['pekerjaan']; ?> </td>
             </tr>
             <tr>
                 <td> 8. </td>
-                <td> Alamat Sesuai KTP </td>
+                <td class="w-25"> Alamat Sesuai KTP </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['alamat']; ?> </td>
             </tr>
             <tr>
                 <td> </td>
-                <td> Alamat Domisili </td>
+                <td class="w-25"> Alamat Domisili </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['domisili']; ?> </td>
             </tr>
             <tr>
                 <td> 9. </td>
-                <td> Keperluan </td>
+                <td class="w-25"> Keperluan </td>
                 <td> : </td>
                 <td class="isian"> <?= $data['isi_surat']; ?> </td>
             </tr>
@@ -139,8 +139,8 @@
             <tr>
                 <td>
                     <p>
-                        Berdasarkan Surat Keterangan dari Ketua Rukun Tentangga <b><?= $data['no_pengantar']; ?></b>
-                        tanggal <b><?= $data['tgl_pengantar']; ?></b>, bahwa yang bersangkutan benar penduduk Desa Geneng Kecamatan Prambanan Kabupaten Klaten yang beralamat pada alamat tersebut diatas.
+                        Berdasarkan Surat Keterangan dari Ketua Rukun Tentangga <?= $data['no_pengantar']; ?>
+                        tanggal <?= date('d F Y', strtotime($data['tgl_pengantar'])); ?>, bahwa yang bersangkutan benar penduduk Desa Geneng Kecamatan Prambanan Kabupaten Klaten yang beralamat pada alamat tersebut diatas.
                     </p>
                 </td>
             </tr>

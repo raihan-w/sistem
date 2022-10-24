@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Desa;
 use App\Models\Model_Keterangan;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Perangkat;
@@ -9,10 +10,11 @@ use Dompdf\Dompdf;
 
 class Keterangan extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $keterangan;
+    protected $dompdf, $penduduk, $perangkat, $keterangan, $desa;
     public function __construct()
     {
         $this->dompdf       = new Dompdf();
+        $this->desa         = new Model_Desa();
         $this->penduduk     = new Model_Penduduk();
         $this->perangkat    = new Model_Perangkat();
         $this->keterangan   = new Model_Keterangan();
@@ -67,11 +69,15 @@ class Keterangan extends BaseController
         $id = $this->request->getVar('nomor');
         $this->keterangan->select('nomor, penduduk.*, isi_surat, isi_tambahan, due_date, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
         $this->keterangan->join('penduduk', 'penduduk.nik = surat_keterangan.nik_pemohon');
+        $this->keterangan->join('keluarga', 'keluarga.nkk=penduduk.kk');
         $this->keterangan->join('perangkat_desa', 'perangkat_desa.nip = surat_keterangan.penandatangan');
-        $print['data'] = $this->keterangan->find($id);
+
+        $print = [
+            'data' => $this->keterangan->find($id),
+            'desa' => $this->desa->first(),
+        ];
 
         $html = view('Surat/keterangan', $print);
-
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();

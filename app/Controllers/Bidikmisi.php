@@ -80,7 +80,11 @@ class Bidikmisi extends BaseController
         $this->bidikmisi->join('penduduk as ortu', 'ortu.nik = surat_bidikmisi.nik_ortu');
         $this->bidikmisi->join('penduduk as anak', 'anak.nik = surat_bidikmisi.nik_anak');
         $this->bidikmisi->join('perangkat_desa', 'perangkat_desa.nip = surat_bidikmisi.penandatangan');
-        $print['data'] = $this->bidikmisi->find($id);
+
+        $print = [
+            'data' => $this->bidikmisi->find($id),
+            'desa' => $this->desa->first(),
+        ];
 
         $html = view('Surat/bidikmisi', $print);
         $this->dompdf->loadHtml($html);

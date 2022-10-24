@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Desa;
 use App\Models\Model_Outgoing;
 use App\Models\Model_Penduduk;
 use App\Models\Model_Pengantar;
@@ -10,14 +11,15 @@ use Dompdf\Dompdf;
 
 class Pengantar extends BaseController
 {
-    protected $dompdf, $penduduk, $perangkat, $pengantar, $outgoing;
+    protected $dompdf, $penduduk, $perangkat, $pengantar, $outgoing, $desa;
     public function __construct()
     {
-        $this->dompdf       = new Dompdf();
-        $this->penduduk     = new Model_Penduduk();
-        $this->perangkat    = new Model_Perangkat();
-        $this->pengantar    = new Model_Pengantar();
-        $this->outgoing     = new Model_Outgoing();
+        $this->dompdf    = new Dompdf();
+        $this->desa      = new Model_Desa();
+        $this->penduduk  = new Model_Penduduk();
+        $this->perangkat = new Model_Perangkat();
+        $this->pengantar = new Model_Pengantar();
+        $this->outgoing  = new Model_Outgoing();
     }
 
     public function index()
@@ -76,11 +78,15 @@ class Pengantar extends BaseController
         $id = $this->request->getVar('nomor');
         $this->pengantar->select('nomor, penduduk.*, isi_surat, isi_tambahan, due_date, perangkat_desa.nama as nama_penandatangan, jabatan, created_at');
         $this->pengantar->join('penduduk', 'penduduk.nik = surat_pengantar.nik_pemohon');
+        $this->pengantar->join('keluarga', 'keluarga.nkk=penduduk.kk');
         $this->pengantar->join('perangkat_desa', 'perangkat_desa.nip = surat_pengantar.penandatangan');
-        $print['data'] = $this->pengantar->find($id);
+        
+        $print = [
+            'data' => $this->pengantar->find($id),
+            'desa' => $this->desa->first(),
+        ];
 
         $html = view('Surat/pengantar', $print);
-
         $this->dompdf->loadHtml($html);
         $this->dompdf->setPaper('A4', 'potrait');
         $this->dompdf->render();
