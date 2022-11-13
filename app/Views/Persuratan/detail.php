@@ -76,7 +76,13 @@
                         <tr>
                             <td> <?= $outgoing['lampiran']; ?> </td>
                             <td>
-                                <a href="<?= base_url('Outgoing/unlink/' . $outgoing['id']); ?>" class="btn btn-circle btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash-alt"></i></a>
+                                <form action="<?= base_url('Outgoing/unlink/' . $outgoing['id']); ?>" method="POST" class="d-inline">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-circle btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
                             </td>
                         </tr>
                     </tbody>

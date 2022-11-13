@@ -12,6 +12,7 @@ class Model_Outgoing extends Model
         'nomor_surat', 'perihal', 'pemohon', 'lampiran'
     ];
 
+    protected $useAutoIncrement = true;
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

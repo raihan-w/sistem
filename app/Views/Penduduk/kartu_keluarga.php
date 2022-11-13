@@ -21,25 +21,27 @@
         <div class="card-body">
             <div class="d-flex flex-row align-item-center justify-content-between">
                 <h4 class="m-0 font-weight-bold">No. Kartu Keluarga : <?= $kartu['nkk']; ?></h4>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Pengaturan:</div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#updateModal">Edit</a>
-                        <?php if ($list == null) : ?>
-                            <div class="dropdown-divider"></div>
-                            <form action="/kartu/<?= $kartu['nkk']; ?>" method="POST" class="dropdown-item">
-                                <?= csrf_field(); ?>
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class=" btn-del " onclick="return confirm('Are you sure?')">
-                                    Hapus
-                                </button>
-                            </form>
-                        <?php endif; ?>
+                <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Pengaturan:</div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#updateModal">Edit</a>
+                            <?php if ($list == null) : ?>
+                                <div class="dropdown-divider"></div>
+                                <form action="/kartu/<?= $kartu['nkk']; ?>" method="POST" class="dropdown-item">
+                                    <?= csrf_field(); ?>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class=" btn-del " onclick="return confirm('Are you sure?')">
+                                        Hapus
+                                    </button>
+                                </form>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
 
             <table class="table table-sm table-borderless" style="width: 50%;">

@@ -7,10 +7,12 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Surat Keluar</h1>
         <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createModal">
-                <i class="fas fa-plus fa-sm text-white-50"></i>
-                <span class="text">Buat Surat</span>
-            </a>
+            <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createModal">
+                    <i class="fas fa-plus fa-sm text-white-50"></i>
+                    <span class="text">Buat Surat</span>
+                </a>
+            <?php endif ?>
         </div>
     </div>
 
@@ -84,7 +86,7 @@
                 <div class="row">
 
                     <div class="col-auto m-2 wrapper">
-                        <a target="_blank" href="<?= base_url('persuratan/bedanama'); ?>">
+                        <a href="<?= base_url('persuratan/bedanama'); ?>">
                             <img src="<?= base_url('img/thumbnail/bedanama.png'); ?>" alt="Beda Nama" class="img-thumbnail" width="150">
                         </a>
                         <div class="text-center ">
@@ -93,7 +95,7 @@
                     </div>
 
                     <div class="col-auto m-2 wrapper">
-                        <a target="_blank" href="<?= base_url('persuratan/bidikmisi'); ?>">
+                        <a href="<?= base_url('persuratan/bidikmisi'); ?>">
                             <img src="<?= base_url('img/thumbnail/bidikmisi.png'); ?>" alt="Bidik Misi" class="img-thumbnail" width="150">
                         </a>
                         <div class="text-center ">
@@ -102,7 +104,7 @@
                     </div>
 
                     <div class="col-auto m-2 wrapper">
-                        <a target="_blank" href="<?= base_url('persuratan/domisili'); ?>">
+                        <a href="<?= base_url('persuratan/domisili'); ?>">
                             <img src="<?= base_url('img/thumbnail/domisili.png'); ?>" alt="Domisili" class="img-thumbnail" width="150">
                         </a>
                         <div class="text-center ">
@@ -111,7 +113,7 @@
                     </div>
 
                     <div class="col-auto m-2 wrapper">
-                        <a target="_blank" href="<?= base_url('persuratan/keterangan'); ?>">
+                        <a href="<?= base_url('persuratan/keterangan'); ?>">
                             <img src="<?= base_url('img/thumbnail/keterangan.png'); ?>" alt="Keterangan" class="img-thumbnail" width="150">
                         </a>
                         <div class="text-center ">
@@ -120,7 +122,7 @@
                     </div>
 
                     <div class="col-auto m-2 wrapper">
-                        <a target="_blank" href="<?= base_url('persuratan/kematian'); ?>">
+                        <a href="<?= base_url('persuratan/kematian'); ?>">
                             <img src="<?= base_url('img/thumbnail/kematian.png'); ?>" alt="Kematian" class="img-thumbnail" width="150">
                         </a>
                         <div class="text-center ">
@@ -129,7 +131,7 @@
                     </div>
 
                     <div class="col-auto m-2 wrapper">
-                        <a target="_blank" href="<?= base_url('persuratan/pengantar'); ?>">
+                        <a href="<?= base_url('persuratan/pengantar'); ?>">
                             <img src="<?= base_url('img/thumbnail/pengantar.png'); ?>" alt="Pengantar" class="img-thumbnail" width="150">
                         </a>
                         <div class="text-center ">
@@ -138,7 +140,7 @@
                     </div>
 
                     <div class="col-auto m-2 wrapper">
-                        <a target="_blank" href="<?= base_url('persuratan/sktm'); ?>">
+                        <a href="<?= base_url('persuratan/sktm'); ?>">
                             <img src="<?= base_url('img/thumbnail/sktm.png'); ?>" alt="Ket.Tidak Mampu" class="img-thumbnail" width="150">
                         </a>
                         <div class="text-center ">

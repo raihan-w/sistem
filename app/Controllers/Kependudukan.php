@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Dokumen;
 use App\Models\Model_Keluarga;
 use App\Models\Model_Pendidikan;
 use App\Models\Model_Penduduk;
@@ -11,9 +12,10 @@ class Kependudukan extends BaseController
     protected $penduduk, $keluarga, $pendidikan;
     public function __construct()
     {
-        $this->penduduk     = new Model_Penduduk();
-        $this->pendidikan   = new Model_Pendidikan();
-        $this->keluarga     = new Model_Keluarga();
+        $this->penduduk    = new Model_Penduduk();
+        $this->pendidikan  = new Model_Pendidikan();
+        $this->keluarga    = new Model_Keluarga();
+        $this->dokumen     = new Model_Dokumen();
     }
 
     public function penduduk()
@@ -93,9 +95,11 @@ class Kependudukan extends BaseController
     public function detail($id)
     {
         $this->penduduk->join('pendidikan', 'pendidikan.id = penduduk.pendidikan');
+        $this->dokumen->join('penduduk', 'penduduk.nik = dokumen.nik');
         $data = [
             'penduduk'    => $this->penduduk->find($id),
             'pendidikan'  => $this->pendidikan->findAll(),
+            'dokumen'     => $this->dokumen->findAll(),
         ];
         return view('Penduduk/detail', $data);
     }

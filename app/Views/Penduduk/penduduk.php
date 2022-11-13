@@ -6,16 +6,18 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Penduduk</h1>
-        <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#importModal">
-                <i class="fas fa-file-import fa-sm text-white-50"></i>
-                <span class="text">Import</span>
-            </a>
-            <a href="<?= base_url('penduduk/add'); ?>" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa-sm text-white-50"></i>
-                <span class="text">Tambah</span>
-            </a>
-        </div>
+        <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+            <div class="d-grid gap-2 d-md-block">
+                <a class="btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#importModal">
+                    <i class="fas fa-file-import fa-sm text-white-50"></i>
+                    <span class="text">Import</span>
+                </a>
+                <a href="<?= base_url('penduduk/add'); ?>" class="btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-plus fa-sm text-white-50"></i>
+                    <span class="text">Tambah</span>
+                </a>
+            </div>
+        <?php endif ?>
     </div>
 
     <?php if (!empty(session()->getFlashdata('message'))) : ?>
@@ -34,7 +36,7 @@
             </button>
         </div>
     <?php endif ?>
-    
+
     <div class="card shadow mb-4">
 
         <div class="card-body">
@@ -52,6 +54,7 @@
                     </thead>
                     <tbody>
                         <?php foreach ($penduduk as $row) : ?>
+                            
                             <tr>
                                 <td> <?= $row['nik']; ?> </td>
                                 <td> <?= $row['kk']; ?> </td>
@@ -69,6 +72,7 @@
                                     </form>
                                 </td>
                             </tr>
+                            
                         <?php endforeach; ?>
                     </tbody>
                 </table>

@@ -1,8 +1,3 @@
-p:root {
-    --line-border-fill: #2772b0;
-    --line-border-empty: #bdbdbd;
-}
-
 .btn-del {
     border: none;
     outline: none;
@@ -134,7 +129,7 @@ p:root {
 
 .progressbar::before {
     content: "";
-    background-color: var(--line-border-empty);
+    background-color: #bdbdbd;
     position: absolute;
     top: 50%;
     left: 0;
@@ -146,7 +141,7 @@ p:root {
 }
 
 .progression {
-    background-color: var(--line-border-fill);
+    background-color: #2772b0;
     position: absolute;
     top: 50%;
     left: 0;
@@ -180,7 +175,7 @@ p:root {
 }
 
 .progress-step.progress-step-active {
-    border-color: var(--line-border-fill);
+    border-color: #2772b0;
 }
 
 
