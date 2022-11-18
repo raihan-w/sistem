@@ -88,7 +88,7 @@
                     </tbody>
                 </table>
 
-                <iframe src="<?= base_url('lampiran/' . $outgoing['lampiran']); ?>" width="100%" height="500px">
+                <iframe src="<?= base_url('attachment/' . $outgoing['lampiran']); ?>" width="100%" height="500px">
                 <?php endif ?>
         </div>
     </div>

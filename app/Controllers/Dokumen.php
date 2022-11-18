@@ -16,11 +16,10 @@ class Dokumen extends BaseController
     {
         if (!$this->validate([
             'file'   => [
-                'rules' => 'max_size[file,2048]|is_image[file]|mime_in[file,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[file,2048]|ext_in[file,pdf/file,jpg/file,jpeg/file,png]',
                 'errors' => [
                     'max_size' => 'Ukuran file terlalu besar',
-                    'is_image' => 'Format file tidak didukung',
-                    'mime_in' => 'Format file tidak didukung',
+                    'ext_in'   => 'Format file tidak didukung',
                 ]
             ],
         ])) {
@@ -30,7 +29,7 @@ class Dokumen extends BaseController
         
         $file = $this->request->getFile('file');
         $fileName = $file->getName();
-        $file->move('dokumen');
+        $file->move('document');
 
         $data = array(
             'nik' => $id,
@@ -39,6 +38,14 @@ class Dokumen extends BaseController
         );
         $this->dokumen->insert($data);
         return redirect()->back()->to('penduduk/detail/'.$id);
+    }
+
+    public function unlink($id)
+    {
+        $data = $this->dokumen->find($id);
+        unlink('document/' . $data['file']);
+        $this->dokumen->delete($id);
+        return redirect()->back();
     }
 
 }

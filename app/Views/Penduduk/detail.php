@@ -106,16 +106,18 @@
             <?php if ($dokumen == null) : ?>
                 <p class="text-center m-3">Tidak ada dokumen yang diunggah</p>
             <?php endif ?>
+            <div class="d-flex flex-row">
+                <?php foreach ($dokumen as $row) : ?>
 
-            <?php foreach ($dokumen as $row) : ?>
-                <div class="d-flex flex-row">
                     <div class="card mx-3" style="width: 20rem;">
-                        <img src="<?= base_url('/img/default.jpg'); ?>" class="card-img-top" alt="...">
+                        <div class="text-center">
+                            <img src="<?= base_url('document/' . $row['file']); ?>" class="card-img-top" style="height: 200px;" onerror="this.onerror=null;this.className='py-3 w-50';this.src='<?= base_url('document/pdf-logo.png'); ?>';">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title"><?= $row['dokumen']; ?></h5>
                             <div class="text-right">
                                 <a href="" class="btn btn-circle btn-sm btn-success"><i class="fas fa-download"></i></a>
-                                <form action="" method="POST" class="d-inline">
+                                <form action="<?= base_url('Dokumen/unlink/' . $row['id']); ?>" method="POST" class="d-inline">
                                     <?= csrf_field(); ?>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-circle btn-sm btn-danger" onclick="return confirm('Are you sure?')">
@@ -125,8 +127,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+
+                <?php endforeach; ?>
+            </div>
         </div>
 
     </div>

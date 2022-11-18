@@ -60,6 +60,7 @@ $routes->group('', ['filter' => 'role:administrator,operator'], function ($route
     $routes->get('penduduk/update/(:segment)', 'Kependudukan::update/$1');
     $routes->get('penduduk/detail/(:segment)', 'Dokumen::upload/$1');
     $routes->delete('penduduk/(:num)', 'Kependudukan::delete/$1');
+    $routes->delete('dokumen/unlink/(:num)', 'Dokumen::unlink/$1');
 });
 
 $routes->get('keluarga', 'Kependudukan::keluarga');

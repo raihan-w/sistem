@@ -57,7 +57,7 @@ class Outgoing extends BaseController
 
         $lampiran = $this->request->getFile('lampiran');
         $fileName = $lampiran->getName();
-        $lampiran->move('lampiran');
+        $lampiran->move('attachment');
 
         $this->outgoing->update($id, ['lampiran' => $fileName]);
         return redirect()->back();
@@ -67,7 +67,7 @@ class Outgoing extends BaseController
     {
         $lampiran = $this->outgoing->find($id);
         if ($lampiran['lampiran'] != null) {
-            unlink('lampiran/' . $lampiran['lampiran']);
+            unlink('attachment/' . $lampiran['lampiran']);
         }
 
         if ($lampiran['perihal'] == 'Beda Nama') {
@@ -92,7 +92,7 @@ class Outgoing extends BaseController
     public function unlink($id)
     {
         $lampiran = $this->outgoing->find($id);
-        unlink('lampiran/' . $lampiran['lampiran']);
+        unlink('attachment/' . $lampiran['lampiran']);
         $this->outgoing->update($id, ['lampiran' => null]);
         return redirect()->back();
     }

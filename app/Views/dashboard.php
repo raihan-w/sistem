@@ -9,9 +9,10 @@
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     </div>
 
+    <?= view('\Myth\Auth\Views\_message_block') ?>
+
     <!-- Card -->
     <div class="row">
-        
         <!-- Kepala Keluarga-->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-bottom-primary shadow h-100 py-2">
@@ -87,7 +88,16 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="card shadow mb-4">
+        <div class="card-body text-center mb-3">
+            <div class="mb-3">
+                <img src="<?= base_url('img/' . $desa['logo']); ?>" alt="logo" class="logo">
+            </div>
+            <h4 class="card-title">Pemerintah Desa <?= $desa['desa']; ?></h4>
+            <p class="card-text"><?= $desa['alamat']; ?> Kode Pos <?= $desa['kode_pos']; ?></p>
+        </div>
     </div>
 </div>
 
