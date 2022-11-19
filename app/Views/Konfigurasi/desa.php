@@ -62,7 +62,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="user" action="<?= base_url('konfigurasi/update_desa/' . $data['id_desa']); ?>" method="POST" enctype="multipart/form-data">
+            <form class="user" action="<?= base_url('konfigurasi/updateDesa/' . $data['id_desa']); ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="modal-body flex-column border-top-0">
                     <div class="form-group">

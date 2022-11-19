@@ -20,15 +20,16 @@ class Konfigurasi extends BaseController
         return view('Konfigurasi/desa', $data);
     }
 
-    public function update_desa($id)
+    public function updateDesa($id)
     {
         if (!$this->validate([
             'logo'   => [
-                'rules' => 'max_size[logo,2048]|is_image[logo]|mime_in[logo,image/jpg,image/jpeg,image/png]',
+                'rules' => 'uploaded[logo]|max_size[logo,2048]|is_image[logo]|mime_in[logo,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'max_size' => 'Ukuran file terlalu besar',
+                    'uploaded' => 'Unggah file diperlukan',
+                    'max_size' => 'Ukuran file maksimal 2mb',
                     'is_image' => 'Format file tidak didukung',
-                    'mime_in' => 'Format file tidak didukung',
+                    'mime_in' => 'Extension file yang diperbolehkan .jpg .jpeg atau .png',
                 ]
             ],
         ])) {
@@ -109,7 +110,7 @@ class Konfigurasi extends BaseController
         return redirect()->back()->with('message', 'Data deleted successfully');
     }
 
-    public function update_perangkat($id)
+    public function updatePerangkat($id)
     {
         $data = array(
             'nama'   => $this->request->getPost('nama'),

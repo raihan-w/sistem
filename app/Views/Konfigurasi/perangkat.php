@@ -118,7 +118,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form class="user" action="<?= base_url('konfigurasi/update_perangkat/' . $row['nip']) ?>" method="POST">
+                <form class="user" action="<?= base_url('konfigurasi/updatePerangkat/' . $row['nip']) ?>" method="POST">
                     <?= csrf_field(); ?>
                     <div class="modal-body">
                         <div class="modal-body flex-column border-top-0">

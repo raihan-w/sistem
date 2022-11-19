@@ -44,10 +44,11 @@ class Outgoing extends BaseController
     {
         if (!$this->validate([
             'lampiran'   => [
-                'rules' => 'max_size[lampiran,2048]|ext_in[lampiran,pdf]',
+                'rules' => 'uploaded[lampiran]|max_size[lampiran,2048]|ext_in[lampiran,pdf]',
                 'errors' => [
-                    'max_size' => 'Ukuran file terlalu besar',
-                    'ext_in' => 'Format file tidak didukung',
+                    'uploaded' => 'Unggah file diperlukan',
+                    'max_size' => 'Ukuran file maksimal 2mb',
+                    'ext_in' => 'Extension file yang diperbolehkan .pdf',
                 ]
             ],
         ])) {

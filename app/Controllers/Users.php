@@ -145,11 +145,12 @@ class Users extends BaseController
     {
         if (!$this->validate([
             'user_img'   => [
-                'rules' => 'max_size[user_img,4029]|is_image[user_img]|mime_in[user_img,image/jpg,image/jpeg,image/png]',
+                'rules' => 'uploaded[user_img]|max_size[user_img,2048]|is_image[user_img]|mime_in[user_img,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'max_size' => 'Ukuran file terlalu besar',
+                    'uploaded' => 'Unggah file diperlukan',
+                    'max_size' => 'Ukuran file maksimal 2mb',
                     'is_image' => 'Format file tidak didukung',
-                    'mime_in' => 'Format file tidak didukung',
+                    'mime_in' => 'Extension file yang diperbolehkan .jpg .jpeg atau .npg',
                 ]
             ],
             'email'   => [

@@ -16,10 +16,11 @@ class Dokumen extends BaseController
     {
         if (!$this->validate([
             'file'   => [
-                'rules' => 'max_size[file,2048]|ext_in[file,pdf/file,jpg/file,jpeg/file,png]',
+                'rules' => 'uploaded[file]|max_size[file,2048]|ext_in[file,pdf,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran file terlalu besar',
-                    'ext_in'   => 'Format file tidak didukung',
+                    'uploaded' => 'Unggah file diperlukan',
+                    'max_size' => 'Ukuran file maksimal 2mb',
+                    'ext_in'   => 'Extension file yang diperbolehkan .pdf .jpg .jpeg atau .png',
                 ]
             ],
         ])) {
@@ -48,4 +49,9 @@ class Dokumen extends BaseController
         return redirect()->back();
     }
 
+    public function download($id)
+    {
+        $data = $this->dokumen->find($id);
+        return $this->response->download('document/'.$data['file'], null);
+    }
 }
