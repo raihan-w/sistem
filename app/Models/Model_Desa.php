@@ -7,9 +7,8 @@ use CodeIgniter\Model;
 class Model_Desa extends Model
 {
     protected $table = 'desa';
-    protected $primaryKey = 'id_desa';
+    protected $primaryKey = 'id';
     protected $allowedFields = [
-        'id_desa', 'desa', 'kode_pos', 'alamat', 'kecamatan', 'kabupaten', 'provinsi'
+        'kode_desa', 'desa', 'kode_pos', 'alamat', 'kecamatan', 'kabupaten', 'provinsi', 'logo'
     ];
-
 }

@@ -20,6 +20,15 @@
             </button>
         </div>
     <?php endif; ?>
+    <?php if (!empty(session()->getFlashdata('error'))) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="mb-3">Periksa kembali entrian form</h4>
+            <?php echo session()->getFlashdata('error') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif ?>
 
     <div class="card shadow mb-3">
         <div class="row m-2">
@@ -45,7 +54,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p class="card-text"><small class="text-muted">Kode Desa <?= $data['id_desa']; ?></small></p>
+                    <p class="card-text"><small class="text-muted">Kode Desa <?= $data['kode_desa']; ?></small></p>
                 </div>
             </div>
         </div>
@@ -54,57 +63,73 @@
 
 <!-- Edit Modal -->
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Form Ubah Kartu Keluarga</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data Desa</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="user" action="<?= base_url('konfigurasi/updateDesa/' . $data['id_desa']); ?>" method="POST" enctype="multipart/form-data">
+            <form class="user" action="<?= base_url('desa/update/' . $data['id']); ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
-                <div class="modal-body flex-column border-top-0">
+                <div class="modal-body flex-column border-top-0 mx-2">
+                    <div class="text-center my-4">
+                        <img class="img-thumbnail" id="imgPreview" src="<?= base_url(); ?>/img/<?= $data['logo']; ?>" alt="">
+                    </div>
+                    <input type="hidden" name="oldLogo" value="<?= $data['logo']; ?>">
                     <div class="form-group">
-                        <div class="text-center my-4">
-                            <img class="img-thumbnail" id="imgPreview" src="<?= base_url(); ?>/img/<?= $data['logo']; ?>" alt="">
-                        </div>
-                        <input type="hidden" name="oldLogo" value="<?= $data['logo']; ?>">
-                        <div class="form-group">
-                            <label class="form-label" for="">Logo Desa</label>
-                            <input type="file" class="form-control" id="logo" name="logo">
-                        </div>
+                        <label class="form-label" for="">Logo Desa</label>
+                        <input type="file" class="form-control" id="logo" name="logo">
                         <small class="text-muted">
                             Besar file maksimum 2 Mb. Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
                         </small>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="">Kelurahan/Desa</label>
-                        <input type="text" id="desa" name="desa" class="form-control" value="<?= $data['desa']; ?>">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="form-label" for="">Kelurahan/Desa</label>
+                                <input type="text" id="desa" name="desa" class="form-control" value="<?= $data['desa']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label" for="">Kode Desa</label>
+                                <input type="text" id="kode_desa" name="kode_desa" class="form-control" value="<?= $data['kode_desa']; ?>">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="">Kode Desa</label>
-                        <input type="text" id="id_desa" name="id_desa" class="form-control" value="<?= $data['id_desa']; ?>">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="form-label" for="">Kecamatan</label>
+                                <input type="text" id="kecamatan" name="kecamatan" class="form-control" value="<?= $data['kecamatan']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label" for="">Kode Pos</label>
+                                <input type="text" id="kode_pos" name="kode_pos" class="form-control" value="<?= $data['kode_pos']; ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label" for="">Kabupaten</label>
+                                <input type="text" id="kabupaten" name="kabupaten" class="form-control" value="<?= $data['kabupaten']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label" for="">Provinsi</label>
+                                <input type="text" id="provinsi" name="provinsi" class="form-control" value="<?= $data['provinsi']; ?>">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="">Alamat</label>
                         <textarea class="form-control" name="alamat" id="alamat" cols="3" rows="3"><?= $data['alamat']; ?></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="">Kode Pos</label>
-                        <input type="text" id="kode_pos" name="kode_pos" class="form-control" value="<?= $data['kode_pos']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="">Kecamatan</label>
-                        <input type="text" id="kecamatan" name="kecamatan" class="form-control" value="<?= $data['kecamatan']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="">Kabupaten</label>
-                        <input type="text" id="kabupaten" name="kabupaten" class="form-control" value="<?= $data['kabupaten']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="">Provinsi</label>
-                        <input type="text" id="provinsi" name="provinsi" class="form-control" value="<?= $data['provinsi']; ?>">
                     </div>
                 </div>
                 <div class="modal-footer">

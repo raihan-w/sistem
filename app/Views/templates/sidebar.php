@@ -6,7 +6,7 @@
             <img src="<?= base_url(); ?>/img/undraw_rocket.svg" alt="logo" style="width: 50px;">
             <!-- <i class="fas fa-coffee"></i> -->
         </div>
-        <div class="sidebar-brand-text mx-3">appstarter</div>
+        <div class="sidebar-brand-text mx-3">Administrasi</div>
     </a>
 
     <!-- Divider -->

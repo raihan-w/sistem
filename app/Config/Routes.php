@@ -45,12 +45,12 @@ $routes->group('', ['filter' => 'role:administrator'], function ($routes) {
 });
 
 $routes->group('', ['filter' => 'role:administrator'], function ($routes) {
-    $routes->get('desa', 'konfigurasi::desa');
-    $routes->get('desa/update/(:segment)', 'konfigurasi::updateDesa/#1');
-    $routes->get('perangkat', 'konfigurasi::perangkat');
-    $routes->add('perangkat', 'konfigurasi::insert');
-    $routes->delete('perangkat/(:num)', 'konfigurasi::delete/$1');
-    $routes->get('perangkat/update/(:segment)', 'Konfigurasi::updatePerangkat/$1');
+    $routes->get('desa', 'Desa::desa');
+    $routes->get('desa/update/(:segment)', 'Desa::update/$1');
+    $routes->get('perangkat', 'Perangkat::perangkat');
+    $routes->add('perangkat', 'Perangkat::insert');
+    $routes->delete('perangkat/(:num)', 'Perangkat::delete/$1');
+    $routes->get('perangkat/update/(:segment)', 'Konfigurasi::update/$1');
 });
 
 $routes->get('penduduk', 'Kependudukan::penduduk');
