@@ -131,7 +131,7 @@ class Kependudukan extends BaseController
         $this->keluarga->select('nkk, alamat, rt, rw, count(kk) as jml, nama');
         $this->keluarga->join('penduduk', 'penduduk.kk = keluarga.nkk', 'LEFT');
         $this->keluarga->groupBy('nkk');
-        
+
         $data['keluarga'] = $this->keluarga->findAll();
         return view('Penduduk/kepala_keluarga', $data);
     }

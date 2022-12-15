@@ -12,7 +12,7 @@ class Dokumen extends BaseController
         $this->dokumen = new Model_Dokumen();
     }
 
-    public function upload ($id)
+    public function upload($id)
     {
         if (!$this->validate([
             'file'   => [
@@ -25,9 +25,9 @@ class Dokumen extends BaseController
             ],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
-            return redirect()->back()->to('penduduk/detail/'.$id)->withInput();
+            return redirect()->back()->to('penduduk/detail/' . $id)->withInput();
         }
-        
+
         $file = $this->request->getFile('file');
         $fileName = $file->getName();
         $file->move('document');
@@ -38,7 +38,7 @@ class Dokumen extends BaseController
             'file' => $fileName
         );
         $this->dokumen->insert($data);
-        return redirect()->back()->to('penduduk/detail/'.$id);
+        return redirect()->back()->to('penduduk/detail/' . $id);
     }
 
     public function unlink($id)
@@ -52,6 +52,6 @@ class Dokumen extends BaseController
     public function download($id)
     {
         $data = $this->dokumen->find($id);
-        return $this->response->download('document/'.$data['file'], null);
+        return $this->response->download('document/' . $data['file'], null);
     }
 }
