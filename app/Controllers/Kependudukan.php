@@ -9,7 +9,7 @@ use App\Models\Model_Penduduk;
 
 class Kependudukan extends BaseController
 {
-    protected $penduduk, $keluarga, $pendidikan;
+    protected $penduduk, $keluarga, $pendidikan, $dokumen;
     public function __construct()
     {
         $this->penduduk    = new Model_Penduduk();
