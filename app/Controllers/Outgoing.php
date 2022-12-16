@@ -34,10 +34,10 @@ class Outgoing extends BaseController
         return view('Persuratan/outgoing', $data);
     }
 
-    public function detail($id)
+    public function archive($id)
     {
         $data['outgoing'] = $this->outgoing->find($id);
-        return view('Persuratan/detail', $data);
+        return view('Persuratan/arsip', $data);
     }
 
     public function upload($id)

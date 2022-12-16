@@ -52,7 +52,7 @@
                                 <td> <?= $row['perihal']; ?> </td>
                                 <td> <?= date('d-M-Y', strtotime($row['created_at'])); ?> </td>
                                 <td>
-                                    <a href="<?= base_url('outgoing/detail/' . $row['id']); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-list"></i></a>
+                                    <a href="<?= base_url('outgoing/archive/' . $row['id']); ?>" class="btn btn-circle btn-sm btn-info"><i class="fas fa-list"></i></a>
                                     <form action="/outgoing/<?= $row['id']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">

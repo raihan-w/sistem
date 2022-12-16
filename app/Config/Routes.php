@@ -72,7 +72,7 @@ $routes->group('', ['filter' => 'role:administrator,operator'], function ($route
 });
 
 $routes->get('outgoing', 'Outgoing::index');
-$routes->get('outgoing/detail/(:segment)', 'Outgoing::detail/$1');
+$routes->get('outgoing/archive/(:segment)', 'Outgoing::archive/$1');
 $routes->group('', ['filter' => 'role:administrator,operator'], function ($routes) {
     $routes->delete('outgoing/(:num)', 'Outgoing::delete/$1');
     $routes->delete('outgoing/unlink/(:num)', 'Outgoing::unlink/$1');

@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Surat Keluar</h1>
+        <h1 class="h3 mb-0 text-gray-800">Arsip Surat</h1>
     </div>
 
     <?php if (!empty(session()->getFlashdata('message'))) : ?>

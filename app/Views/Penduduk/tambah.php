@@ -195,12 +195,10 @@
                 </div>
 
                 <hr>
-                <div class="form-group px-3 mb-1 row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6">
-                        <button type="submit" class="btn btn-success"> Tambah Data </button>
-                    </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-success"> Tambah Data </button>
                 </div>
+                
             </form>
         </div>
     </div>
